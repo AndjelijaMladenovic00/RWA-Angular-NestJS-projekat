@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
+import { Routes } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent, LoginFormComponent, SignupFormComponent],

@@ -1,1 +1,36 @@
-<p>signup-form works!</p>
+<div class="signupContainer">
+
+    <label class="title">Sign up to WriteIt!</label>
+    <label class="explanationLabel">Fill in our form to create a WriteIt account!</label>
+
+    <div class="form">
+
+        <div class="formColumn">
+
+            <mat-form-field class="formRow">
+                <input matNativeControl type="text" placeholder="Username*" #username />
+            </mat-form-field>
+
+            <mat-form-field class="formRow">
+                <input matNativeControl type="email" placeholder="Email*" #email />
+            </mat-form-field>
+
+        </div>
+
+        <div class="formColumn">
+
+            <mat-form-field class="formRow">
+                <input matNativeControl type="password" placeholder="Password*" #password />
+            </mat-form-field>
+
+            <mat-form-field class="formRow">
+                <input matNativeControl type="password" placeholder="Confirm your password*" #confirmPassword />
+            </mat-form-field>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button class="signupButton">Sign up</button>
+
+</div>

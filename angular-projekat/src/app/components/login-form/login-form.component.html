@@ -2,15 +2,17 @@
 
     <label class="title">Welcome to WriteIt!</label>
     <mat-form-field class="loginRow">
-        <input matNativeControl type="email" placeholder="Email" #email />
+        <input matNativeControl type="text" placeholder="Username" #username />
     </mat-form-field>
 
     <mat-form-field class="loginRow">
         <input matNativeControl type="password" placeholder="Password" #password />
     </mat-form-field>
 
+    <label class="errorMessage" #errorMessage>Invalid email and/or password!</label>
+
     <button mat-raised-button class="loginButton" #loginButton>Log in</button>
 
-    <label class="signupMessage" #signup>Don't have an account? Sign up!</label>
+    <label class="signupMessage" #signup (click)="gotoSignup()">Don't have an account? Sign up here!</label>
 
 </div>
