@@ -9,7 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
-import { Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { LoginReducer } from './store/login.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { LoginEffects } from './store/login.effects';
 
 @NgModule({
   declarations: [AppComponent, LoginFormComponent, SignupFormComponent],
@@ -20,6 +26,14 @@ import { Routes } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    FormsModule,
+    HttpClientModule,
+    StoreModule.forRoot({ user: LoginReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      autoPause: true,
+    }),
+    EffectsModule.forRoot([LoginEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
