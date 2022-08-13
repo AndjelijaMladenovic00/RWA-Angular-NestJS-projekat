@@ -1,4 +1,4 @@
-import { HttpClient, HttpXsrfTokenExtractor } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LogedUser } from 'src/app/interfaces/logedUser.interface';
 import { SignupData } from 'src/app/interfaces/signupData.interface';

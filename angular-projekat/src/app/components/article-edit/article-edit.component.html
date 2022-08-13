@@ -1,1 +1,52 @@
-<p>article-edit works!</p>
+<mat-card class="articleInfo">
+    <div class="titleDiv">
+        <mat-card-title class="title">Title</mat-card-title>
+        <mat-card-subtitle>Insert the title of your article here!</mat-card-subtitle>
+
+        <input mat-form-field type="text" class="titleInput" #title (input)="setTitle(title.value)" />
+
+    </div>
+
+    <div class="genreDiv">
+        <select mat-form-field id="genre" class="gendreSelect" #genre
+            (select)="setGenre(genre.options[genre.selectedIndex].value)">
+            <option value="none" selected disabled hidden>Select a genre</option>
+            <option value="horror">Horror</option>
+            <option value="romance">Romance</option>
+            <option value="horror">Horror</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="horror">Horror</option>
+            <option value="thriller">Thriller</option>
+            <option value="historical">Historical</option>
+        </select>
+    </div>
+
+
+</mat-card>
+
+<mat-card class="articleMenu">
+
+    <div class="undoRedoDiv">
+        <button mat-raised-button id="undo" (click)="undo()">
+            <fa-icon [icon]="faRotateLeft"></fa-icon>Undo
+        </button>
+
+        <button mat-raised-button id="redo" (click)="redo()">
+            <fa-icon [icon]="faRotateRight"></fa-icon>Redo
+        </button>
+
+    </div>
+    <div class="publishDiv">
+        <button mat-raised-button>
+            <fa-icon [icon]="faUpload" id="publish" (click)="publish()"></fa-icon>Publish
+        </button>
+
+    </div>
+
+</mat-card>
+
+<mat-card class="textEdit">
+    <textarea mat-form-field type="text" class="textInput" #text id="textInput" (input)="setText(text.value)"
+        maxlength="1000"></textarea>
+    <label class="charLabel">{{charNumber}}/1000</label>
+</mat-card>

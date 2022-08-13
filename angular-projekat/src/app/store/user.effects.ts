@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
 import { catchError, exhaustMap, map, of, switchMap, tap } from 'rxjs';
 import { LogedUser } from '../interfaces/logedUser.interface';
 import { User } from '../models/user.model';

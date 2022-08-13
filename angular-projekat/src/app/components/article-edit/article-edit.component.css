@@ -1,0 +1,113 @@
+.articleInfo {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    background-color: rgb(148, 180, 99);
+
+}
+
+.titleDiv {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-bottom: 0%;
+    height: 100%;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+.genreDiv {
+
+    display: flex;
+    flex-direction: column;
+    margin-right: 10%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    height: 100%;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+.title {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: rgb(56, 87, 24);
+}
+
+.titleInput {
+    border-radius: 10px;
+    color: rgb(56, 87, 24);
+    font-size: 15px;
+}
+
+.gendreSelect {
+    border-radius: 10px;
+    color: rgb(56, 87, 24);
+    font-size: 15px;
+    text-align: center;
+}
+
+option {
+    color: rgb(56, 87, 24);
+}
+
+.articleMenu {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.undoRedoDiv {
+    margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.publishDiv {
+    margin-right: 10%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+button {
+    background-color: rgb(75, 125, 25);
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    margin-right: 2%;
+    color: azure;
+}
+
+fa-icon {
+    margin: 5%;
+    align-self: center;
+}
+
+.textEdit {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.textInput {
+    margin: 10%;
+    margin-bottom: 1%;
+    height: 80%;
+    border-radius: 10px;
+    text-align: start;
+    background-color: rgb(218, 237, 191);
+    color: rgb(56, 87, 24);
+}
+
+.charLabel {
+    align-self: flex-end;
+    margin-right: 12%;
+}

@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
@@ -16,7 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { UserReducer } from './store/user.reducer';
 import { UserEffects } from './store/user.effects';
 import { FeedComponent } from './components/feed/feed.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -25,6 +25,7 @@ import { ArticleEditComponent } from './components/article-edit/article-edit.com
 import { MyArticlesComponent } from './components/my-articles/my-articles.component';
 import { ReportsComponent } from './reports/reports.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { Reducers } from './store/app.state';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
     MatButtonModule,
     FormsModule,
     HttpClientModule,
-    StoreModule.forRoot({ auth: UserReducer }),
+    StoreModule.forRoot(Reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       autoPause: true,
@@ -57,6 +58,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
     MatIconModule,
     FontAwesomeModule,
     MatMenuModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
