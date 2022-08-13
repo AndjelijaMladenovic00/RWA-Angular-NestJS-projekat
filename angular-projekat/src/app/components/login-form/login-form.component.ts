@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { LoginData } from 'src/app/interfaces/loginData.interface';
-import { selectToken } from 'src/app/store/user.selectors';
 import * as UserActions from '../../store/user.actions';
 @Component({
   selector: 'app-login-form',
@@ -15,7 +14,10 @@ export class LoginFormComponent implements OnInit {
   username: string = '';
   password: string = '';
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    localStorage.removeItem('JWT');
+    this.store.dispatch(UserActions.logout());
+  }
 
   gotoSignup(): void {
     this.router.navigate(['signup']);

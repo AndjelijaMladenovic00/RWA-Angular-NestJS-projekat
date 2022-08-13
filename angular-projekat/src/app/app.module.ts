@@ -21,6 +21,10 @@ import { UserEffects } from './store/user.effects';
 import { FeedComponent } from './components/feed/feed.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ArticleEditComponent } from './components/article-edit/article-edit.component';
+import { MyArticlesComponent } from './components/my-articles/my-articles.component';
+import { ReportsComponent } from './reports/reports.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SignupFormComponent,
     FeedComponent,
     HeaderComponent,
+    ArticleEditComponent,
+    MyArticlesComponent,
+    ReportsComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,

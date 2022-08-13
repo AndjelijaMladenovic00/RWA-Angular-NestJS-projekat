@@ -1,6 +1,6 @@
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 import { UserState } from '../state/userState';
-import { loginFail, loginSuccess } from './user.actions';
+import { loginFail, loginSuccess, logout } from './user.actions';
 
 export const initialUserState: UserState = {
   username: null,
@@ -18,6 +18,13 @@ const _userReducer = createReducer(
     };
   }),
   on(loginFail, (state: UserState) => {
+    return {
+      username: null,
+      access_token: null,
+      profileType: null,
+    };
+  }),
+  on(logout, (state: UserState) => {
     return {
       username: null,
       access_token: null,

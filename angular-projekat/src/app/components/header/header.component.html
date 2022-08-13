@@ -1,41 +1,47 @@
 <p>
     <mat-toolbar class="header">
 
-        <span>
+        <span id="menu" class="menu">
             <button [matMenuTriggerFor]="menu" mat-icon-button class="header-icon">
                 <mat-icon style="color: azure;">menu</mat-icon>
             </button>
 
             <mat-menu class="menu" #menu="matMenu">
-                <button mat-menu-item class="menuButton">
+                <button mat-menu-item class="menuButton" (click)="gotoArticleEdit()">
                     <fa-icon [icon]="faPencil" style="color: rgb(104, 162, 47);"></fa-icon> Write an article
                 </button>
-                <button mat-menu-item class="menuButton">
+                <button mat-menu-item class="menuButton" (click)="gotoMyArticles()">
                     <fa-icon [icon]="faScroll" style="color: rgb(104, 162, 47);"></fa-icon> Your articles
                 </button>
-                <button mat-menu-item class="menuButton">
+                <button mat-menu-item class="menuButton" (click)="gotoFeed()">
                     <fa-icon [icon]="faBookOpenReader" style="color: rgb(104, 162, 47);"></fa-icon> Feed
                 </button>
-                <button mat-menu-item class="menuButton">
-                    <fa-icon [icon]="faFlag" style="color: rgb(104, 162, 47);"></fa-icon> Reports
-                </button>
-            </mat-menu>
 
-            <span class="headerTitle">WriteIt</span>
+                <button class="logoutButton" mat-raised-button (click)="logout()">Log out</button>
+            </mat-menu>
 
         </span>
 
-        <span class="userInfo">
 
-            <button mat-icon-button class="notificationsButton">
+        <span class="titleNotLogedIn" id="title">WriteIt</span>
+
+
+
+        <span class="userInfo" id="userInfo">
+
+            <button mat-icon-button class="notificationsButton" (click)="gotoReports()" id="reports">
+                <fa-icon [icon]="faFlag" style="color: azure;" id="notificationsIcon"></fa-icon>
+            </button>
+
+            <button mat-icon-button class="notificationsButton" (click)="gotoNotifications()">
                 <fa-icon [icon]="faComment" style="color: azure;" id="notificationsIcon"></fa-icon>
             </button>
 
-            <label class="username">Username</label>
-
-            <button class="logoutButton" mat-raised-button>Log out</button>
+            <label class="username" id="userLabel"></label>
 
         </span>
 
     </mat-toolbar>
 </p>
+
+<router-outlet></router-outlet>

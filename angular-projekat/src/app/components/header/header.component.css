@@ -1,6 +1,5 @@
 .header {
     background-color: rgb(56, 87, 24);
-    position: fixed;
     top: 0;
     justify-content: space-between;
 }
@@ -14,6 +13,20 @@
     font-size: 25px;
     align-self: center;
     justify-self: center;
+    align-content: center;
+    margin-left: 10%;
+}
+
+.titleNotLogedIn {
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    color: azure;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    width: 100%;
+    margin-left: 8%;
 }
 
 .notificationsButton {
@@ -38,4 +51,9 @@
 
 .userInfo {
     margin: 5%;
+    visibility: hidden;
+}
+
+.menu {
+    visibility: hidden;
 }

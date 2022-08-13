@@ -8,3 +8,4 @@ export const loginSuccess = createAction(
   props<{ userData: LogedUser }>()
 );
 export const loginFail = createAction('LoginFail');
+export const logout = createAction('Logout');
