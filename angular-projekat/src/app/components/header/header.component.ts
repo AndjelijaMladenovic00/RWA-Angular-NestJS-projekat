@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { faScroll } from '@fortawesome/free-solid-svg-icons';
@@ -30,8 +24,8 @@ export class HeaderComponent implements OnInit {
   faComment = faComment;
   faFlag = faFlag;
 
-  @Output() username: string | null = null;
-  @Output() profileType: profileType | null = null;
+  username: string | null = null;
+  profileType: profileType | null = null;
 
   constructor(private router: Router, private store: Store<AppState>) {}
 
@@ -48,7 +42,6 @@ export class HeaderComponent implements OnInit {
   }
 
   gotoArticleEdit() {
-    console.log('articel');
     this.router.navigate(['articleEdit']);
   }
 

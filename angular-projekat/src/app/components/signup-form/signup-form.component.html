@@ -8,11 +8,12 @@
         <div class="formColumn">
 
             <mat-form-field class="formRow">
-                <input matNativeControl type="text" placeholder="Username*" #username />
+                <input matNativeControl type="text" placeholder="Username*" #username
+                    (input)="setUsername(username.value)" />
             </mat-form-field>
 
             <mat-form-field class="formRow">
-                <input matNativeControl type="email" placeholder="Email*" #email />
+                <input matNativeControl type="email" placeholder="Email*" #email (input)="setEmail(email.value)" />
             </mat-form-field>
 
         </div>
@@ -20,17 +21,19 @@
         <div class="formColumn">
 
             <mat-form-field class="formRow">
-                <input matNativeControl type="password" placeholder="Password*" #password />
+                <input matNativeControl type="password" placeholder="Password*" #password
+                    (input)="setPassword(password.value)" />
             </mat-form-field>
 
             <mat-form-field class="formRow">
-                <input matNativeControl type="password" placeholder="Confirm your password*" #confirmPassword />
+                <input matNativeControl type="password" placeholder="Confirm your password*" #confirmPassword
+                    (input)="setConfirmedPassword(confirmPassword.value)" />
             </mat-form-field>
 
         </div>
 
     </div>
 
-    <button mat-raised-button class="signupButton">Sign up</button>
+    <button mat-raised-button class="signupButton" (click)="signup()">Sign up</button>
 
 </div>

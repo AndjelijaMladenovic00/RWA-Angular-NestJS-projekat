@@ -1,6 +1,6 @@
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 import { UserState } from '../state/userState';
-import { loginFail, loginSuccess, logout } from './user.actions';
+import { loginFail, loginSuccess, logout, signupSuccess } from './user.actions';
 
 export const initialUserState: UserState = {
   username: null,
@@ -10,6 +10,7 @@ export const initialUserState: UserState = {
 
 const _userReducer = createReducer(
   initialUserState,
+
   on(loginSuccess, (state: UserState, { userData }) => {
     return {
       username: userData.username,
@@ -17,6 +18,7 @@ const _userReducer = createReducer(
       profileType: userData.profileType,
     };
   }),
+
   on(loginFail, (state: UserState) => {
     return {
       username: null,
@@ -24,6 +26,7 @@ const _userReducer = createReducer(
       profileType: null,
     };
   }),
+
   on(logout, (state: UserState) => {
     return {
       username: null,
