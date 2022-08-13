@@ -1,7 +1,6 @@
 import { HttpClient, HttpXsrfTokenExtractor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LogedUser } from 'src/app/interfaces/logedUser.interface';
-import { Token } from 'src/app/interfaces/token.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

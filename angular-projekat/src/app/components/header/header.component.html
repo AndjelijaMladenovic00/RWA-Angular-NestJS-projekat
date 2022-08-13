@@ -1,0 +1,41 @@
+<p>
+    <mat-toolbar class="header">
+
+        <span>
+            <button [matMenuTriggerFor]="menu" mat-icon-button class="header-icon">
+                <mat-icon style="color: azure;">menu</mat-icon>
+            </button>
+
+            <mat-menu class="menu" #menu="matMenu">
+                <button mat-menu-item class="menuButton">
+                    <fa-icon [icon]="faPencil" style="color: rgb(104, 162, 47);"></fa-icon> Write an article
+                </button>
+                <button mat-menu-item class="menuButton">
+                    <fa-icon [icon]="faScroll" style="color: rgb(104, 162, 47);"></fa-icon> Your articles
+                </button>
+                <button mat-menu-item class="menuButton">
+                    <fa-icon [icon]="faBookOpenReader" style="color: rgb(104, 162, 47);"></fa-icon> Feed
+                </button>
+                <button mat-menu-item class="menuButton">
+                    <fa-icon [icon]="faFlag" style="color: rgb(104, 162, 47);"></fa-icon> Reports
+                </button>
+            </mat-menu>
+
+            <span class="headerTitle">WriteIt</span>
+
+        </span>
+
+        <span class="userInfo">
+
+            <button mat-icon-button class="notificationsButton">
+                <fa-icon [icon]="faComment" style="color: azure;" id="notificationsIcon"></fa-icon>
+            </button>
+
+            <label class="username">Username</label>
+
+            <button class="logoutButton" mat-raised-button>Log out</button>
+
+        </span>
+
+    </mat-toolbar>
+</p>
