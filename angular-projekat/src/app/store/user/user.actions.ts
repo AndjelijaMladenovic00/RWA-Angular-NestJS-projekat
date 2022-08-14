@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
-import { LogedUser } from '../interfaces/logedUser.interface';
-import { LoginData } from '../interfaces/loginData.interface';
-import { SignupData } from '../interfaces/signupData.interface';
+import { LogedUser } from '../../interfaces/logedUser.interface';
+import { LoginData } from '../../interfaces/loginData.interface';
+import { SignupData } from '../../interfaces/signupData.interface';
 
 export const login = createAction('Login', props<{ userData: LoginData }>());
 

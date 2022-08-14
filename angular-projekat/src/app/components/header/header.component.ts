@@ -9,8 +9,9 @@ import { Store } from '@ngrx/store';
 
 import { profileType } from 'src/app/enums/profile-type.enum';
 import { AppState } from 'src/app/store/app.state';
-import { selectUserData } from 'src/app/store/user.selectors';
-import { logout } from 'src/app/store/user.actions';
+
+import { logout } from 'src/app/store/user/user.actions';
+import { selectUserData } from 'src/app/store/user/user.selectors';
 
 @Component({
   selector: 'app-header',
@@ -30,6 +31,8 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private store: Store<AppState>) {}
 
   ngOnInit(): void {
+    localStorage.removeItem('JWT');
+
     this.store.select(selectUserData).subscribe((stateData) => {
       if (stateData.username && stateData.profileType) {
         this.username = stateData.username;

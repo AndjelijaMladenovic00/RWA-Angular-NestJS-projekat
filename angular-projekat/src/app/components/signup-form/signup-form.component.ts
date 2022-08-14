@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { profileType } from 'src/app/enums/profile-type.enum';
 import { SignupData } from 'src/app/interfaces/signupData.interface';
 import { AppState } from 'src/app/store/app.state';
-import { signup } from 'src/app/store/user.actions';
+import { signup } from 'src/app/store/user/user.actions';
 
 @Component({
   selector: 'app-signup-form',

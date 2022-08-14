@@ -13,11 +13,11 @@ import { AppComponent } from './app.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { UserEffects } from './store/user.effects';
+
 import { FeedComponent } from './components/feed/feed.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -26,6 +26,9 @@ import { MyArticlesComponent } from './components/my-articles/my-articles.compon
 import { ReportsComponent } from './reports/reports.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { Reducers } from './store/app.state';
+import { UserEffects } from './store/user/user.effects';
+import { InterceptorService } from './guards/interceptor';
+import { ArticleEffects } from './store/article/article.effects';
 
 @NgModule({
   declarations: [
@@ -53,14 +56,16 @@ import { Reducers } from './store/app.state';
       maxAge: 25,
       autoPause: true,
     }),
-    EffectsModule.forRoot([UserEffects]),
+    EffectsModule.forRoot([UserEffects, ArticleEffects]),
     MatToolbarModule,
     MatIconModule,
     FontAwesomeModule,
     MatMenuModule,
     MatCardModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

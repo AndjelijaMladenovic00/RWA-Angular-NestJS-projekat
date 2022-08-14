@@ -3,13 +3,13 @@
         <mat-card-title class="title">Title</mat-card-title>
         <mat-card-subtitle>Insert the title of your article here!</mat-card-subtitle>
 
-        <input mat-form-field type="text" class="titleInput" #title (input)="setTitle(title.value)" />
+        <input mat-form-field type="text" class="titleInput" #title (input)="setTitle(title.value)" id="titleInput" />
 
     </div>
 
     <div class="genreDiv">
         <select mat-form-field id="genre" class="gendreSelect" #genre
-            (select)="setGenre(genre.options[genre.selectedIndex].value)">
+            (change)="setGenre(genre.options[genre.selectedIndex].value)">
             <option value="none" selected disabled hidden>Select a genre</option>
             <option value="horror">Horror</option>
             <option value="romance">Romance</option>
@@ -37,8 +37,8 @@
 
     </div>
     <div class="publishDiv">
-        <button mat-raised-button>
-            <fa-icon [icon]="faUpload" id="publish" (click)="publish()"></fa-icon>Publish
+        <button mat-raised-button (click)="publish()">
+            <fa-icon [icon]="faUpload" id="publish"></fa-icon>Publish
         </button>
 
     </div>

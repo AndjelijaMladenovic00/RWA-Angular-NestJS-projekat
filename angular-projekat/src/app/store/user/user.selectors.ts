@@ -1,9 +1,13 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { profileType } from '../enums/profile-type.enum';
-import { UserState } from '../state/userState';
-import { AppState } from './app.state';
+import { UserState } from 'src/app/state/userState';
+import { profileType } from 'src/app/enums/profile-type.enum';
 
 export const selectUserState = createFeatureSelector<UserState>('auth');
+
+export const selectID = createSelector(
+  selectUserState,
+  (state) => state.id
+);
 
 export const selectToken = createSelector(
   selectUserState,

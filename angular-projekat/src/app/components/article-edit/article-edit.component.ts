@@ -1,16 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   faRotateLeft,
   faRotateRight,
   faUpload,
 } from '@fortawesome/free-solid-svg-icons';
 import { debounceTime, fromEvent, map } from 'rxjs';
+import { ArticleInfo } from 'src/app/interfaces/articleInfo.interface';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Store } from '@ngrx/store';
+import { postArticle } from 'src/app/store/article/article.actions';
+
 @Component({
   selector: 'app-article-edit',
   templateUrl: './article-edit.component.html',
   styleUrls: ['./article-edit.component.css'],
 })
-export class ArticleEditComponent implements OnInit {
+export class ArticleEditComponent implements OnInit, OnDestroy {
   faRotateLeft = faRotateLeft;
   faRotateRight = faRotateRight;
   faUpload = faUpload;
@@ -24,9 +30,31 @@ export class ArticleEditComponent implements OnInit {
 
   charNumber: number = 0;
 
-  constructor() {}
-
+  constructor(private router: Router, private store: Store) {}
   ngOnInit(): void {
+    const title: string | null = localStorage.getItem('title');
+    const text: string | null = localStorage.getItem('text');
+
+    if (title || text) {
+      if (text) {
+        const textInput: HTMLTextAreaElement | null = <HTMLTextAreaElement>(
+          document.getElementById('textInput')
+        );
+        if (textInput) textInput.value = text;
+        this.text = text;
+      }
+
+      if (title) {
+        const titleInput: HTMLInputElement | null = <HTMLInputElement>(
+          document.getElementById('titleInput')
+        );
+        if (titleInput) titleInput.value = title;
+        this.title = title;
+      }
+
+      localStorage.removeItem('text');
+      localStorage.removeItem('title');
+    }
     const undo: HTMLElement | null = document.getElementById('undo');
     if (undo) undo.style.visibility = 'hidden';
 
@@ -43,7 +71,6 @@ export class ArticleEditComponent implements OnInit {
           map((ev: Event) => this.text)
         )
         .subscribe((value: string | null) => {
-          console.log(this.undoableActions);
           if (
             value &&
             value != this.undoableActions[this.undoableActions.length - 1]
@@ -51,6 +78,13 @@ export class ArticleEditComponent implements OnInit {
             this.addUndoable(value, false);
           }
         });
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.title != '' || this.text != '') {
+      localStorage.setItem('title', this.title);
+      localStorage.setItem('text', this.text);
     }
   }
 
@@ -117,5 +151,52 @@ export class ArticleEditComponent implements OnInit {
       textInput.value = this.undoableActions[this.undoableActions.length - 1];
   }
 
-  publish() {}
+  publish() {
+    if (this.title == '') {
+      alert('You need to insert a title!');
+      return;
+    }
+
+    if (this.genre == '') {
+      alert('You need to insert a genre!');
+      return;
+    }
+
+    if (this.text == '') {
+      alert('You cannot publish an empty article!');
+      return;
+    }
+
+    if (
+      confirm(
+        `Are you sure that you want to publish an article named "${this.title}"?`
+      )
+    ) {
+      const jwtHelper: JwtHelperService = new JwtHelperService();
+      const token: string | null = localStorage.getItem('JWT');
+      if (!token) return;
+      const userId = jwtHelper.decodeToken(token).id;
+
+      console.log(userId);
+
+      const article: ArticleInfo = {
+        title: this.title,
+        text: this.text,
+        userId: userId,
+        genre: this.genre,
+      };
+
+      this.store.dispatch(postArticle({ article }));
+
+      /*const textInput: HTMLTextAreaElement | null = <HTMLTextAreaElement>(
+        document.getElementById('textInput')
+      );
+      if (textInput) textInput.value = '';
+
+      const titleInput: HTMLInputElement | null = <HTMLInputElement>(
+        document.getElementById('titleInput')
+      );
+      if (titleInput) titleInput.value = '';*/
+    }
+  }
 }
