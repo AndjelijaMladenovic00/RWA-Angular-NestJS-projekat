@@ -48,7 +48,7 @@ export class ArticleEditComponent implements OnInit {
             value &&
             value != this.undoableActions[this.undoableActions.length - 1]
           ) {
-            this.addUndoable(value);
+            this.addUndoable(value, false);
           }
         });
     }
@@ -71,15 +71,17 @@ export class ArticleEditComponent implements OnInit {
     this.genre = value;
   }
 
-  addUndoable(value: string | undefined) {
+  addUndoable(value: string | undefined, fromRedo: boolean) {
     if (!value) return;
     this.undoableActions.push(value);
     const undo: HTMLElement | null = document.getElementById('undo');
     if (undo) undo.style.visibility = 'visible';
 
-    this.redoableActions = [];
-    const redo: HTMLElement | null = document.getElementById('redo');
-    if (redo) redo.style.visibility = 'hidden';
+    if (fromRedo == false) {
+      this.redoableActions = [];
+      const redo: HTMLElement | null = document.getElementById('redo');
+      if (redo) redo.style.visibility = 'hidden';
+    }
   }
 
   addRedoable(value: string | undefined) {
@@ -90,34 +92,29 @@ export class ArticleEditComponent implements OnInit {
   }
 
   undo() {
-    const textInput: HTMLElement | null = document.getElementById('textInput');
+    const textInput: HTMLTextAreaElement | null = <HTMLTextAreaElement>(
+      document.getElementById('textInput')
+    );
     this.addRedoable(this.undoableActions.pop());
 
     if (this.undoableActions.length == 0) {
       const undo: HTMLElement | null = document.getElementById('undo');
       if (undo) undo.style.visibility = 'hidden';
 
-      if (textInput) textInput.innerHTML = '';
+      if (textInput) textInput.value = '';
     } else {
       if (textInput)
-        textInput.textContent =
-          this.undoableActions[this.undoableActions.length - 1];
+        textInput.value = this.undoableActions[this.undoableActions.length - 1];
     }
   }
 
   redo() {
-    const textInput: HTMLElement | null = document.getElementById('textInput');
-    this.addUndoable(this.redoableActions.pop());
-    if (this.redoableActions.length == 0) {
-      const redo: HTMLElement | null = document.getElementById('redo');
-      if (redo) redo.style.visibility = 'hidden';
-
-      if (textInput) textInput.innerHTML = '';
-    } else {
-      if (textInput)
-        textInput.innerHTML =
-          this.undoableActions[this.undoableActions.length - 1];
-    }
+    const textInput: HTMLTextAreaElement | null = <HTMLTextAreaElement>(
+      document.getElementById('textInput')
+    );
+    this.addUndoable(this.redoableActions.pop(), true);
+    if (textInput)
+      textInput.value = this.undoableActions[this.undoableActions.length - 1];
   }
 
   publish() {}

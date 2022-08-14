@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectToken } from './store/user.selectors';
 
 @Component({
   selector: 'app-root',

@@ -5,6 +5,8 @@ import { FeedComponent } from './components/feed/feed.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { MyArticlesComponent } from './components/my-articles/my-articles.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
+import { AdminGuard } from './guards/admin.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ReportsComponent } from './reports/reports.component';
 
@@ -12,11 +14,23 @@ const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: '', component: LoginFormComponent },
   { path: 'signup', component: SignupFormComponent },
-  { path: 'feed', component: FeedComponent },
-  { path: 'articleEdit', component: ArticleEditComponent },
-  { path: 'myArticles', component: MyArticlesComponent },
-  { path: 'reports', component: ReportsComponent },
-  { path: 'notifications', component: NotificationsComponent },
+  { path: 'feed', component: FeedComponent, canActivate: [AuthGuard] },
+  {
+    path: 'articleEdit',
+    component: ArticleEditComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'myArticles',
+    component: MyArticlesComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'reports', component: ReportsComponent, canActivate: [AdminGuard] },
+  {
+    path: 'notifications',
+    component: NotificationsComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
