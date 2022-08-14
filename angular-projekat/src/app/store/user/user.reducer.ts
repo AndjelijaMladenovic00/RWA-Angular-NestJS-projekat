@@ -14,7 +14,6 @@ const _userReducer = createReducer(
   initialUserState,
 
   on(loginSuccess, (state: UserState, { userData }) => {
-    console.log(userData.id);
     return {
       id: userData.id,
       username: userData.username,

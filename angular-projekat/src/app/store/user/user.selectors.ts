@@ -4,10 +4,7 @@ import { profileType } from 'src/app/enums/profile-type.enum';
 
 export const selectUserState = createFeatureSelector<UserState>('auth');
 
-export const selectID = createSelector(
-  selectUserState,
-  (state) => state.id
-);
+export const selectID = createSelector(selectUserState, (state) => state.id);
 
 export const selectToken = createSelector(
   selectUserState,
@@ -27,10 +24,16 @@ export const selectProfileType = createSelector(
 export const selectUserData = createSelector(
   selectUsername,
   selectProfileType,
-  (username: string | null, profileType: profileType | null) => {
+  selectID,
+  (
+    username: string | null,
+    profileType: profileType | null,
+    id: number | null
+  ) => {
     return {
       username,
       profileType,
+      id,
     };
   }
 );

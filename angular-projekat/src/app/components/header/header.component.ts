@@ -13,6 +13,8 @@ import { AppState } from 'src/app/store/app.state';
 import { logout } from 'src/app/store/user/user.actions';
 import { selectUserData } from 'src/app/store/user/user.selectors';
 
+import { loadMyArticles } from 'src/app/store/article/article.actions';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -34,9 +36,11 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('JWT');
 
     this.store.select(selectUserData).subscribe((stateData) => {
-      if (stateData.username && stateData.profileType) {
+      if (stateData.username && stateData.profileType && stateData.id) {
         this.username = stateData.username;
         this.profileType = stateData.profileType;
+        const id: number = stateData.id;
+        this.store.dispatch(loadMyArticles({ id }));
         this.setHeader();
       } else {
         this.clearHeader();

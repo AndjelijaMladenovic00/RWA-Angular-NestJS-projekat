@@ -27,4 +27,20 @@ export class ArticleEffects {
       )
     )
   );
+
+  loadMyArticle$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(ArticleActions.loadMyArticles),
+      exhaustMap((action) =>
+        this.articleService
+          .loadArticles(action.id)
+          .pipe(
+            map((articles: Article[]) =>
+              ArticleActions.loadMyArticlesSuccess({ articles })
+            )
+          )
+      ),
+      catchError(() => of(ArticleActions.loadMyArticlesFail()))
+    )
+  );
 }

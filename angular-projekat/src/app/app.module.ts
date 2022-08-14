@@ -29,6 +29,8 @@ import { Reducers } from './store/app.state';
 import { UserEffects } from './store/user/user.effects';
 import { InterceptorService } from './guards/interceptor';
 import { ArticleEffects } from './store/article/article.effects';
+import { ArticleThumbComponent } from './components/article-thumb/article-thumb.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { ArticleEffects } from './store/article/article.effects';
     MyArticlesComponent,
     ReportsComponent,
     NotificationsComponent,
+    ArticleThumbComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,7 @@ import { ArticleEffects } from './store/article/article.effects';
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       autoPause: true,
+      logOnly: environment.production,
     }),
     EffectsModule.forRoot([UserEffects, ArticleEffects]),
     MatToolbarModule,

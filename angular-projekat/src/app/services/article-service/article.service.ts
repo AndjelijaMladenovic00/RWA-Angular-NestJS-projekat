@@ -21,4 +21,10 @@ export class ArticleService {
       }
     );
   }
+
+  loadArticles(id: number) {
+    return this.http.get<Article[]>(
+      `${environment.url}/articles/getArticlesForId/${id}`
+    );
+  }
 }

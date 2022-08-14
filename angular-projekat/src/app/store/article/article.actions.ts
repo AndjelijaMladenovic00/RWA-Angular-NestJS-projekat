@@ -13,3 +13,15 @@ export const postArticleSuccess = createAction(
 );
 
 export const postArticleFail = createAction('PostArticleFail');
+
+export const loadMyArticles = createAction(
+  'LoadMyArticles',
+  props<{ id: number }>()
+);
+
+export const loadMyArticlesSuccess = createAction(
+  'LoadMyArticlesSuccess',
+  props<{ articles: Article[] }>()
+);
+
+export const loadMyArticlesFail = createAction('LoadMyArticlesFail');

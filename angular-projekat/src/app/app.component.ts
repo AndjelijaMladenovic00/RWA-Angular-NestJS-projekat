@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',

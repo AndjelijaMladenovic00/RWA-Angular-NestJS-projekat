@@ -22,8 +22,22 @@ const _myArticleReducer = createReducer(
       return adapter.addOne(article, state);
     }
   ),
+
   on(ArticleActions.postArticleFail, (state: MyArticlesState) => {
     alert(`An error occured while posting an article!`);
+    return state;
+  }),
+
+  on(
+    ArticleActions.loadMyArticlesSuccess,
+    (state: MyArticlesState, { articles }) => {
+      console.log('SUCCESS: ', articles);
+      return adapter.addMany(articles, state);
+    }
+  ),
+
+  on(ArticleActions.loadMyArticlesFail, (state: MyArticlesState) => {
+    console.log('fail');
     return state;
   })
 );

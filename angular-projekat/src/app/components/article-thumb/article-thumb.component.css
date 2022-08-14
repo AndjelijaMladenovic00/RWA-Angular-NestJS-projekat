@@ -1,0 +1,61 @@
+.thumbContainer {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: space-between;
+    align-self: center;
+    align-content: center;
+    background-color: rgb(148, 180, 99);
+    border-radius: 10px;
+    box-shadow: 0 0 0 2px gray;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.thumbContainer:hover {
+    color: azure;
+    box-shadow: 0px 0px 10px rgb(56, 87, 24);
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.title {
+    font-size: 30px;
+    margin: 5%;
+    margin-bottom: 10%;
+    row-gap: 2%;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: rgb(11, 14, 11);
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 100%;
+}
+
+.divRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-right: 5%;
+    align-self: center;
+    justify-self: center;
+    width: 10%;
+}
+
+.genre {
+    text-shadow: 2px gray;
+    padding: 2%;
+    width: fit-content;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
