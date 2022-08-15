@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { ArticleInfo } from 'src/app/interfaces/articleInfo.interface';
+import { UpdateArticle } from 'src/app/interfaces/updateArticle.interface';
 import { Article } from 'src/app/models/article.model';
 
 export const postArticle = createAction(
@@ -42,3 +43,15 @@ export const deleteArticleSuccess = createAction(
 );
 
 export const deleteArticleFail = createAction('DeleteArticleFail');
+
+export const updateMyArticle = createAction(
+  'UpdateMyArticle',
+  props<{ data: UpdateArticle }>()
+);
+
+export const updateMyArticleSuccess = createAction(
+  'UpdateMyArticleSuccess',
+  props<{ article: Article }>()
+);
+
+export const updateMyArticleFail = createAction('UpdateMyArticleFail');

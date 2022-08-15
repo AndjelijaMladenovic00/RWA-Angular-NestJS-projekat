@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Article } from '../models/article.model';
+import { Article } from '../../models/article.model';
 import { faFloppyDisk, faTrashCan } from '@fortawesome/free-solid-svg-icons';
-import { selectMySelectedArticle } from '../store/article/article.selectors';
-import { Review } from '../models/review.model';
-import { ReviewService } from '../services/review-service/review.service';
-import { ArticleService } from '../services/article-service/article.service';
-import { deleteArticle } from '../store/article/article.actions';
+import { selectMySelectedArticle } from '../../store/article/article.selectors';
+import { Review } from '../../models/review.model';
+import { ReviewService } from '../../services/review-service/review.service';
+import { ArticleService } from '../../services/article-service/article.service';
+import {
+  deleteArticle,
+  updateMyArticle,
+} from '../../store/article/article.actions';
+import { UpdateArticle } from '../../interfaces/updateArticle.interface';
+import { BookGenre } from '../../enums/book-genre.enum';
 
 @Component({
   selector: 'app-viev-my-article',
@@ -24,6 +29,7 @@ export class VievMyArticleComponent implements OnInit {
   text: string = '';
   title: string = '';
   genre: string = '';
+  index: number = 0;
 
   constructor(
     private router: Router,
@@ -41,15 +47,35 @@ export class VievMyArticleComponent implements OnInit {
         this.title = this.article.title;
         this.genre = this.article.genre.toString();
         this.charNumber = this.text.length;
-        this.reviewService.getReviewsForArticle(this.article.id).subscribe(
-          (revs: Review[]) =>
-            (this.reviews = revs.sort((a: Review, b: Review) => {
-              if (a.reviewedOn > b.reviewedOn) return -1;
-              else if (a.reviewedOn < b.reviewedOn) return 1;
-              else return 0;
-              return 0;
-            }))
-        );
+        switch (this.article.genre) {
+          case 'horror':
+            this.index = 0;
+            break;
+          case 'romance':
+            this.index = 1;
+            break;
+          case 'fantasy':
+            this.index = 2;
+            break;
+          case 'thriller':
+            this.index = 3;
+            break;
+          case 'historical':
+            this.index = 3;
+            break;
+        }
+        this.reviewService
+          .getReviewsForArticle(this.article.id)
+          .subscribe((revs: Review[]) => {
+            console.log('Rev' + revs);
+            if (revs)
+              this.reviews = revs.sort((a: Review, b: Review) => {
+                if (a.reviewedOn > b.reviewedOn) return -1;
+                else if (a.reviewedOn < b.reviewedOn) return 1;
+                else return 0;
+                return 0;
+              });
+          });
       }
     });
   }
@@ -75,8 +101,9 @@ export class VievMyArticleComponent implements OnInit {
     this.title = value;
   }
 
-  setGenre(value: string) {
+  setGenre(value: string, index: number) {
     this.genre = value;
+    this.index = index;
   }
 
   saveChanges() {
@@ -89,6 +116,28 @@ export class VievMyArticleComponent implements OnInit {
         this.router.navigate(['myArticles']);
         return;
       } else {
+        if (this.text == '') {
+          alert('You cannot submit empty article!');
+          return;
+        }
+
+        if (this.title == '') {
+          alert('You need to insert a title!');
+          return;
+        }
+
+        if (this.genre == '') {
+          alert('You need to select a genre!');
+        }
+
+        const data: UpdateArticle = {
+          id: this.article.id,
+          title: this.title,
+          text: this.text,
+          genre: <BookGenre>this.genre,
+        };
+
+        this.store.dispatch(updateMyArticle({ data }));
       }
     }
   }

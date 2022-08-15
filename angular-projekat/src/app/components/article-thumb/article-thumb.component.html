@@ -10,8 +10,8 @@
         </div>
         <div class="divRight">
             <label class="genre">Genre: {{article.genre.toString()}}</label>
-            <label *ngIf="article.averageScore">Score: {{article.averageScore}} <span
-                    style="font-weight: bold;">5.0</span></label>
+            <label *ngIf="article.averageScore">Score: <span
+                    style="font-weight: bold;">{{article.averageScore}}</span></label>
             <label *ngIf="!article.averageScore">No score</label>
         </div>
     </mat-card>

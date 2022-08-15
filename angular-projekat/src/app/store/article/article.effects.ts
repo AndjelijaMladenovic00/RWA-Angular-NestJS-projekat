@@ -47,17 +47,15 @@ export class ArticleEffects {
   deleteArticle$ = createEffect(() =>
     this.action$.pipe(
       ofType(ArticleActions.deleteArticle),
-      tap(
-        (action) =>
-          this.articleService.deleteArticle(action.id).pipe(
-            map((response: boolean) => {
-              const id: number = action.id;
-              if (response) ArticleActions.deleteArticleSuccess({ id });
-              else ArticleActions.deleteArticleFail();
-            })
-          ),
-        catchError(() => of(ArticleActions.deleteArticleFail()))
-      )
+      exhaustMap((action) => {
+        const id: number = action.id;
+        return this.articleService
+          .deleteArticle(action.id)
+          .pipe(
+            map((res: Article) => ArticleActions.deleteArticleSuccess({ id }))
+          );
+      }),
+      catchError(() => of(ArticleActions.deleteArticleFail()))
     )
   );
 
@@ -69,6 +67,33 @@ export class ArticleEffects {
           this.router.navigate(['myArticles']);
         })
       ),
-    { dispatch: true }
+    { dispatch: false }
+  );
+
+  updateMyArticle$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(ArticleActions.updateMyArticle),
+      exhaustMap((action) =>
+        this.articleService
+          .updateArticle(action.data)
+          .pipe(
+            map((article: Article) =>
+              ArticleActions.updateMyArticleSuccess({ article })
+            )
+          )
+      ),
+      catchError(() => of(ArticleActions.updateMyArticleFail()))
+    )
+  );
+
+  updateMyArticlesSucces = createEffect(
+    () =>
+      this.action$.pipe(
+        ofType(ArticleActions.updateMyArticleSuccess),
+        tap(() => {
+          this.router.navigate(['myArticles']);
+        })
+      ),
+    { dispatch: false }
   );
 }

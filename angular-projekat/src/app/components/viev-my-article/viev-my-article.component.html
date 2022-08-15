@@ -9,9 +9,8 @@
 
         <div class="genreDiv">
             <label class="genre">Genre: </label>
-            <select mat-form-field id="genre" class="gendreSelect" #genre
-                (change)="setGenre(genre.options[genre.selectedIndex].value)" [value]="genre">
-                <option value="none" selected disabled hidden>Select a genre</option>
+            <select mat-form-field id="genre" class="gendreSelect" #genreInput [selectedIndex]="index"
+                (change)="setGenre(genreInput.options[genreInput.selectedIndex].value, genreInput.selectedIndex)">
                 <option value="horror">Horror</option>
                 <option value="romance">Romance</option>
                 <option value="fantasy">Fantasy</option>

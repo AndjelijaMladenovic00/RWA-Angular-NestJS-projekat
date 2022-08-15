@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ArticleInfo } from 'src/app/interfaces/articleInfo.interface';
+import { UpdateArticle } from 'src/app/interfaces/updateArticle.interface';
 import { Article } from 'src/app/models/article.model';
 import { environment } from 'src/environments/environment';
 
@@ -29,8 +30,15 @@ export class ArticleService {
   }
 
   deleteArticle(id: number) {
-    return this.http.delete<boolean>(
+    return this.http.delete<Article>(
       `${environment.url}/articles/deleteArticle/${id}`
+    );
+  }
+
+  updateArticle(data: UpdateArticle) {
+    return this.http.put<Article>(
+      `${environment.url}/articles/updateArticle`,
+      data
     );
   }
 }

@@ -56,6 +56,30 @@ const _myArticleReducer = createReducer(
   on(ArticleActions.deleteArticleFail, (state: MyArticlesState) => {
     alert('An error occured while deleting an article, try again later!');
     return state;
+  }),
+
+  on(
+    ArticleActions.updateMyArticleSuccess,
+    (state: MyArticlesState, { article }) => {
+      alert('Article successfully updated!');
+      return adapter.updateOne(
+        {
+          id: article.id,
+          changes: {
+            title: article.title,
+            text: article.text,
+            genre: article.genre,
+            lastEdited: new Date(),
+          },
+        },
+        state
+      );
+    }
+  ),
+
+  on(ArticleActions.updateMyArticleFail, (state: MyArticlesState) => {
+    alert('Error occured while updating an article, please try again later!');
+    return state;
   })
 );
 

@@ -9,7 +9,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ReportsComponent } from './reports/reports.component';
-import { VievMyArticleComponent } from './viev-my-article/viev-my-article.component';
+import { VievMyArticleComponent } from './components/viev-my-article/viev-my-article.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
