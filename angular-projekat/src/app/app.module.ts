@@ -31,6 +31,7 @@ import { InterceptorService } from './guards/interceptor';
 import { ArticleEffects } from './store/article/article.effects';
 import { ArticleThumbComponent } from './components/article-thumb/article-thumb.component';
 import { environment } from 'src/environments/environment';
+import { VievMyArticleComponent } from './viev-my-article/viev-my-article.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { environment } from 'src/environments/environment';
     ReportsComponent,
     NotificationsComponent,
     ArticleThumbComponent,
+    VievMyArticleComponent,
   ],
   imports: [
     BrowserModule,

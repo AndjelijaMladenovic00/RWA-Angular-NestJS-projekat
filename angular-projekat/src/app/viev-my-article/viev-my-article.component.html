@@ -1,0 +1,38 @@
+<span *ngIf="article">
+    <mat-card class="articleInfo">
+        <div class="titleDiv">
+            <mat-card-title class="title">{{article.title}}</mat-card-title>
+            <mat-card-subtitle class="subtitle">Published on: {{getDate(article.publishedOn)}}</mat-card-subtitle>
+            <mat-card-subtitle class="subtitle">Last edited: {{getDate(article.lastEdited)}}</mat-card-subtitle>
+
+        </div>
+
+        <div class="genreDiv">
+            <label class="genre">Genre: {{article.genre.toString()}}</label>
+        </div>
+
+    </mat-card>
+
+    <mat-card class="articleMenu">
+
+        <div class="saveOrDeleteDiv">
+
+            <button mat-raised-button (click)="saveChanges()">
+                <fa-icon [icon]="faFloppyDisk" id="save"></fa-icon>Save
+            </button>
+
+            <button mat-raised-button (click)="deleteArticle()">
+                <fa-icon [icon]="faTrashCan" id="delete"></fa-icon>Delete
+            </button>
+
+        </div>
+
+    </mat-card>
+
+    <mat-card class="textEdit">
+        <textarea mat-form-field type="text" class="textInput" #textInput id="text" (input)="setText(textInput.value)"
+            [value]="text" maxlength="1000"></textarea>
+        <label class="charLabel">{{charNumber}}/1000</label>
+    </mat-card>
+
+</span>

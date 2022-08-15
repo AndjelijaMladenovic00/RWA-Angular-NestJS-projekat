@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Article } from 'src/app/models/article.model';
+import { selectMyArticle } from 'src/app/store/article/article.actions';
 
 @Component({
   selector: 'app-article-thumb',
@@ -8,20 +11,29 @@ import { Article } from 'src/app/models/article.model';
 })
 export class ArticleThumbComponent implements OnInit {
   @Input() article: Article | null | undefined = null;
-  publishedOn: string = '';
-  lastEdited: string = '';
 
-  constructor() {}
+  constructor(private router: Router, private Store: Store) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  getDate(d: Date): string {
+    const date: Date = new Date(d);
+    let s: string = '';
+    s +=
+      date.getDate() +
+      '.' +
+      (date.getMonth() + 1) +
+      '.' +
+      date.getFullYear() +
+      '.';
+    return s;
+  }
+
+  gotoMyArticle() {
     if (this.article) {
-      const po: Date = this.article.publishedOn;
-      this.publishedOn =
-        po.getDay + '.' + po.getMonth + '.' + po.getFullYear + '.';
-      const le: Date = this.article.lastEdited;
-      this.lastEdited =
-        le.getDay + '.' + le.getMonth + '.' + le.getFullYear + '.';
-      console.log(po, le);
+      const id: number = this.article.id;
+      this.Store.dispatch(selectMyArticle({ id }));
+      this.router.navigate(['viewMyArticle']);
     }
   }
 }

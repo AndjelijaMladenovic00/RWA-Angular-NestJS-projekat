@@ -1,4 +1,9 @@
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import {
+  createEntityAdapter,
+  Dictionary,
+  EntityAdapter,
+  EntityState,
+} from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 import { Article } from 'src/app/models/article.model';
 import * as ArticleActions from './article.actions';
@@ -31,7 +36,6 @@ const _myArticleReducer = createReducer(
   on(
     ArticleActions.loadMyArticlesSuccess,
     (state: MyArticlesState, { articles }) => {
-      console.log('SUCCESS: ', articles);
       return adapter.addMany(articles, state);
     }
   ),
@@ -39,6 +43,14 @@ const _myArticleReducer = createReducer(
   on(ArticleActions.loadMyArticlesFail, (state: MyArticlesState) => {
     console.log('fail');
     return state;
+  }),
+
+  on(ArticleActions.selectMyArticle, (state: MyArticlesState, { id }) => {
+    const newState: MyArticlesState = {
+      ...state,
+      selectedArticle: id,
+    };
+    return newState;
   })
 );
 

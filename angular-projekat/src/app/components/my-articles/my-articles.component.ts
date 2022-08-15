@@ -28,7 +28,6 @@ export class MyArticlesComponent implements OnInit {
             return 0;
           }
         );
-        console.log('My articles', this.articles);
       });
   }
 }

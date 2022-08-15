@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { map } from 'rxjs';
+import { Article } from 'src/app/models/article.model';
 import { MyArticlesState } from './article.reducer';
 
 export const selectMyArticlesState =
@@ -9,5 +9,23 @@ export const selectMyArticles = createSelector(
   selectMyArticlesState,
   (state: MyArticlesState) => {
     return state.ids.map((id: number | string) => state.entities[id]);
+  }
+);
+
+export const selectMySelectedArticleID = createSelector(
+  selectMyArticlesState,
+  (state: MyArticlesState) => {
+    return state.selectedArticle;
+  }
+);
+
+export const selectMySelectedArticle = createSelector(
+  selectMyArticles,
+  selectMySelectedArticleID,
+  (articles, id) => {
+    return articles.find((article) => {
+      if (article && article.id == id) return true;
+      else return false;
+    });
   }
 );

@@ -25,3 +25,8 @@ export const loadMyArticlesSuccess = createAction(
 );
 
 export const loadMyArticlesFail = createAction('LoadMyArticlesFail');
+
+export const selectMyArticle = createAction(
+  'selectMyArticle',
+  props<{ id: number }>()
+);
