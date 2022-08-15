@@ -1,9 +1,4 @@
-import {
-  createEntityAdapter,
-  Dictionary,
-  EntityAdapter,
-  EntityState,
-} from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 import { Article } from 'src/app/models/article.model';
 import * as ArticleActions from './article.actions';
@@ -51,6 +46,16 @@ const _myArticleReducer = createReducer(
       selectedArticle: id,
     };
     return newState;
+  }),
+
+  on(ArticleActions.deleteArticleSuccess, (state: MyArticlesState, { id }) => {
+    alert('Article succesfully deleted!');
+    return adapter.removeOne(id, state);
+  }),
+
+  on(ArticleActions.deleteArticleFail, (state: MyArticlesState) => {
+    alert('An error occured while deleting an article, try again later!');
+    return state;
   })
 );
 

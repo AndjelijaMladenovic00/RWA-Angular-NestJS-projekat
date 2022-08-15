@@ -43,4 +43,32 @@ export class ArticleEffects {
       catchError(() => of(ArticleActions.loadMyArticlesFail()))
     )
   );
+
+  deleteArticle$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(ArticleActions.deleteArticle),
+      tap(
+        (action) =>
+          this.articleService.deleteArticle(action.id).pipe(
+            map((response: boolean) => {
+              const id: number = action.id;
+              if (response) ArticleActions.deleteArticleSuccess({ id });
+              else ArticleActions.deleteArticleFail();
+            })
+          ),
+        catchError(() => of(ArticleActions.deleteArticleFail()))
+      )
+    )
+  );
+
+  deleteArticlesSucce$ = createEffect(
+    () =>
+      this.action$.pipe(
+        ofType(ArticleActions.deleteArticleSuccess),
+        tap(() => {
+          this.router.navigate(['myArticles']);
+        })
+      ),
+    { dispatch: true }
+  );
 }

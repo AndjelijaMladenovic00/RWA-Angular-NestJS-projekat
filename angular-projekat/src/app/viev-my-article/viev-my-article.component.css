@@ -22,7 +22,7 @@
 .genreDiv {
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-right: 10%;
     margin-top: 0%;
     margin-bottom: 0%;
@@ -37,6 +37,7 @@
     font-weight: bold;
     color: rgb(56, 87, 24);
     margin-bottom: 5%;
+    border-radius: 10px;
 }
 
 .subtitle {
@@ -72,7 +73,6 @@ button {
     text-align: center;
     margin-right: 2%;
     color: azure;
-    visibility: hidden;
 }
 
 fa-icon {
@@ -87,16 +87,19 @@ fa-icon {
     width: 100%;
 }
 
-.textInput {
-    margin: 10%;
-    margin-bottom: 1%;
-    margin-top: 5%;
-    height: 80%;
+
+
+.gendreSelect {
     border-radius: 10px;
-    text-align: start;
-    background-color: rgb(218, 237, 191);
+    color: rgb(56, 87, 24);
+    font-size: 15px;
+    text-align: center;
+}
+
+option {
     color: rgb(56, 87, 24);
 }
+
 
 .charLabel {
     align-self: flex-end;
@@ -106,4 +109,14 @@ fa-icon {
 .genre {
     font-size: 15px;
     font-weight: bold;
+}
+
+.textInput {
+    margin: 10%;
+    margin-bottom: 1%;
+    height: 80%;
+    border-radius: 10px;
+    text-align: start;
+    background-color: rgb(218, 237, 191);
+    color: rgb(56, 87, 24);
 }

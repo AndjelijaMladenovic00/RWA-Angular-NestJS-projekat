@@ -1,14 +1,23 @@
 <span *ngIf="article">
     <mat-card class="articleInfo">
         <div class="titleDiv">
-            <mat-card-title class="title">{{article.title}}</mat-card-title>
+            <input type="text" class="title" [value]="title" #titleInput (input)="setTitle(titleInput.value)">
             <mat-card-subtitle class="subtitle">Published on: {{getDate(article.publishedOn)}}</mat-card-subtitle>
             <mat-card-subtitle class="subtitle">Last edited: {{getDate(article.lastEdited)}}</mat-card-subtitle>
 
         </div>
 
         <div class="genreDiv">
-            <label class="genre">Genre: {{article.genre.toString()}}</label>
+            <label class="genre">Genre: </label>
+            <select mat-form-field id="genre" class="gendreSelect" #genre
+                (change)="setGenre(genre.options[genre.selectedIndex].value)" [value]="genre">
+                <option value="none" selected disabled hidden>Select a genre</option>
+                <option value="horror">Horror</option>
+                <option value="romance">Romance</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="thriller">Thriller</option>
+                <option value="historical">Historical</option>
+            </select>
         </div>
 
     </mat-card>

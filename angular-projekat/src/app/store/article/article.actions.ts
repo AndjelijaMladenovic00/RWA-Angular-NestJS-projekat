@@ -30,3 +30,15 @@ export const selectMyArticle = createAction(
   'selectMyArticle',
   props<{ id: number }>()
 );
+
+export const deleteArticle = createAction(
+  'DeleteArticle',
+  props<{ id: number }>()
+);
+
+export const deleteArticleSuccess = createAction(
+  'DeleteArticleSuccess',
+  props<{ id: number }>()
+);
+
+export const deleteArticleFail = createAction('DeleteArticleFail');

@@ -27,4 +27,10 @@ export class ArticleService {
       `${environment.url}/articles/getArticlesForId/${id}`
     );
   }
+
+  deleteArticle(id: number) {
+    return this.http.delete<boolean>(
+      `${environment.url}/articles/deleteArticle/${id}`
+    );
+  }
 }
