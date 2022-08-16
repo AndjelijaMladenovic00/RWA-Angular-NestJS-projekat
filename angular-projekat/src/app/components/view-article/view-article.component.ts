@@ -55,19 +55,22 @@ export class ViewArticleComponent implements OnInit {
                 else if (a.reviewedOn < b.reviewedOn) return 1;
                 else return 0;
               });
-              const score: number =
-                Math.round(
-                  (this.reviews.reduce(
-                    (acc: number, review: Review) => (acc += review.score),
-                    0
-                  ) /
-                    this.reviews.length) *
-                    100
-                ) / 100;
-              if (this.article.averageScore != score) {
-                this.article.averageScore = score;
-                const id: number = this.article.id;
-                this.store.dispatch(updateArticleScore({ id, score }));
+              if (this.reviews && this.reviews.length != 0) {
+                const score: number =
+                  Math.round(
+                    (this.reviews.reduce(
+                      (acc: number, review: Review) => (acc += review.score),
+                      0
+                    ) /
+                      this.reviews.length) *
+                      100
+                  ) / 100;
+
+                if (this.article.averageScore != score && score != 0) {
+                  this.article.averageScore = score;
+                  const id: number = this.article.id;
+                  this.store.dispatch(updateArticleScore({ id, score }));
+                }
               }
             }
           });

@@ -16,7 +16,6 @@ export class ReviewComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.review);
   }
 
   getDate(d: Date): string {
