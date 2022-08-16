@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import { exhaustMap, map, catchError, of, tap } from 'rxjs';
 import { Article } from 'src/app/models/article.model';
 import { ArticleService } from 'src/app/services/article-service/article.service';
@@ -11,7 +12,8 @@ export class ArticleEffects {
   constructor(
     private action$: Actions,
     private articleService: ArticleService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {}
 
   createArticleRequest$ = createEffect(() =>
@@ -20,12 +22,25 @@ export class ArticleEffects {
       exhaustMap((action) =>
         this.articleService.createArticle(action.article).pipe(
           map((article: Article) =>
-            ArticleActions.postArticleSuccess({ article })
+            ArticleActions.postArticleSuccessNavigate({ article })
           ),
           catchError(() => of(ArticleActions.postArticleFail()))
         )
       )
     )
+  );
+
+  createArticleSuccessNavigate$ = createEffect(
+    () =>
+      this.action$.pipe(
+        ofType(ArticleActions.postArticleSuccessNavigate),
+        tap((action) => {
+          const article: Article = action.article;
+          this.router.navigate(['myArticles']);
+          this.store.dispatch(ArticleActions.postArticleSuccess({ article }));
+        })
+      ),
+    { dispatch: false }
   );
 
   loadMyArticle$ = createEffect(() =>
@@ -52,19 +67,23 @@ export class ArticleEffects {
         return this.articleService
           .deleteArticle(action.id)
           .pipe(
-            map((res: Article) => ArticleActions.deleteArticleSuccess({ id }))
+            map((res: Article) =>
+              ArticleActions.deleteArticleSuccessNavigate({ id })
+            )
           );
       }),
       catchError(() => of(ArticleActions.deleteArticleFail()))
     )
   );
 
-  deleteArticlesSucce$ = createEffect(
+  deleteArticleSuccessNavigate$ = createEffect(
     () =>
       this.action$.pipe(
-        ofType(ArticleActions.deleteArticleSuccess),
-        tap(() => {
+        ofType(ArticleActions.deleteArticleSuccessNavigate),
+        tap((action) => {
+          const id: number = action.id;
           this.router.navigate(['myArticles']);
+          this.store.dispatch(ArticleActions.deleteArticleSuccess({ id }));
         })
       ),
     { dispatch: false }
@@ -74,26 +93,14 @@ export class ArticleEffects {
     this.action$.pipe(
       ofType(ArticleActions.updateMyArticle),
       exhaustMap((action) =>
-        this.articleService
-          .updateArticle(action.data)
-          .pipe(
-            map((article: Article) =>
-              ArticleActions.updateMyArticleSuccess({ article })
-            )
-          )
+        this.articleService.updateArticle(action.data).pipe(
+          map((article: Article) => {
+            this.router.navigate(['myArticles']);
+            return ArticleActions.updateMyArticleSuccess({ article });
+          })
+        )
       ),
       catchError(() => of(ArticleActions.updateMyArticleFail()))
     )
-  );
-
-  updateMyArticlesSucces = createEffect(
-    () =>
-      this.action$.pipe(
-        ofType(ArticleActions.updateMyArticleSuccess),
-        tap(() => {
-          this.router.navigate(['myArticles']);
-        })
-      ),
-    { dispatch: false }
   );
 }

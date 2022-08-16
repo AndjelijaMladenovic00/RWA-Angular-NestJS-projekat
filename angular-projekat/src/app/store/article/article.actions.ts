@@ -13,6 +13,11 @@ export const postArticleSuccess = createAction(
   props<{ article: Article }>()
 );
 
+export const postArticleSuccessNavigate = createAction(
+  'PostArticleSuccessNavigate',
+  props<{ article: Article }>()
+);
+
 export const postArticleFail = createAction('PostArticleFail');
 
 export const loadMyArticles = createAction(
@@ -34,6 +39,11 @@ export const selectMyArticle = createAction(
 
 export const deleteArticle = createAction(
   'DeleteArticle',
+  props<{ id: number }>()
+);
+
+export const deleteArticleSuccessNavigate = createAction(
+  'DeleteArticleSuccesssNavigate',
   props<{ id: number }>()
 );
 

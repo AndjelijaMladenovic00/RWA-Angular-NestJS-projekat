@@ -18,6 +18,8 @@ const _myArticleReducer = createReducer(
   on(
     ArticleActions.postArticleSuccess,
     (state: MyArticlesState, { article }) => {
+      localStorage.removeItem('text');
+      localStorage.removeItem('title');
       alert(`Article "${article.title}" posted!`);
       return adapter.addOne(article, state);
     }
