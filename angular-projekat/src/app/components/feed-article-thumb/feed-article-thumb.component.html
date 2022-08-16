@@ -11,7 +11,8 @@
         </div>
         <div class="divRight">
             <label class="genre">Genre: {{article.genre.toString()}}</label>
-            <label *ngIf="article.averageScore">Score: <span style="font-weight: bold;">{{article.averageScore}}</span>
+            <label class="score" *ngIf="article.averageScore">Score: <span
+                    style="font-weight: bold;">{{article.averageScore}}</span>
                 <fa-icon [icon]="faStar" class="star"></fa-icon>
             </label>
             <label *ngIf="!article.averageScore">No score</label>

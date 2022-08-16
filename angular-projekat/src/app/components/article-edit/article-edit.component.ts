@@ -93,12 +93,12 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
   }
 
   setText(value: string) {
-    if (value.length == 1000) {
+    this.charNumber = value.length;
+    if (value.length == 10000) {
       alert('You have reached max article length!');
       return;
     }
     this.text = value;
-    this.charNumber = value.length;
   }
 
   setGenre(value: string) {

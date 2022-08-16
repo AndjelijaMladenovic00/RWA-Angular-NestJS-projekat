@@ -13,11 +13,6 @@ mat-card-title {
     margin-right: 5%;
 }
 
-mat-divider {
-    margin: 5%;
-    color: rgb(56, 87, 24);
-}
-
 .textContainer {
     text-align: center;
     display: flex;

@@ -3,8 +3,6 @@
         <mat-card-title> In the last 10 days, the people have written...</mat-card-title>
     </div>
 
-    <mat-divider></mat-divider>
-
     <app-feed-article-thumb *ngFor="let article of articles | async" [article]="article"></app-feed-article-thumb>
 
     <div class="textContainer">

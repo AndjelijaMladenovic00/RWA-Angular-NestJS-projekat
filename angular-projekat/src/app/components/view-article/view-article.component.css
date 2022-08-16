@@ -1,0 +1,148 @@
+.articleInfo {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    background-color: rgb(148, 180, 99);
+
+}
+
+.titleDiv {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-bottom: 0%;
+    height: 100%;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+.genreDiv {
+
+    display: flex;
+    flex-direction: row;
+    margin-right: 10%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    height: 100%;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+.title {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: rgb(56, 87, 24);
+    margin-bottom: 5%;
+    border-radius: 10px;
+}
+
+.subtitle {
+    margin-bottom: 3%;
+}
+
+
+.articleMenu {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.undoRedoDiv {
+    margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.reportDiv {
+    margin-right: 10%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+button {
+    background-color: rgb(75, 125, 25);
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    margin-right: 2%;
+    color: azure;
+}
+
+fa-icon {
+    margin: 5%;
+    align-self: center;
+}
+
+.textEdit {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+option {
+    color: rgb(56, 87, 24);
+}
+
+
+.charLabel {
+    align-self: flex-end;
+    margin-right: 12%;
+}
+
+.genre {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.textInput {
+    margin: 10%;
+    margin-bottom: 1%;
+    height: 80%;
+    border-radius: 10px;
+    text-align: start;
+    background-color: rgb(218, 237, 191);
+    color: rgb(56, 87, 24);
+    resize: none;
+}
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 10%;
+    background-color: rgb(179, 211, 131);
+}
+
+.averageScoreDiv {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+
+.averageScore {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: rgb(56, 87, 24);
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 10px;
+    justify-self: center;
+    align-self: center;
+}
+
+.star {
+    color: gold;
+    text-shadow: 3px black;
+    margin: 2%;
+    display: inline;
+}
