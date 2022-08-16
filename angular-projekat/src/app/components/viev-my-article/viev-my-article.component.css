@@ -120,3 +120,37 @@ option {
     background-color: rgb(218, 237, 191);
     color: rgb(56, 87, 24);
 }
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 10%;
+    background-color: rgb(179, 211, 131);
+}
+
+.averageScoreDiv {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+
+.averageScore {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: rgb(56, 87, 24);
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 10px;
+    justify-self: center;
+    align-self: center;
+}
+
+.star {
+    color: gold;
+    text-shadow: 3px black;
+    margin: 2%;
+    display: inline;
+}

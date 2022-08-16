@@ -1,5 +1,4 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Article } from 'src/app/models/article.model';
 import { MyArticlesState } from './article.reducer';
 
 export const selectMyArticlesState =

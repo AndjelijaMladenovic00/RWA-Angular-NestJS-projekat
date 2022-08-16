@@ -79,6 +79,21 @@ const _myArticleReducer = createReducer(
     }
   ),
 
+  on(
+    ArticleActions.updateArticleScore,
+    (state: MyArticlesState, { id, score }) => {
+      return adapter.updateOne(
+        {
+          id: id,
+          changes: {
+            averageScore: score,
+          },
+        },
+        state
+      );
+    }
+  ),
+
   on(ArticleActions.updateMyArticleFail, (state: MyArticlesState) => {
     alert('Error occured while updating an article, please try again later!');
     return state;

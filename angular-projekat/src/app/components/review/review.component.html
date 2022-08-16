@@ -1,3 +1,17 @@
 <span *ngIf='review'>
-
+    <mat-card class="reviewCard">
+        <div class="reviewInfo">
+            <mat-card-title class="title">
+                <fa-icon [icon]="faCircleUser" class="userIcon"></fa-icon>{{review.username}}
+            </mat-card-title>
+            <mat-card-subtitle class="reviewedOnLabel">Reviewed on: {{getDate(review.reviewedOn)}}</mat-card-subtitle>
+        </div>
+        <div class="commentDiv">
+            <textarea id="text" [value]="review.comment" disabled class="comment"></textarea>
+            <div class="scoreDiv">
+                <label class="score">Score: </label>
+                <label class="score">{{review.score}} <fa-icon [icon]="faStar" class="star"></fa-icon></label>
+            </div>
+        </div>
+    </mat-card>
 </span>

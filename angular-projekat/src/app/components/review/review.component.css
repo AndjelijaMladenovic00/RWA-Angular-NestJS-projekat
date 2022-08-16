@@ -1,0 +1,48 @@
+.title {
+    color: rgb(56, 87, 24);
+}
+
+.userIcon {
+    color: rgb(56, 87, 24);
+    margin-right: 3%;
+}
+
+.reviewedOnLabel {
+    color: rgb(56, 87, 24);
+}
+
+.reviewCard {
+    margin-bottom: 2%;
+}
+
+.commentDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.comment {
+    width: 85%;
+    height: 100%;
+    margin: 5%;
+    justify-content: space-between;
+    resize: none;
+}
+
+.scoreDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 15%;
+}
+
+.score {
+    color: rgb(56, 87, 24);
+    font-size: 15px;
+}
+
+.star {
+    color: gold;
+    text-shadow: 3px black;
+    margin: 2%;
+}

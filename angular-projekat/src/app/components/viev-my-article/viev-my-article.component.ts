@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Article } from '../../models/article.model';
-import { faFloppyDisk, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFloppyDisk,
+  faStar,
+  faTrashCan,
+} from '@fortawesome/free-solid-svg-icons';
 import { selectMySelectedArticle } from '../../store/article/article.selectors';
 import { Review } from '../../models/review.model';
 import { ReviewService } from '../../services/review-service/review.service';
@@ -10,6 +14,7 @@ import { ArticleService } from '../../services/article-service/article.service';
 import {
   deleteArticle,
   updateMyArticle,
+  updateArticleScore,
 } from '../../store/article/article.actions';
 import { UpdateArticle } from '../../interfaces/updateArticle.interface';
 import { BookGenre } from '../../enums/book-genre.enum';
@@ -22,6 +27,7 @@ import { BookGenre } from '../../enums/book-genre.enum';
 export class VievMyArticleComponent implements OnInit {
   faFloppyDisk = faFloppyDisk;
   faTrashCan = faTrashCan;
+  faStar = faStar;
 
   article: Article | null | undefined = null;
   charNumber: number = 0;
@@ -67,14 +73,27 @@ export class VievMyArticleComponent implements OnInit {
         this.reviewService
           .getReviewsForArticle(this.article.id)
           .subscribe((revs: Review[]) => {
-            console.log('Rev' + revs);
-            if (revs)
+            if (revs && this.article) {
               this.reviews = revs.sort((a: Review, b: Review) => {
                 if (a.reviewedOn > b.reviewedOn) return -1;
                 else if (a.reviewedOn < b.reviewedOn) return 1;
                 else return 0;
-                return 0;
               });
+              const score: number = Math.round(
+                ((this.reviews.reduce(
+                  (acc: number, review: Review) => (acc += review.score),
+                  0
+                ) /
+                  this.reviews.length) *
+                  100) /
+                  100
+              );
+              if (this.article.averageScore != score) {
+                this.article.averageScore = score;
+                const id: number = this.article.id;
+                this.store.dispatch(updateArticleScore({ id, score }));
+              }
+            }
           });
       }
     });

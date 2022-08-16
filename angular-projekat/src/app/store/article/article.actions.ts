@@ -65,3 +65,8 @@ export const updateMyArticleSuccess = createAction(
 );
 
 export const updateMyArticleFail = createAction('UpdateMyArticleFail');
+
+export const updateArticleScore = createAction(
+  'UpdateArticleScore',
+  props<{ id: number; score: number }>()
+);
