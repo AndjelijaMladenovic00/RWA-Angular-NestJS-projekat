@@ -33,6 +33,8 @@ import { ArticleThumbComponent } from './components/article-thumb/article-thumb.
 import { environment } from 'src/environments/environment';
 import { VievMyArticleComponent } from './components/viev-my-article/viev-my-article.component';
 import { ReviewComponent } from './components/review/review.component';
+import { FeedArticleThumbComponent } from './components/feed-article-thumb/feed-article-thumb.component';
+import { ViewArticleComponent } from './view-article/view-article.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { ReviewComponent } from './components/review/review.component';
     ArticleThumbComponent,
     VievMyArticleComponent,
     ReviewComponent,
+    FeedArticleThumbComponent,
+    ViewArticleComponent,
   ],
   imports: [
     BrowserModule,

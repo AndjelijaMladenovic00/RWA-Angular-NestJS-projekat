@@ -100,9 +100,37 @@ const _myArticleReducer = createReducer(
   })
 );
 
+export interface ArticleForDisplayState {
+  article: Article | null;
+}
+
+export const initialArticleForShowState: ArticleForDisplayState = {
+  article: null,
+};
+
+const _articleForDisplayReducer = createReducer(
+  initialArticleForShowState,
+  on(
+    ArticleActions.setArticleForDisplay,
+    (state: ArticleForDisplayState, { article }) => {
+      return {
+        ...state,
+        article: article,
+      };
+    }
+  )
+);
+
 export function MyArticleReducer(
   state: MyArticlesState | undefined,
   action: Action
 ) {
   return _myArticleReducer(state, action);
+}
+
+export function ArticleForDisplayReducer(
+  state: ArticleForDisplayState | undefined,
+  action: Action
+) {
+  return _articleForDisplayReducer(state, action);
 }

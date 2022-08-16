@@ -70,3 +70,8 @@ export const updateArticleScore = createAction(
   'UpdateArticleScore',
   props<{ id: number; score: number }>()
 );
+
+export const setArticleForDisplay = createAction(
+  'SetArticleForDisplay',
+  props<{article: Article}>()
+)

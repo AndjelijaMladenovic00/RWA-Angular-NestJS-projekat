@@ -1,0 +1,20 @@
+<span *ngIf="article">
+    <mat-card class="thumbContainer" (click)="gotoArticle()">
+        <div>
+            <mat-card-title class="title">{{article.title}}</mat-card-title>
+            <mat-card-subtitle class="subtitle">By: {{article.username}}</mat-card-subtitle>
+            <mat-card-subtitle class="subtitle">Published on: {{getDate(article.publishedOn)}}
+            </mat-card-subtitle>
+            <mat-card-subtitle class="subtitle" *ngIf="article.publishedOn!=article.lastEdited">Last editet:
+                {{getDate(article.lastEdited)}}
+            </mat-card-subtitle>
+        </div>
+        <div class="divRight">
+            <label class="genre">Genre: {{article.genre.toString()}}</label>
+            <label *ngIf="article.averageScore">Score: <span style="font-weight: bold;">{{article.averageScore}}</span>
+                <fa-icon [icon]="faStar" class="star"></fa-icon>
+            </label>
+            <label *ngIf="!article.averageScore">No score</label>
+        </div>
+    </mat-card>
+</span>

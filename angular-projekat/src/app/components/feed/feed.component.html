@@ -1,1 +1,13 @@
-<p>feed works!</p>
+<mat-card>
+    <div class="textContainer">
+        <mat-card-title> In the last 10 days, the people have written...</mat-card-title>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <app-feed-article-thumb *ngFor="let article of articles | async" [article]="article"></app-feed-article-thumb>
+
+    <div class="textContainer">
+        <mat-card-title>That was all for the last 10 days! Tune again for more!</mat-card-title>
+    </div>
+</mat-card>
