@@ -1,0 +1,45 @@
+.contaner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.scoreContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 3%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.scoreDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.score {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-self: center;
+}
+
+.scoreLabel {
+    font-weight: bold;
+    text-align: center;
+}
+
+.star {
+    color: gold;
+    text-shadow: 3px black;
+    margin: 2%;
+}
+
+.title {
+    align-self: center;
+    font-weight: bold;
+}

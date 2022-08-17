@@ -36,6 +36,7 @@ import { ReviewComponent } from './components/review/review.component';
 import { FeedArticleThumbComponent } from './components/feed-article-thumb/feed-article-thumb.component';
 import { ViewArticleComponent } from './components/view-article/view-article.component';
 import { AddReviewComponent } from './components/add-review/add-review.component';
+import { ScoreComponent } from './components/score/score.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { AddReviewComponent } from './components/add-review/add-review.component
     FeedArticleThumbComponent,
     ViewArticleComponent,
     AddReviewComponent,
+    ScoreComponent,
   ],
   imports: [
     BrowserModule,

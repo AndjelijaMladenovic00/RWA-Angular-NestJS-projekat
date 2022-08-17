@@ -11,11 +11,9 @@
                 [maxLength]="200"></textarea>
 
             <div class="scoreDiv">
-                <label class="score">Score: </label>
+                <app-score (score)="setScore($event)"></app-score>
             </div>
         </div>
-        <button mat-raised-button class="button">Post review</button>
+        <button mat-raised-button class="button" (click)="postReview()">Post review</button>
     </mat-card>
-
-
 </span>

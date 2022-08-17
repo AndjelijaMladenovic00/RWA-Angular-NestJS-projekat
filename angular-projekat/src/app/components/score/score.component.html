@@ -1,0 +1,14 @@
+<div class="container">
+    <label class="title"> Score: </label>
+    <div class="scoreContainer">
+        <div *ngFor="let i of [1,2,3,4,5]" class="scoreDiv">
+            <input type="radio" name="score" value="i" (click)="setScore(i)">
+            <div class="score">
+                <label class="scoreLabel"> {{i}}
+                    <fa-icon [icon]="faStar" class="star"></fa-icon>
+                </label>
+            </div>
+
+        </div>
+    </div>
+</div>

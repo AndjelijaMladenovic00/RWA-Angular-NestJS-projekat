@@ -34,8 +34,8 @@
 
     <mat-divider class="divider"></mat-divider>
 
-    <mat-card class="commentDiv">
-        <app-add-review></app-add-review>
+    <mat-card class="commentDiv" *ngIf="!alreadyReviewed">
+        <app-add-review [userId]="userID"></app-add-review>
     </mat-card>
 
     <mat-card class="reviews">

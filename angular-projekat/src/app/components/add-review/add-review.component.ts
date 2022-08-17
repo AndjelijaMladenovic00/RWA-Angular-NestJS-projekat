@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-add-review',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddReviewComponent implements OnInit {
   comment: string = '';
+  @Input() userId: number | null = null;
+  score: number = -1;
 
   constructor() {}
 
@@ -15,4 +17,11 @@ export class AddReviewComponent implements OnInit {
   setComment(value: string) {
     this.comment = value;
   }
+
+  setScore(value: number) {
+    this.score = value;
+    console.log(this.score);
+  }
+
+  postReview() {}
 }
