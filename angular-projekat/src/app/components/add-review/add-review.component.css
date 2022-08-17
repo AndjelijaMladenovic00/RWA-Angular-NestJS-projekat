@@ -1,0 +1,61 @@
+.title {
+    margin-top: 2%;
+    margin-left: 2%;
+    color: rgb(56, 87, 24);
+}
+
+.subtitle {
+    color: rgb(56, 87, 24);
+    margin-left: 2%;
+}
+
+.reviewCard {
+    margin-top: 5%;
+    margin-bottom: 2%;
+    margin-left: 10%;
+    width: 80%;
+    background-color: rgb(152, 183, 120);
+    align-self: center;
+    justify-self: center;
+    border-radius: 10px;
+}
+
+.commentDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 5%;
+    justify-content: space-between;
+}
+
+.comment {
+    width: 80%;
+    resize: none;
+    height: 100px;
+
+
+}
+
+.scoreDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 15%;
+}
+
+.score {
+    color: rgb(56, 87, 24);
+    font-size: 15px;
+}
+
+
+.button {
+    width: 30%;
+    background-color: rgb(75, 125, 25);
+    justify-self: flex-start;
+    align-self: flex-start;
+    text-align: center;
+    margin: 35%;
+    margin-top: 0%;
+    color: azure;
+}

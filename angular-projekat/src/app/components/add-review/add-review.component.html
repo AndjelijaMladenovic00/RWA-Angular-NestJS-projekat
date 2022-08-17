@@ -1,0 +1,21 @@
+<span>
+    <mat-card class="reviewCard">
+        <div class="reviewInfo">
+            <mat-card-title class="title">Review this article!
+            </mat-card-title>
+            <mat-card-subtitle class="subtitle">Leave your thoughts about the article and give it a score!
+            </mat-card-subtitle>
+        </div>
+        <div class="commentDiv">
+            <textarea id="text" #comment (input)="setComment(comment.value)" class="comment"
+                [maxLength]="200"></textarea>
+
+            <div class="scoreDiv">
+                <label class="score">Score: </label>
+            </div>
+        </div>
+        <button mat-raised-button class="button">Post review</button>
+    </mat-card>
+
+
+</span>

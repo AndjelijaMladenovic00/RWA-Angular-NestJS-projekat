@@ -35,6 +35,7 @@ import { VievMyArticleComponent } from './components/viev-my-article/viev-my-art
 import { ReviewComponent } from './components/review/review.component';
 import { FeedArticleThumbComponent } from './components/feed-article-thumb/feed-article-thumb.component';
 import { ViewArticleComponent } from './components/view-article/view-article.component';
+import { AddReviewComponent } from './components/add-review/add-review.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ViewArticleComponent } from './components/view-article/view-article.com
     ReviewComponent,
     FeedArticleThumbComponent,
     ViewArticleComponent,
+    AddReviewComponent,
   ],
   imports: [
     BrowserModule,
