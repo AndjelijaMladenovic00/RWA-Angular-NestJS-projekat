@@ -6,18 +6,18 @@ import { faBookOpenReader } from '@fortawesome/free-solid-svg-icons';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
-
 import { profileType } from 'src/app/enums/profile-type.enum';
 import { AppState } from 'src/app/store/app.state';
-
 import { logout } from 'src/app/store/user/user.actions';
 import { selectUserData } from 'src/app/store/user/user.selectors';
-
+import { Notification } from 'src/app/models/notification.model';
 import {
   clearArticleForDisplayState,
   clearMyArticlesState,
   loadMyArticles,
 } from 'src/app/store/article/article.actions';
+import * as NotificationsActions from '../../store/notification/notification.actions';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -45,6 +45,21 @@ export class HeaderComponent implements OnInit {
         this.profileType = stateData.profileType;
         const id: number = stateData.id;
         this.store.dispatch(loadMyArticles({ id }));
+
+        this.store.dispatch(
+          NotificationsActions.initNotificationsState({
+            id,
+          })
+        );
+
+        const after: Date = new Date(new Date().valueOf() - 180000);
+
+        interval(180000).subscribe(() => {
+          this.store.dispatch(
+            NotificationsActions.updateNotifications({ id, after })
+          );
+        });
+
         this.setHeader();
       } else {
         this.clearHeader();

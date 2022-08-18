@@ -17,3 +17,15 @@ export const openNotificationSuccess = createAction(
 );
 
 export const openNotificationFail = createAction('OpenNotificationFail');
+
+export const initNotificationsState = createAction(
+  'InitNotificationsState',
+  props<{ id: number }>()
+);
+
+export const updateNotifications = createAction(
+  'UpdateNotifications',
+  props<{ id: number; after: Date }>()
+);
+
+export const notificationUpdateFail = createAction('NotificationUpdateFail');

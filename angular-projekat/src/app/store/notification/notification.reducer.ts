@@ -1,3 +1,4 @@
+import { faArrowsLeftRightToLine } from '@fortawesome/free-solid-svg-icons';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 import { Notification } from 'src/app/models/notification.model';
@@ -30,7 +31,31 @@ const _notificationsReducer = createReducer(
   on(NotificationsActions.openNotificationFail, (state: NotificationsState) => {
     alert('Error while updating the state of notification.');
     return state;
-  })
+  }),
+
+  on(
+    NotificationsActions.addNotificationsToState,
+    (state: NotificationsState, { notifications }) => {
+      const notificationsIcon: HTMLElement | null =
+        document.getElementById('notificationsIcon');
+      if (
+        notificationsIcon &&
+        notifications != null &&
+        notifications.length != 0
+      )
+        notificationsIcon.style.color = 'red';
+      else if (notificationsIcon) notificationsIcon.style.color = 'azure';
+      return adapter.addMany(notifications, state);
+    }
+  ),
+
+  on(
+    NotificationsActions.notificationUpdateFail,
+    (state: NotificationsState) => {
+      alert('Error while updating your notifications, try again later!');
+      return state;
+    }
+  )
 );
 
 export function NotificationsReducer(
