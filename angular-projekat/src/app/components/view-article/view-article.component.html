@@ -35,15 +35,13 @@
     <mat-divider class="divider"></mat-divider>
 
     <mat-card class="commentDiv" *ngIf="!alreadyReviewed">
-        <app-add-review [userId]="userID"></app-add-review>
+        <app-add-review [userID]="userID" [articleID]="article.id" (review)="addReview($event)"></app-add-review>
     </mat-card>
 
     <mat-card class="reviews">
         <div class="averageScoreDiv">
-            <label *ngIf="article.averageScore" class="averageScore">Score: {{article.averageScore}} <fa-icon
-                    [icon]="faStar" class="star"></fa-icon>
-            </label>
-            <label class="averageScore" *ngIf="!article.averageScore">No score</label>
+            <label class="averageScore">{{message}}<fa-icon id="star" [icon]="faStar" class="star">
+                </fa-icon></label>
         </div>
 
         <app-review *ngFor="let review of reviews" [review]="review"></app-review>

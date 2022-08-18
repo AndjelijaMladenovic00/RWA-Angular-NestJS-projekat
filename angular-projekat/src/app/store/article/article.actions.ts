@@ -71,7 +71,25 @@ export const updateArticleScore = createAction(
   props<{ id: number; score: number }>()
 );
 
+export const updateArticleScoreSuccess = createAction(
+  'UpdateArticleScoreSuccess',
+  props<{ id: number; score: number }>()
+);
+
+export const updateArticleForDisplayScore = createAction(
+  'UpdateArticleForDisplayScore',
+  props<{ score: number }>()
+);
+
+export const updateArticleScoreFail = createAction('UpdateArticleScoreFail');
+
 export const setArticleForDisplay = createAction(
   'SetArticleForDisplay',
-  props<{article: Article}>()
-)
+  props<{ article: Article }>()
+);
+
+export const clearMyArticlesState = createAction('ClearMyArticlesState');
+
+export const clearArticleForDisplayState = createAction(
+  'ClearActionForDisplayState'
+);

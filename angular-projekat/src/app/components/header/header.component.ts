@@ -13,7 +13,11 @@ import { AppState } from 'src/app/store/app.state';
 import { logout } from 'src/app/store/user/user.actions';
 import { selectUserData } from 'src/app/store/user/user.selectors';
 
-import { loadMyArticles } from 'src/app/store/article/article.actions';
+import {
+  clearArticleForDisplayState,
+  clearMyArticlesState,
+  loadMyArticles,
+} from 'src/app/store/article/article.actions';
 
 @Component({
   selector: 'app-header',
@@ -72,6 +76,10 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('JWT');
     this.router.navigate(['login']);
     this.store.dispatch(logout());
+    this.store.dispatch(clearMyArticlesState());
+    this.store.dispatch(clearArticleForDisplayState());
+    localStorage.removeItem('text');
+    localStorage.removeItem('title');
   }
 
   setHeader() {

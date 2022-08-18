@@ -103,4 +103,22 @@ export class ArticleEffects {
       catchError(() => of(ArticleActions.updateMyArticleFail()))
     )
   );
+
+  upadateArticleScore$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(ArticleActions.updateArticleScore),
+      exhaustMap((action) => {
+        return this.articleService
+          .updateArticleScore(action.id, action.score)
+          .pipe(
+            map((article: Article) => {
+              const id: number = action.id;
+              const score: number = action.score;
+              return ArticleActions.updateArticleScoreSuccess({ id, score });
+            })
+          );
+      }),
+      catchError(() => of(ArticleActions.updateArticleScoreFail()))
+    )
+  );
 }

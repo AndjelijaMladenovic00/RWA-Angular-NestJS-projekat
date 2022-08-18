@@ -1,4 +1,10 @@
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import { identifierName } from '@angular/compiler';
+import {
+  createEntityAdapter,
+  Dictionary,
+  EntityAdapter,
+  EntityState,
+} from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 import { Article } from 'src/app/models/article.model';
 import * as ArticleActions from './article.actions';
@@ -80,7 +86,7 @@ const _myArticleReducer = createReducer(
   ),
 
   on(
-    ArticleActions.updateArticleScore,
+    ArticleActions.updateArticleScoreSuccess,
     (state: MyArticlesState, { id, score }) => {
       return adapter.updateOne(
         {
@@ -97,6 +103,15 @@ const _myArticleReducer = createReducer(
   on(ArticleActions.updateMyArticleFail, (state: MyArticlesState) => {
     alert('Error occured while updating an article, please try again later!');
     return state;
+  }),
+
+  on(ArticleActions.clearMyArticlesState, (state: MyArticlesState) => {
+    return {
+      ...state,
+      ids: [],
+      entities: {},
+      selectedArticle: -1,
+    };
   })
 );
 
@@ -116,6 +131,33 @@ const _articleForDisplayReducer = createReducer(
       return {
         ...state,
         article: article,
+      };
+    }
+  ),
+
+  on(
+    ArticleActions.updateArticleForDisplayScore,
+    (state: ArticleForDisplayState, { score }) => {
+      if (!state || !state.article) return state;
+      else {
+        const article: Article = {
+          ...state.article,
+          averageScore: score,
+        };
+        return {
+          ...state,
+          article: article,
+        };
+      }
+    }
+  ),
+
+  on(
+    ArticleActions.clearArticleForDisplayState,
+    (state: ArticleForDisplayState) => {
+      return {
+        ...state,
+        article: null,
       };
     }
   )

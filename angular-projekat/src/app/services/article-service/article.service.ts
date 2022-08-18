@@ -42,6 +42,13 @@ export class ArticleService {
     );
   }
 
+  updateArticleScore(id: number, score: number) {
+    return this.http.put<Article>(
+      `${environment.url}/articles/updateArticleScore`,
+      { id: id, score: score }
+    );
+  }
+
   getArticlesForFeed(id: number) {
     return this.http.get<Article[]>(
       `${environment.url}/articles/getArticlesForFeed/${id}`

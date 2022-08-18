@@ -186,17 +186,10 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
         genre: this.genre,
       };
 
+      localStorage.removeItem('text');
+      localStorage.removeItem('title');
+
       this.store.dispatch(postArticle({ article }));
-
-      /*const textInput: HTMLTextAreaElement | null = <HTMLTextAreaElement>(
-        document.getElementById('textInput')
-      );
-      if (textInput) textInput.value = '';
-
-      const titleInput: HTMLInputElement | null = <HTMLInputElement>(
-        document.getElementById('titleInput')
-      );
-      if (titleInput) titleInput.value = '';*/
     }
   }
 }

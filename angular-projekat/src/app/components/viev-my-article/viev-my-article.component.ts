@@ -15,6 +15,7 @@ import {
   deleteArticle,
   updateMyArticle,
   updateArticleScore,
+  updateArticleForDisplayScore,
 } from '../../store/article/article.actions';
 import { UpdateArticle } from '../../interfaces/updateArticle.interface';
 import { BookGenre } from '../../enums/book-genre.enum';
@@ -40,8 +41,7 @@ export class VievMyArticleComponent implements OnInit {
   constructor(
     private router: Router,
     private store: Store,
-    private reviewService: ReviewService,
-    private articleService: ArticleService
+    private reviewService: ReviewService
   ) {}
 
   ngOnInit(): void {

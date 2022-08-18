@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { createReview } from 'src/app/interfaces/createReview.interface';
+import { Review } from 'src/app/models/review.model';
+import { ReviewService } from 'src/app/services/review-service/review.service';
 
 @Component({
   selector: 'app-add-review',
@@ -7,10 +10,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AddReviewComponent implements OnInit {
   comment: string = '';
-  @Input() userId: number | null = null;
+  @Input() articleID: number | null = null;
+  @Input() userID: number | null = null;
   score: number = -1;
+  @Output() review = new EventEmitter<Review>();
 
-  constructor() {}
+  constructor(private reviewService: ReviewService) {}
 
   ngOnInit(): void {}
 
@@ -23,5 +28,24 @@ export class AddReviewComponent implements OnInit {
     console.log(this.score);
   }
 
-  postReview() {}
+  postReview() {
+    if (this.score == -1 || this.comment == '') {
+      alert('Please enter all information for the review!');
+      return;
+    }
+
+    if (this.userID && this.articleID) {
+      const reviewData: createReview = {
+        userID: this.userID,
+        articleID: this.articleID,
+        comment: this.comment,
+        score: this.score,
+      };
+
+      this.reviewService.postReview(reviewData).subscribe((review: Review) => {
+        this.review.emit(review);
+        alert('Review successfully posted!');
+      });
+    }
+  }
 }

@@ -6,7 +6,10 @@ import { Article } from 'src/app/models/article.model';
 import { Review } from 'src/app/models/review.model';
 import { ReportService } from 'src/app/services/report-service/report.service';
 import { ReviewService } from 'src/app/services/review-service/review.service';
-import { updateArticleScore } from 'src/app/store/article/article.actions';
+import {
+  updateArticleForDisplayScore,
+  updateArticleScore,
+} from 'src/app/store/article/article.actions';
 import { selectArticleForDisplay } from 'src/app/store/article/article.selectors';
 import { selectUserData } from 'src/app/store/user/user.selectors';
 
@@ -25,13 +28,18 @@ export class ViewArticleComponent implements OnInit {
   alreadyReviewed: boolean = false;
   username: string = '';
   userID: number = -1;
+  stopRecursion: boolean = false;
+  message: string = '';
+  star: HTMLElement | null = null;
 
   constructor(
     private router: Router,
     private store: Store,
     private reviewService: ReviewService,
     private reportService: ReportService
-  ) {}
+  ) {
+    this.star = document.getElementById('star');
+  }
 
   ngOnInit(): void {
     this.store.select(selectUserData).subscribe((data) => {
@@ -55,6 +63,11 @@ export class ViewArticleComponent implements OnInit {
                 else if (a.reviewedOn < b.reviewedOn) return 1;
                 else return 0;
               });
+              if (!this.reviews || this.reviews.length == 0) {
+                this.message = 'No score';
+                if (this.star) this.star.style.visibility = 'hidden';
+              }
+
               if (this.reviews && this.reviews.length != 0) {
                 const score: number =
                   Math.round(
@@ -65,11 +78,25 @@ export class ViewArticleComponent implements OnInit {
                       this.reviews.length) *
                       100
                   ) / 100;
+    
+                this.message = 'Score: ' + score;
 
-                if (this.article.averageScore != score && score != 0) {
-                  this.article.averageScore = score;
+                if (this.star) this.star.style.visibility = 'visible';
+
+                this.reviews.forEach((review: Review) => {
+                  if (review.username == this.username)
+                    this.alreadyReviewed = true;
+                });
+
+                if (
+                  this.article.averageScore != score &&
+                  score != 0 &&
+                  !this.stopRecursion
+                ) {
                   const id: number = this.article.id;
                   this.store.dispatch(updateArticleScore({ id, score }));
+                  this.store.dispatch(updateArticleForDisplayScore({ score }));
+                  this.stopRecursion = true;
                 }
               }
             }
@@ -100,6 +127,28 @@ export class ViewArticleComponent implements OnInit {
     ) {
       this.reportService.createReport(this.article.id, this.userID);
       alert('Report was sent and it will be avaluated!');
+    }
+  }
+
+  addReview(review: Review) {
+    this.reviews.unshift(review);
+    if (this.reviews && this.reviews.length != 0) {
+      const score: number =
+        Math.round(
+          (this.reviews.reduce(
+            (acc: number, review: Review) => (acc += review.score),
+            0
+          ) /
+            this.reviews.length) *
+            100
+        ) / 100;
+
+      if (this.article && this.article.averageScore != score && score != 0) {
+        this.stopRecursion = false;
+        const id: number = this.article.id;
+        this.store.dispatch(updateArticleScore({ id, score }));
+        this.store.dispatch(updateArticleForDisplayScore({ score }));
+      }
     }
   }
 }
