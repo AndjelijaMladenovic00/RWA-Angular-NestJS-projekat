@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faStar, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
+import { createNotification } from 'src/app/interfaces/createNorification.interface';
 import { Article } from 'src/app/models/article.model';
 import { Review } from 'src/app/models/review.model';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 import { ReportService } from 'src/app/services/report-service/report.service';
 import { ReviewService } from 'src/app/services/review-service/review.service';
 import {
@@ -36,7 +38,8 @@ export class ViewArticleComponent implements OnInit {
     private router: Router,
     private store: Store,
     private reviewService: ReviewService,
-    private reportService: ReportService
+    private reportService: ReportService,
+    private notificationService: NotificationService
   ) {
     this.star = document.getElementById('star');
   }
@@ -78,7 +81,7 @@ export class ViewArticleComponent implements OnInit {
                       this.reviews.length) *
                       100
                   ) / 100;
-    
+
                 this.message = 'Score: ' + score;
 
                 if (this.star) this.star.style.visibility = 'visible';
@@ -132,7 +135,7 @@ export class ViewArticleComponent implements OnInit {
 
   addReview(review: Review) {
     this.reviews.unshift(review);
-    if (this.reviews && this.reviews.length != 0) {
+    if (this.article && this.reviews && this.reviews.length != 0) {
       const score: number =
         Math.round(
           (this.reviews.reduce(
@@ -143,12 +146,20 @@ export class ViewArticleComponent implements OnInit {
             100
         ) / 100;
 
-      if (this.article && this.article.averageScore != score && score != 0) {
+      if (this.article.averageScore != score && score != 0) {
         this.stopRecursion = false;
         const id: number = this.article.id;
         this.store.dispatch(updateArticleScore({ id, score }));
         this.store.dispatch(updateArticleForDisplayScore({ score }));
       }
+
+      const notificationData: createNotification = {
+        userID: this.article.id,
+        title: `New review of your article "${this.article.title}"`,
+        message: `User ${this.username} reviewed your article "${this.article.title}" and gave it a score of ${review.score}! Go to your article page to see full comment!`,
+      };
+
+      this.notificationService.createNotification(notificationData);
     }
   }
 }

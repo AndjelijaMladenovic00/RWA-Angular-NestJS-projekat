@@ -7,7 +7,7 @@ import { MyArticlesComponent } from './components/my-articles/my-articles.compon
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
-import { NotificationsComponent } from './notifications/notifications.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ReportsComponent } from './reports/reports.component';
 import { VievMyArticleComponent } from './components/viev-my-article/viev-my-article.component';
 import { ViewArticleComponent } from './components/view-article/view-article.component';

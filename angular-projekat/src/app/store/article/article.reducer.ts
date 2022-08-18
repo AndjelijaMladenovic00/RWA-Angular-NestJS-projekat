@@ -1,12 +1,7 @@
-import { identifierName } from '@angular/compiler';
-import {
-  createEntityAdapter,
-  Dictionary,
-  EntityAdapter,
-  EntityState,
-} from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 import { Article } from 'src/app/models/article.model';
+import { ArticleForDisplayState } from 'src/app/state/articleForDisplayState';
 import * as ArticleActions from './article.actions';
 
 export interface MyArticlesState extends EntityState<Article> {
@@ -114,10 +109,6 @@ const _myArticleReducer = createReducer(
     };
   })
 );
-
-export interface ArticleForDisplayState {
-  article: Article | null;
-}
 
 export const initialArticleForShowState: ArticleForDisplayState = {
   article: null,

@@ -24,7 +24,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ArticleEditComponent } from './components/article-edit/article-edit.component';
 import { MyArticlesComponent } from './components/my-articles/my-articles.component';
 import { ReportsComponent } from './reports/reports.component';
-import { NotificationsComponent } from './notifications/notifications.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 import { Reducers } from './store/app.state';
 import { UserEffects } from './store/user/user.effects';
 import { InterceptorService } from './guards/interceptor';
