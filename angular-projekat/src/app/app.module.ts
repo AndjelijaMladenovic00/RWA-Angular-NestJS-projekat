@@ -40,6 +40,7 @@ import { AddReviewComponent } from './components/add-review/add-review.component
 import { ScoreComponent } from './components/score/score.component';
 import { NotificationThumbComponent } from './components/notification-thumb/notification-thumb.component';
 import { NotificationEffects } from './store/notification/notification.effects';
+import { ReportThumbComponent } from './components/report-thumb/report-thumb.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { NotificationEffects } from './store/notification/notification.effects';
     AddReviewComponent,
     ScoreComponent,
     NotificationThumbComponent,
+    ReportThumbComponent,
   ],
   imports: [
     BrowserModule,

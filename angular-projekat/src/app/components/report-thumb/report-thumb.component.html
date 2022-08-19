@@ -1,0 +1,21 @@
+<mat-accordion *ngIf="report">
+    <mat-expansion-panel hideToggle class="card">
+        <mat-expansion-panel-header id="expansionHeader" style="background-color:rgb(125, 145, 104)">
+            <mat-panel-title #notificationTitle>
+                Report on article "{{report.articleTitle}} by user {{report.username}}"
+            </mat-panel-title>
+            <label class="date">
+                {{getDate(report.reportedOn)}}
+            </label>
+        </mat-expansion-panel-header>
+        <div>
+            <button></button>
+            <button></button>
+        </div>
+        <div>
+            <label class="articleTitle">{{report.articleTitle}}</label>
+            <label class="username">By: {{report.username}}</label>
+            <textarea class="articleText" [value]="report.articleText" disabled></textarea>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

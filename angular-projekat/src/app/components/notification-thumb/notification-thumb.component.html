@@ -9,5 +9,6 @@
             </label>
         </mat-expansion-panel-header>
         <p>{{notification.message}}</p>
+        <button *ngIf="notification.deleteArticleOnReception==false" (click)="gotoArticle()">Go to article</button>
     </mat-expansion-panel>
 </mat-accordion>

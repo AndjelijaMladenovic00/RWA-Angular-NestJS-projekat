@@ -148,6 +148,8 @@ export class ViewArticleComponent implements OnInit {
 
       const notificationData: createNotification = {
         userID: this.article.userId,
+        articleID: this.article.id,
+        deleteArticleOnReception: false,
         title: `New review of your article "${this.article.title}"`,
         message: `User ${this.username} reviewed your article "${this.article.title}" and gave it a score of ${review.score}! Go to your article page to see full comment!`,
       };

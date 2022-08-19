@@ -1,6 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Notification } from 'src/app/models/notification.model';
+import {
+  deleteArticle,
+  selectMyArticle,
+} from 'src/app/store/article/article.actions';
 import { openNotification } from 'src/app/store/notification/notification.actions';
 
 @Component({
@@ -12,7 +17,7 @@ export class NotificationThumbComponent implements OnInit {
   @Input() notification: Notification | undefined = undefined;
   opened: boolean = false;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
     if (this.notification && this.notification.opened)
@@ -22,6 +27,11 @@ export class NotificationThumbComponent implements OnInit {
       document.getElementById('expansionHeader');
     if (expHeader && this.opened) expHeader.className = 'opened';
     if (expHeader && !this.opened) expHeader.className = 'unopened';
+
+    if (this.notification && this.notification.deleteArticleOnReception) {
+      const id: number = this.notification.articleID;
+      this.store.dispatch(deleteArticle({ id }));
+    }
   }
 
   getDate(d: Date): string {
@@ -43,6 +53,14 @@ export class NotificationThumbComponent implements OnInit {
       const id: number = this.notification.id;
       this.store.dispatch(openNotification({ id }));
       title.className = 'opened';
+    }
+  }
+
+  gotoArticle() {
+    if (this.notification) {
+      const id: number = this.notification.articleID;
+      this.store.dispatch(selectMyArticle({ id }));
+      this.router.navigate(['viewMyArticle']);
     }
   }
 }
