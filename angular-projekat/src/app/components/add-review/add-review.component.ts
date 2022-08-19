@@ -25,7 +25,6 @@ export class AddReviewComponent implements OnInit {
 
   setScore(value: number) {
     this.score = value;
-    console.log(this.score);
   }
 
   postReview() {

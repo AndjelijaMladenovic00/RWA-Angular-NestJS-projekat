@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
@@ -37,6 +38,8 @@ import { FeedArticleThumbComponent } from './components/feed-article-thumb/feed-
 import { ViewArticleComponent } from './components/view-article/view-article.component';
 import { AddReviewComponent } from './components/add-review/add-review.component';
 import { ScoreComponent } from './components/score/score.component';
+import { NotificationThumbComponent } from './components/notification-thumb/notification-thumb.component';
+import { NotificationEffects } from './store/notification/notification.effects';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,7 @@ import { ScoreComponent } from './components/score/score.component';
     ViewArticleComponent,
     AddReviewComponent,
     ScoreComponent,
+    NotificationThumbComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,13 +76,14 @@ import { ScoreComponent } from './components/score/score.component';
       autoPause: true,
       logOnly: environment.production,
     }),
-    EffectsModule.forRoot([UserEffects, ArticleEffects]),
+    EffectsModule.forRoot([UserEffects, ArticleEffects, NotificationEffects]),
     MatToolbarModule,
     MatIconModule,
     FontAwesomeModule,
     MatMenuModule,
     MatCardModule,
     MatDividerModule,
+    MatExpansionModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },

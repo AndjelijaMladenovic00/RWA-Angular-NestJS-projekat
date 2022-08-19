@@ -1,6 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { NotificationsState } from './notification.reducer';
 import { Notification } from 'src/app/models/notification.model';
+
 export const selectNotificationsState =
   createFeatureSelector<NotificationsState>('notifications');
 

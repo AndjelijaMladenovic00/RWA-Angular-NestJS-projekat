@@ -146,20 +146,24 @@ export class ViewArticleComponent implements OnInit {
             100
         ) / 100;
 
+      const notificationData: createNotification = {
+        userID: this.article.userId,
+        title: `New review of your article "${this.article.title}"`,
+        message: `User ${this.username} reviewed your article "${this.article.title}" and gave it a score of ${review.score}! Go to your article page to see full comment!`,
+      };
+
+      console.log(notificationData);
+
+      this.notificationService
+        .createNotification(notificationData)
+        .subscribe((not) => console.log(not));
+
       if (this.article.averageScore != score && score != 0) {
         this.stopRecursion = false;
         const id: number = this.article.id;
         this.store.dispatch(updateArticleScore({ id, score }));
         this.store.dispatch(updateArticleForDisplayScore({ score }));
       }
-
-      const notificationData: createNotification = {
-        userID: this.article.id,
-        title: `New review of your article "${this.article.title}"`,
-        message: `User ${this.username} reviewed your article "${this.article.title}" and gave it a score of ${review.score}! Go to your article page to see full comment!`,
-      };
-
-      this.notificationService.createNotification(notificationData);
     }
   }
 }

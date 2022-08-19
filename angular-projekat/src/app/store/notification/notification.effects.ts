@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
 import { catchError, exhaustMap, map, of } from 'rxjs';
-import { NotificationService } from 'src/app/services/notification-service/notification.service';
 import * as NotificationsActions from './notification.actions';
 import { Notification } from 'src/app/models/notification.model';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
+import { Injectable } from '@angular/core';
 
-export class ArticleEffects {
+@Injectable()
+export class NotificationEffects {
   constructor(
     private action$: Actions,
     private notificationService: NotificationService,
@@ -54,6 +55,7 @@ export class ArticleEffects {
           .getNotificationsUpdate(action.id, action.after)
           .pipe(
             map((notifications: Notification[]) => {
+              console.log('iz efekta ', notifications);
               return NotificationsActions.addNotificationsToState({
                 notifications,
               });

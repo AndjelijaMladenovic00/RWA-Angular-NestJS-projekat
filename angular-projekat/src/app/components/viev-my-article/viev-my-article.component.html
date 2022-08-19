@@ -47,8 +47,8 @@
 
     <mat-card class="reviews">
         <div class="averageScoreDiv">
-            <label class="averageScore" *ngIf="article.averageScore">Score: {{article.averageScore}} <fa-icon
-                    [icon]="faStar" class="star"></fa-icon>
+            <label class="averageScore" *ngIf="article.averageScore">Score: {{score}} <fa-icon [icon]="faStar"
+                    class="star"></fa-icon>
             </label>
             <label class="averageScore" *ngIf="!article.averageScore">No score</label>
         </div>

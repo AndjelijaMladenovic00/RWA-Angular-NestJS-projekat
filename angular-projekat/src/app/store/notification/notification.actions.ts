@@ -29,3 +29,5 @@ export const updateNotifications = createAction(
 );
 
 export const notificationUpdateFail = createAction('NotificationUpdateFail');
+
+export const clearNotifications = createAction('ClearNotifications');

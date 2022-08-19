@@ -37,7 +37,7 @@ export class NotificationService {
 
   public openNotification(id: number) {
     return this.http.put<Notification>(
-      `${environment.url}/notifications/openNotification/${id}`,
+      `${environment.url}/notifications/setNotificationToOpened/${id}`,
       {}
     );
   }

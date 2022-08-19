@@ -1,0 +1,13 @@
+<mat-accordion *ngIf="notification" (click)="openNotification(notificationTitle)">
+    <mat-expansion-panel hideToggle class="card">
+        <mat-expansion-panel-header id="expansionHeader" style="background-color:rgb(125, 145, 104)">
+            <mat-panel-title class="unopened" #notificationTitle>
+                {{notification.title}}
+            </mat-panel-title>
+            <mat-panel-description class="date">
+                {{getDate(notification.sentOn)}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{notification.message}}</p>
+    </mat-expansion-panel>
+</mat-accordion>

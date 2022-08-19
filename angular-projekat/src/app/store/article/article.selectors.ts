@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ArticleForDisplayState, MyArticlesState } from './article.reducer';
+import { ArticleForDisplayState } from 'src/app/state/articleForDisplayState';
+import { MyArticlesState } from './article.reducer';
 
 export const selectMyArticlesState =
   createFeatureSelector<MyArticlesState>('myArticles');

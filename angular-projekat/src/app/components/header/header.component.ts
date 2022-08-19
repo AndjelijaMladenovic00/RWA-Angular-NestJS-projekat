@@ -52,9 +52,9 @@ export class HeaderComponent implements OnInit {
           })
         );
 
-        const after: Date = new Date(new Date().valueOf() - 180000);
+        const after: Date = new Date(new Date().valueOf() - 60000);
 
-        interval(180000).subscribe(() => {
+        interval(60000).subscribe(() => {
           this.store.dispatch(
             NotificationsActions.updateNotifications({ id, after })
           );
@@ -93,6 +93,7 @@ export class HeaderComponent implements OnInit {
     this.store.dispatch(logout());
     this.store.dispatch(clearMyArticlesState());
     this.store.dispatch(clearArticleForDisplayState());
+    this.store.dispatch(NotificationsActions.clearNotifications());
     localStorage.removeItem('text');
     localStorage.removeItem('title');
   }

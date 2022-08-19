@@ -55,7 +55,15 @@ const _notificationsReducer = createReducer(
       alert('Error while updating your notifications, try again later!');
       return state;
     }
-  )
+  ),
+
+  on(NotificationsActions.clearNotifications, (state: NotificationsState) => {
+    return {
+      ...state,
+      ids: [],
+      entities: {},
+    };
+  })
 );
 
 export function NotificationsReducer(

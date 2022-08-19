@@ -1,1 +1,8 @@
-<p>notifications works!</p>
+<div>
+    <label class='title'>Notifications</label>
+</div>
+<div>
+    <label *ngIf="notifications.length==0" class="message">No unopened notifications!</label>
+    <app-notification-thumb *ngFor="let notification of notifications" [notification]="notification">
+    </app-notification-thumb>
+</div>

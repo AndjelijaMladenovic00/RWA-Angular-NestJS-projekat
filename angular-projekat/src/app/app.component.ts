@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
@@ -8,9 +8,15 @@ import { faBook } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private store: Store) {}
 
   ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    localStorage.removeItem('JWT');
+    localStorage.removeItem('text');
+    localStorage.removeItem('title');
+  }
   title = 'angular-projekat';
 }

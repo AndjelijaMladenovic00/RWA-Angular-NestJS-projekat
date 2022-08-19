@@ -37,6 +37,7 @@ export class VievMyArticleComponent implements OnInit {
   title: string = '';
   genre: string = '';
   index: number = 0;
+  score: number | undefined = 0;
 
   constructor(
     private router: Router,
@@ -47,7 +48,7 @@ export class VievMyArticleComponent implements OnInit {
   ngOnInit(): void {
     this.store.select(selectMySelectedArticle).subscribe((data) => {
       this.article = data;
-
+      this.score = data?.averageScore;
       if (this.article) {
         this.text = this.article.text;
         this.title = this.article.title;
@@ -90,7 +91,7 @@ export class VievMyArticleComponent implements OnInit {
                       100
                   ) / 100;
                 if (this.article.averageScore != score) {
-                  this.article.averageScore = score;
+                  this.score = score;
                   const id: number = this.article.id;
                   this.store.dispatch(updateArticleScore({ id, score }));
                 }
