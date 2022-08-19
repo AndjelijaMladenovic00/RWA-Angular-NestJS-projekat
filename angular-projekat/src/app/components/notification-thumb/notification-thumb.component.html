@@ -4,9 +4,9 @@
             <mat-panel-title class="unopened" #notificationTitle>
                 {{notification.title}}
             </mat-panel-title>
-            <mat-panel-description class="date">
+            <label class="date">
                 {{getDate(notification.sentOn)}}
-            </mat-panel-description>
+            </label>
         </mat-expansion-panel-header>
         <p>{{notification.message}}</p>
     </mat-expansion-panel>

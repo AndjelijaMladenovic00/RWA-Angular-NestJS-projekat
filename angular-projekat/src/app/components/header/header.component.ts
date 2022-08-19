@@ -84,6 +84,9 @@ export class HeaderComponent implements OnInit {
   }
 
   gotoNotifications() {
+    const notificationsIcon: HTMLElement | null =
+      document.getElementById('notificationsIcon');
+    if (notificationsIcon) notificationsIcon.style.color = 'azure';
     this.router.navigate(['notifications']);
   }
 

@@ -15,6 +15,8 @@ export class NotificationThumbComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
+    if (this.notification && this.notification.opened)
+      this.opened = this.notification.opened;
     if (this.notification) this.opened = this.notification.opened;
     const expHeader: HTMLElement | null =
       document.getElementById('expansionHeader');

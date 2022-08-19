@@ -42,9 +42,9 @@ const _notificationsReducer = createReducer(
         notificationsIcon &&
         notifications != null &&
         notifications.length != 0
-      )
+      ) {
         notificationsIcon.style.color = 'red';
-      else if (notificationsIcon) notificationsIcon.style.color = 'azure';
+      } else if (notificationsIcon) notificationsIcon.style.color = 'azure';
       return adapter.addMany(notifications, state);
     }
   ),
