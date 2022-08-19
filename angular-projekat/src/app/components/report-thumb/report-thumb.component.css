@@ -1,0 +1,19 @@
+.card {
+    width: 80%;
+    justify-self: center;
+    align-self: center;
+}
+
+.date {
+    justify-self: flex-end;
+}
+
+.button {
+    width: 30%;
+    background-color: rgb(75, 125, 25);
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    margin: 5%;
+    color: azure;
+}

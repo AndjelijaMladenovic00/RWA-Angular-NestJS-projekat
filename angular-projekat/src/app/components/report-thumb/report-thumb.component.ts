@@ -24,4 +24,8 @@ export class ReportThumbComponent implements OnInit {
       '.';
     return s;
   }
+
+  resolveReport() {}
+
+  rejectReport() {}
 }
