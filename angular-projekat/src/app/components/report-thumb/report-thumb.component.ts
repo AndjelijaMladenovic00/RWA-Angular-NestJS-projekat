@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ReportStatus } from 'src/app/enums/report-status.enum';
 import { Report } from 'src/app/models/report.model';
+import { ReportService } from 'src/app/services/report-service/report.service';
 
 @Component({
   selector: 'app-report-thumb',
@@ -7,8 +9,9 @@ import { Report } from 'src/app/models/report.model';
   styleUrls: ['./report-thumb.component.css'],
 })
 export class ReportThumbComponent implements OnInit {
-  report: Report | null = null;
-  constructor() {}
+  @Input() report: Report | null = null;
+  @Output() reportEmiter: EventEmitter<Report> = new EventEmitter<Report>();
+  constructor(private reportService: ReportService) {}
 
   ngOnInit(): void {}
 
@@ -25,7 +28,14 @@ export class ReportThumbComponent implements OnInit {
     return s;
   }
 
-  resolveReport() {}
-
-  rejectReport() {}
+  updateReport(status: string) {
+    if (this.report) {
+      if (status == 'resolved') {
+        this.reportService.updateReport(this.report.id, ReportStatus.resolved);
+      } else {
+        this.reportService.updateReport(this.report.id, ReportStatus.rejected);
+        this.reportEmiter.emit(this.report);
+      }
+    }
+  }
 }

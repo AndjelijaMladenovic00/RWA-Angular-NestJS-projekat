@@ -113,6 +113,7 @@ option {
 
 .textInput {
     margin: 10%;
+    margin-top: 5%;
     margin-bottom: 1%;
     height: 80%;
     border-radius: 10px;

@@ -9,8 +9,8 @@
             </label>
         </mat-expansion-panel-header>
         <div>
-            <button class="button" (click)="resolveReport()">Resolve</button>
-            <button class="button" (click)="rejectReport()">Reject</button>
+            <button mat-raised-button class="button" (click)="updateReport('resolved')">Resolve</button>
+            <button mat-raised-button class="button" (click)="updateReport('rejected')">Reject</button>
         </div>
         <div>
             <label class="articleTitle">{{report.articleTitle}}</label>

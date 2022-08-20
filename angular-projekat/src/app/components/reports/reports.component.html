@@ -1,0 +1,8 @@
+<div>
+    <label class='title'>Pending reports</label>
+</div>
+<div>
+    <label *ngIf="reports.length==0" class="message">No pending reports for now!</label>
+    <app-report-thumb *ngFor="let report of reports" [report]="report" (reportEmiter)="removeReport($event)">
+    </app-report-thumb>
+</div>
