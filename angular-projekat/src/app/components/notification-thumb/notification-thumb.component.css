@@ -8,6 +8,7 @@
 
 .opened {
     font-weight: normal;
+    justify-content: space-between;
 }
 
 .unopened {
@@ -25,6 +26,9 @@
     justify-self: center;
     align-self: center;
     text-align: center;
-    margin: 5%;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     color: azure;
 }

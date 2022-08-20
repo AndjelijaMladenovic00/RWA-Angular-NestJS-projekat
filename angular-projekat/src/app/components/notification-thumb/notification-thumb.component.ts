@@ -16,17 +16,14 @@ import { openNotification } from 'src/app/store/notification/notification.action
 export class NotificationThumbComponent implements OnInit {
   @Input() notification: Notification | undefined = undefined;
   opened: boolean = false;
+  class: string = 'unopened';
 
   constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
-    if (this.notification && this.notification.opened)
-      this.opened = this.notification.opened;
+    console.log(this.notification);
     if (this.notification) this.opened = this.notification.opened;
-    const expHeader: HTMLElement | null =
-      document.getElementById('expansionHeader');
-    if (expHeader && this.opened) expHeader.className = 'opened';
-    if (expHeader && !this.opened) expHeader.className = 'unopened';
+    if (this.opened) this.class = 'opened';
 
     if (this.notification && this.notification.deleteArticleOnReception) {
       const id: number = this.notification.articleID;

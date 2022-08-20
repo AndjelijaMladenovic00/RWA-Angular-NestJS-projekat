@@ -10,7 +10,8 @@
     text-size-adjust: true;
     display: inline-block;
     line-height: 1.1;
-    margin-right: 5%;
+    margin-right: 10%;
+    margin-left: 10%;
     margin-bottom: 5%
 }
 
@@ -26,5 +27,6 @@
     text-size-adjust: true;
     display: inline-block;
     line-height: 1.1;
-    margin-right: 5%;
+    margin-right: 10%;
+    margin-left: 10%;
 }
