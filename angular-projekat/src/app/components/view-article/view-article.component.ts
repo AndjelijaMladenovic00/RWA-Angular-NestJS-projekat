@@ -128,7 +128,10 @@ export class ViewArticleComponent implements OnInit {
         'Are you sure that you want to report this article? You cannot undo this action, and it may lead to deletion of this article.'
       )
     ) {
-      this.reportService.createReport(this.article.id, this.userID);
+      console.log('usao');
+      this.reportService
+        .createReport(this.article.id, this.userID)
+        .subscribe((rep) => console.log(rep));
       alert('Report was sent and it will be avaluated!');
     }
   }
@@ -153,8 +156,6 @@ export class ViewArticleComponent implements OnInit {
         title: `New review of your article "${this.article.title}"`,
         message: `User ${this.username} reviewed your article "${this.article.title}" and gave it a score of ${review.score}! Go to your article page to see full comment!`,
       };
-
-      console.log(notificationData);
 
       this.notificationService
         .createNotification(notificationData)

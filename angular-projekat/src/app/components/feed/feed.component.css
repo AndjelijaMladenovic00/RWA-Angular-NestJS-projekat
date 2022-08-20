@@ -20,3 +20,19 @@ mat-card-title {
     justify-content: center;
     margin: 5%;
 }
+
+.message {
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: rgb(56, 87, 24);
+    width: 80%;
+    text-size-adjust: true;
+    display: inline-block;
+    line-height: 1.1;
+    margin-right: 10%;
+    margin-left: 10%;
+}

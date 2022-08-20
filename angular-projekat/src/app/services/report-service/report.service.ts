@@ -11,10 +11,11 @@ export class ReportService {
   constructor(private http: HttpClient) {}
 
   public createReport(articleID: number, userID: number) {
-    return this.http.post<Report>(`${environment.url}/reports/createReport`, {
-      articleID,
-      userID,
-    });
+    console.log('createReport');
+    return this.http.post<Report>(
+      `${environment.url}/reports/createReport/${articleID}/${userID}`,
+      {}
+    );
   }
 
   public getPendingReports() {
@@ -25,7 +26,7 @@ export class ReportService {
 
   public updateReport(id: number, status: ReportStatus) {
     return this.http.put<Report>(
-      `${environment.url}/reports/updateReport/${id}/${status}`,
+      `${environment.url}/reports/updateReport/${id}/${status.toString()}`,
       {}
     );
   }

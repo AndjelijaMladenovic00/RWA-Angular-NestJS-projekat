@@ -172,12 +172,12 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
         `Are you sure that you want to publish an article named "${this.title}"?`
       )
     ) {
+      localStorage.removeItem('text');
+      localStorage.removeItem('title');
       const jwtHelper: JwtHelperService = new JwtHelperService();
       const token: string | null = localStorage.getItem('JWT');
       if (!token) return;
       const userId = jwtHelper.decodeToken(token).id;
-
-      console.log(userId);
 
       const article: ArticleInfo = {
         title: this.title,
@@ -185,9 +185,6 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
         userId: userId,
         genre: this.genre,
       };
-
-      localStorage.removeItem('text');
-      localStorage.removeItem('title');
 
       this.store.dispatch(postArticle({ article }));
     }

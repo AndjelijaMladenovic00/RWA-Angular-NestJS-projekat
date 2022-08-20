@@ -31,10 +31,23 @@ export class ReportThumbComponent implements OnInit {
   updateReport(status: string) {
     if (this.report) {
       if (status == 'resolved') {
-        this.reportService.updateReport(this.report.id, ReportStatus.resolved);
+        if (
+          confirm(
+            'Are you sure that you want to resolve this report? It will delete mationed article and all its reviews!'
+          )
+        ) {
+          this.reportService
+            .updateReport(this.report.id, ReportStatus.resolved)
+            .subscribe((r) => console.log(r));
+          this.reportEmiter.emit(this.report);
+        }
       } else {
-        this.reportService.updateReport(this.report.id, ReportStatus.rejected);
-        this.reportEmiter.emit(this.report);
+        if (confirm('Are you sure that you want to reject this report?')) {
+          this.reportService
+            .updateReport(this.report.id, ReportStatus.rejected)
+            .subscribe((r) => console.log(r));
+          this.reportEmiter.emit(this.report);
+        }
       }
     }
   }

@@ -52,7 +52,6 @@ const _myArticleReducer = createReducer(
   }),
 
   on(ArticleActions.deleteArticleSuccess, (state: MyArticlesState, { id }) => {
-    alert('Article succesfully deleted!');
     return adapter.removeOne(id, state);
   }),
 

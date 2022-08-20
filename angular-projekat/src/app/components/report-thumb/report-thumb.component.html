@@ -8,11 +8,11 @@
                 {{getDate(report.reportedOn)}}
             </label>
         </mat-expansion-panel-header>
-        <div>
+        <div class="buttonDiv">
             <button mat-raised-button class="button" (click)="updateReport('resolved')">Resolve</button>
             <button mat-raised-button class="button" (click)="updateReport('rejected')">Reject</button>
         </div>
-        <div>
+        <div class="articleDiv">
             <label class="articleTitle">{{report.articleTitle}}</label>
             <textarea class="articleText" [value]="report.articleText" disabled></textarea>
         </div>

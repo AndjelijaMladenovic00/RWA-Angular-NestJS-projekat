@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Notification } from 'src/app/models/notification.model';
 import {
-  deleteArticle,
+  deleteArticleSuccess,
   selectMyArticle,
 } from 'src/app/store/article/article.actions';
 import { openNotification } from 'src/app/store/notification/notification.actions';
@@ -25,9 +25,13 @@ export class NotificationThumbComponent implements OnInit {
     if (this.notification) this.opened = this.notification.opened;
     if (this.opened) this.class = 'opened';
 
-    if (this.notification && this.notification.deleteArticleOnReception) {
+    if (
+      this.notification &&
+      this.notification.deleteArticleOnReception &&
+      this.notification
+    ) {
       const id: number = this.notification.articleID;
-      this.store.dispatch(deleteArticle({ id }));
+      this.store.dispatch(deleteArticleSuccess({ id }));
     }
   }
 
