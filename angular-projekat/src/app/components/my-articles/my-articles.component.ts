@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { BookGenre } from 'src/app/enums/book-genre.enum';
 import { Article } from 'src/app/models/article.model';
 import { selectMyArticles } from 'src/app/store/article/article.selectors';
 
@@ -10,6 +11,8 @@ import { selectMyArticles } from 'src/app/store/article/article.selectors';
 })
 export class MyArticlesComponent implements OnInit {
   articles: (Article | undefined)[] = [];
+  articlesForDisplay: (Article | undefined)[] = [];
+  genre: string = 'all';
 
   constructor(private store: Store) {}
 
@@ -28,6 +31,22 @@ export class MyArticlesComponent implements OnInit {
             return 0;
           }
         );
+        this.articlesForDisplay = this.articles;
       });
+  }
+
+  setGenre(genre: string) {
+    this.genre = genre;
+    if (this.genre == 'all') {
+      this.articlesForDisplay = this.articles;
+      return;
+    } else {
+      this.articlesForDisplay = this.articles.filter(
+        (article: Article | undefined) => {
+          if (article) return article.genre.toString() == this.genre;
+          else return false;
+        }
+      );
+    }
   }
 }

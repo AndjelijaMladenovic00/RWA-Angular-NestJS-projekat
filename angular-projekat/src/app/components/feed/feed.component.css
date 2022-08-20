@@ -13,6 +13,14 @@ mat-card-title {
     margin-right: 5%;
 }
 
+.genreContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 10%;
+    margin-bottom: 2%;
+}
+
 .textContainer {
     text-align: center;
     display: flex;
@@ -34,5 +42,15 @@ mat-card-title {
     display: inline-block;
     line-height: 1.1;
     margin-right: 10%;
-    margin-left: 10%;
+}
+
+.genreLabel {
+    font-weight: bold;
+    color: rgb(56, 87, 24);
+}
+
+.genreSelect {
+    margin-left: 1%;
+    border-radius: 5px;
+    text-align: center;
 }

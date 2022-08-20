@@ -2,6 +2,18 @@
     <div class="titleDiv">
         <label class="title"> Your articles</label>
     </div>
+    <div class="genreContainer">
+        <label class="genreLabel">Gendre: </label>
+        <select class="genreSelect" #genreSelect
+            (change)="setGenre((genreSelect.options[genreSelect.selectedIndex]).value)">
+            <option value="all" selected>All</option>
+            <option value="horror">Horror</option>
+            <option value="romance">Romance</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="thriller">Thriller</option>
+            <option value="historical">Historical</option>
+        </select>
+    </div>
     <label class="message" *ngIf="articles.length==0">You have no articles... Return when you write
         some!</label>
     <app-article-thumb *ngFor="let article of articles" [article]="article"></app-article-thumb>
