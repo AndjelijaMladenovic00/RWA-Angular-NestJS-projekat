@@ -32,6 +32,21 @@ export class UserEffects {
     )
   );
 
+  loginWithTokenRequest$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(UserActions.loginWithToken),
+      exhaustMap((action) =>
+        this.userService.loginWithToken(action.username).pipe(
+          map((userData: LogedUser) => {
+            this.router.navigate(['feed']);
+            return UserActions.loginSuccess({ userData });
+          }),
+          catchError(() => of(UserActions.loginFail()))
+        )
+      )
+    )
+  );
+
   loginSuccess$ = createEffect(
     () =>
       this.action$.pipe(

@@ -8,9 +8,9 @@ import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { profileType } from 'src/app/enums/profile-type.enum';
 import { AppState } from 'src/app/store/app.state';
-import { logout } from 'src/app/store/user/user.actions';
+import { loginWithToken, logout } from 'src/app/store/user/user.actions';
 import { selectUserData } from 'src/app/store/user/user.selectors';
-import { Notification } from 'src/app/models/notification.model';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import {
   clearArticleForDisplayState,
   clearMyArticlesState,
@@ -31,13 +31,20 @@ export class HeaderComponent implements OnInit {
   faComment = faComment;
   faFlag = faFlag;
 
+  private jwtService: JwtHelperService = new JwtHelperService();
+
   username: string | null = null;
   profileType: profileType | null = null;
 
   constructor(private router: Router, private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    localStorage.removeItem('JWT');
+    const token: string | null = localStorage.getItem('JWT');
+    if (token) {
+      const username: string = this.jwtService.decodeToken(token).username;
+      console.log(username);
+      this.store.dispatch(loginWithToken({ username }));
+    }
 
     this.store.select(selectUserData).subscribe((stateData) => {
       if (stateData.username && stateData.profileType && stateData.id) {

@@ -22,3 +22,8 @@ export const signup = createAction(
 export const signupSuccess = createAction('SignupSuccess');
 
 export const signupFail = createAction('SignupFail');
+
+export const loginWithToken = createAction(
+  'LoginWithToken',
+  props<{ username: string }>()
+);

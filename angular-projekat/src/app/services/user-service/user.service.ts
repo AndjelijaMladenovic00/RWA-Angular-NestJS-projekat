@@ -13,9 +13,16 @@ export class UserService {
 
   login(username: string, password: string) {
     return this.http.post<LogedUser>(`${environment.url}/users/login`, {
-      username: username,
-      password: password,
+      username,
+      password,
     });
+  }
+
+  loginWithToken(username: string) {
+    return this.http.post<LogedUser>(
+      `${environment.url}/users/loginWithToken`,
+      { username }
+    );
   }
 
   signup(signupData: SignupData) {

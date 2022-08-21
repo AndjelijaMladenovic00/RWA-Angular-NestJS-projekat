@@ -29,6 +29,7 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
   redoableActions: string[] = [];
 
   charNumber: number = 0;
+  published: boolean = false;
 
   constructor(private router: Router, private store: Store) {}
   ngOnInit(): void {
@@ -82,7 +83,7 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.title != '' || this.text != '') {
+    if ((!this.published && this.title != '') || this.text != '') {
       localStorage.setItem('title', this.title);
       localStorage.setItem('text', this.text);
     }
@@ -187,6 +188,7 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
       };
 
       this.store.dispatch(postArticle({ article }));
+      this.published = true;
     }
   }
 }

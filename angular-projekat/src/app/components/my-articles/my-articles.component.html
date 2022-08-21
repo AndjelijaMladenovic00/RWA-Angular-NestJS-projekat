@@ -16,5 +16,5 @@
     </div>
     <label class="message" *ngIf="articles.length==0">You have no articles... Return when you write
         some!</label>
-    <app-article-thumb *ngFor="let article of articles" [article]="article"></app-article-thumb>
+    <app-article-thumb *ngFor="let article of articlesForDisplay" [article]="article"></app-article-thumb>
 </div>
