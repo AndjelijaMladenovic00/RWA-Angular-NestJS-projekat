@@ -4,9 +4,7 @@
             <input type="text" class="title" [value]="title" #titleInput (input)="setTitle(titleInput.value)">
             <mat-card-subtitle class="subtitle">Published on: {{getDate(article.publishedOn)}}</mat-card-subtitle>
             <mat-card-subtitle class="subtitle">Last edited: {{getDate(article.lastEdited)}}</mat-card-subtitle>
-
         </div>
-
         <div class="genreDiv">
             <label class="genre">Genre: </label>
             <select mat-form-field id="genre" class="gendreSelect" #genreInput [selectedIndex]="index"
@@ -18,33 +16,23 @@
                 <option value="historical">Historical</option>
             </select>
         </div>
-
     </mat-card>
-
     <mat-card class="articleMenu">
-
         <div class="saveOrDeleteDiv">
-
             <button mat-raised-button (click)="saveChanges()">
                 <fa-icon [icon]="faFloppyDisk" id="save"></fa-icon>Save
             </button>
-
             <button mat-raised-button (click)="deleteArticle()">
                 <fa-icon [icon]="faTrashCan" id="delete"></fa-icon>Delete
             </button>
-
         </div>
-
     </mat-card>
-
     <mat-card class="textEdit">
         <textarea mat-form-field type="text" class="textInput" #textInput id="text" (input)="setText(textInput.value)"
             [value]="text" maxlength="1000"></textarea>
         <label class="charLabel">{{charNumber}}/10000</label>
     </mat-card>
-
     <mat-divider class="divider"></mat-divider>
-
     <mat-card class="reviews">
         <div class="averageScoreDiv">
             <label class="averageScore" *ngIf="article.averageScore">Score: {{score}} <fa-icon [icon]="faStar"
@@ -52,10 +40,6 @@
             </label>
             <label class="averageScore" *ngIf="!article.averageScore">No score</label>
         </div>
-
         <app-review *ngFor="let review of reviews" [review]="review"></app-review>
     </mat-card>
-
-
-
 </span>

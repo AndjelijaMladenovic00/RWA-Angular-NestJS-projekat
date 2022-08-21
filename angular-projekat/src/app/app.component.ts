@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +10,7 @@ import { fromEvent } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private store: Store) {}
 
-  ngOnInit(): void {
-    localStorage.removeItem('location');
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {}
   title = 'angular-projekat';

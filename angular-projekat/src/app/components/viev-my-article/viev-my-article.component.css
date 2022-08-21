@@ -6,7 +6,6 @@
     align-content: center;
     align-items: center;
     background-color: rgb(148, 180, 99);
-
 }
 
 .titleDiv {
@@ -20,7 +19,6 @@
 }
 
 .genreDiv {
-
     display: flex;
     flex-direction: row;
     margin-right: 10%;
@@ -44,7 +42,6 @@
     margin-bottom: 3%;
 }
 
-
 .articleMenu {
     display: flex;
     width: 100%;
@@ -63,7 +60,6 @@
     margin-right: 10%;
     display: flex;
     flex-direction: row;
-
 }
 
 button {

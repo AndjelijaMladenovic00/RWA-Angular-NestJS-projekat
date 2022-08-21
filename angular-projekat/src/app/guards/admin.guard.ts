@@ -15,7 +15,7 @@ export class AdminGuard implements CanActivate {
     const token: string | null = localStorage.getItem('JWT');
     if (token) {
       if (this.jwtHelper.isTokenExpired(token)) {
-        this.router.navigate(['feed']);
+        this.router.navigate(['login']);
         return false;
       }
       const decodedToken = this.jwtHelper.decodeToken(token);

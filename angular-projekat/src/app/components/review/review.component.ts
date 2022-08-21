@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Review } from 'src/app/models/review.model';
-import { faC, faCircleUser, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCircleUser, faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-review',
@@ -15,8 +15,7 @@ export class ReviewComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   getDate(d: Date): string {
     const date: Date = new Date(d);

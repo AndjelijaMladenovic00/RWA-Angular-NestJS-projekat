@@ -31,9 +31,8 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
   charNumber: number = 0;
   published: boolean = false;
 
-  constructor(private router: Router, private store: Store) {}
+  constructor(private store: Store) {}
   ngOnInit(): void {
-
     const title: string | null = localStorage.getItem('title');
     const text: string | null = localStorage.getItem('text');
 
@@ -66,6 +65,7 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
     const textInput: HTMLElement | null = <HTMLTextAreaElement>(
       document.getElementById('textInput')
     );
+
     if (textInput) {
       fromEvent(textInput, 'input')
         .pipe(

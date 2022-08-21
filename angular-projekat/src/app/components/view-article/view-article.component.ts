@@ -35,7 +35,6 @@ export class ViewArticleComponent implements OnInit {
   star: HTMLElement | null = null;
 
   constructor(
-    private router: Router,
     private store: Store,
     private reviewService: ReviewService,
     private reportService: ReportService,

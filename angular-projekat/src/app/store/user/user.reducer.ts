@@ -1,13 +1,11 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { UserState } from 'src/app/state/userState';
+import { UserState } from 'src/app/state/userState.state';
 
 import {
   loginFail,
   loginSuccess,
-  loginWithToken,
   loginWithTokenSuccess,
   logout,
-  signupSuccess,
 } from './user.actions';
 
 export const initialUserState: UserState = {

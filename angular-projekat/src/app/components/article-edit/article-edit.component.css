@@ -6,7 +6,6 @@
     align-content: center;
     align-items: center;
     background-color: rgb(148, 180, 99);
-
 }
 
 .titleDiv {
@@ -73,7 +72,6 @@ option {
     margin-right: 10%;
     display: flex;
     flex-direction: column;
-
 }
 
 button {

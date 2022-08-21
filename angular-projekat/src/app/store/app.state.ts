@@ -1,9 +1,9 @@
 import { LogedUser } from '../interfaces/logedUser.interface';
-import { ArticleForDisplayState } from '../state/articleForDisplayState';
+import { ArticleForDisplayState } from '../state/articleForDisplayState.state';
+import { MyArticlesState } from '../state/myArticlesState.state';
 import {
   ArticleForDisplayReducer,
   MyArticleReducer,
-  MyArticlesState,
 } from './article/article.reducer';
 import {
   NotificationsReducer,

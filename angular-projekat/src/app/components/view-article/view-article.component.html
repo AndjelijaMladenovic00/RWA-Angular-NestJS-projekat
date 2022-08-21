@@ -5,48 +5,32 @@
             <mat-card-subtitle class="subtitle">By: {{article.username}}</mat-card-subtitle>
             <mat-card-subtitle class="subtitle">Published on: {{getDate(article.publishedOn)}}</mat-card-subtitle>
             <mat-card-subtitle class="subtitle">Last edited: {{getDate(article.lastEdited)}}</mat-card-subtitle>
-
         </div>
-
         <div class="genreDiv">
             <label class="genre">Genre: {{article.genre}}</label>
         </div>
-
     </mat-card>
-
     <mat-card class="articleMenu">
-
         <div class="reportDiv">
-
             <button mat-raised-button (click)="reportArticle()">
                 <fa-icon [icon]="faExclamationCircle" id="report"></fa-icon>Report
             </button>
-
         </div>
-
     </mat-card>
-
     <mat-card class="textEdit">
         <textarea mat-form-field type="text" class="textInput" #textInput id="text" disabled [value]="article.text"
             maxlength="1000"></textarea>
         <label class="charLabel">{{charNumber}}/10000</label>
     </mat-card>
-
     <mat-divider class="divider"></mat-divider>
-
     <mat-card class="commentDiv" *ngIf="!alreadyReviewed">
         <app-add-review [userID]="userID" [articleID]="article.id" (review)="addReview($event)"></app-add-review>
     </mat-card>
-
     <mat-card class="reviews">
         <div class="averageScoreDiv">
             <label class="averageScore">{{message}}<fa-icon id="star" [icon]="faStar" class="star">
                 </fa-icon></label>
         </div>
-
         <app-review *ngFor="let review of reviews" [review]="review"></app-review>
     </mat-card>
-
-
-
 </span>

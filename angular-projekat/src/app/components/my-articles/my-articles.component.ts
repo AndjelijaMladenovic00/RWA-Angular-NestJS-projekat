@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { BookGenre } from 'src/app/enums/book-genre.enum';
 import { Article } from 'src/app/models/article.model';
 import { selectMyArticles } from 'src/app/store/article/article.selectors';
 
@@ -17,7 +16,6 @@ export class MyArticlesComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-
     this.store
       .select(selectMyArticles)
       .subscribe((myArticles: (Article | undefined)[]) => {

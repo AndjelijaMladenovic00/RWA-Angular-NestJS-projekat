@@ -9,7 +9,6 @@
         <div class="commentDiv">
             <textarea id="text" #comment (input)="setComment(comment.value)" class="comment"
                 [maxLength]="200"></textarea>
-
             <div class="scoreDiv">
                 <app-score (score)="setScore($event)"></app-score>
             </div>

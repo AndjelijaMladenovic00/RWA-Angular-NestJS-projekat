@@ -10,12 +10,10 @@ import {
 import { selectMySelectedArticle } from '../../store/article/article.selectors';
 import { Review } from '../../models/review.model';
 import { ReviewService } from '../../services/review-service/review.service';
-import { ArticleService } from '../../services/article-service/article.service';
 import {
   deleteArticle,
   updateMyArticle,
   updateArticleScore,
-  updateArticleForDisplayScore,
 } from '../../store/article/article.actions';
 import { UpdateArticle } from '../../interfaces/updateArticle.interface';
 import { BookGenre } from '../../enums/book-genre.enum';

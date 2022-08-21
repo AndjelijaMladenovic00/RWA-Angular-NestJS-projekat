@@ -2,11 +2,8 @@
     <div class="titleDiv">
         <mat-card-title class="title">Title</mat-card-title>
         <mat-card-subtitle>Insert the title of your article here!</mat-card-subtitle>
-
         <input mat-form-field type="text" class="titleInput" #title (input)="setTitle(title.value)" id="titleInput" />
-
     </div>
-
     <div class="genreDiv">
         <select mat-form-field id="genre" class="gendreSelect" #genre
             (change)="setGenre(genre.options[genre.selectedIndex].value)">
@@ -18,29 +15,22 @@
             <option value="historical">Historical</option>
         </select>
     </div>
-
-
 </mat-card>
 
 <mat-card class="articleMenu">
-
     <div class="undoRedoDiv">
         <button mat-raised-button id="undo" (click)="undo()">
             <fa-icon [icon]="faRotateLeft"></fa-icon>Undo
         </button>
-
         <button mat-raised-button id="redo" (click)="redo()">
             <fa-icon [icon]="faRotateRight"></fa-icon>Redo
         </button>
-
     </div>
     <div class="publishDiv">
         <button mat-raised-button (click)="publish()">
             <fa-icon [icon]="faUpload" id="publish"></fa-icon>Publish
         </button>
-
     </div>
-
 </mat-card>
 
 <mat-card class="textEdit">

@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { LoginData } from 'src/app/interfaces/loginData.interface';
 import * as UserActions from '../../store/user/user.actions';
+
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -14,8 +15,7 @@ export class LoginFormComponent implements OnInit {
   username: string = '';
   password: string = '';
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   gotoSignup(): void {
     this.router.navigate(['signup']);

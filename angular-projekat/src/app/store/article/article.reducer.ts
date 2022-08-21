@@ -1,12 +1,10 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 import { Article } from 'src/app/models/article.model';
-import { ArticleForDisplayState } from 'src/app/state/articleForDisplayState';
+import { ArticleForDisplayState } from 'src/app/state/articleForDisplayState.state';
+import { MyArticlesState } from 'src/app/state/myArticlesState.state';
 import * as ArticleActions from './article.actions';
 
-export interface MyArticlesState extends EntityState<Article> {
-  selectedArticle: number;
-}
 const adapter: EntityAdapter<Article> = createEntityAdapter<Article>();
 
 export const myArticlesInitialState = adapter.getInitialState({
@@ -39,7 +37,6 @@ const _myArticleReducer = createReducer(
   ),
 
   on(ArticleActions.loadMyArticlesFail, (state: MyArticlesState) => {
-    console.log('fail');
     return state;
   }),
 
