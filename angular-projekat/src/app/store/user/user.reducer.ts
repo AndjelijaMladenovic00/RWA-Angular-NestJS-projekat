@@ -5,6 +5,7 @@ import {
   loginFail,
   loginSuccess,
   loginWithToken,
+  loginWithTokenSuccess,
   logout,
   signupSuccess,
 } from './user.actions';
@@ -20,6 +21,15 @@ const _userReducer = createReducer(
   initialUserState,
 
   on(loginSuccess, (state: UserState, { userData }) => {
+    return {
+      id: userData.id,
+      username: userData.username,
+      access_token: userData.access_token,
+      profileType: userData.profileType,
+    };
+  }),
+
+  on(loginWithTokenSuccess, (state: UserState, { userData }) => {
     return {
       id: userData.id,
       username: userData.username,

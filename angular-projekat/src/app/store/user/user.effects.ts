@@ -38,8 +38,7 @@ export class UserEffects {
       exhaustMap((action) =>
         this.userService.loginWithToken(action.username).pipe(
           map((userData: LogedUser) => {
-            this.router.navigate(['feed']);
-            return UserActions.loginSuccess({ userData });
+            return UserActions.loginWithTokenSuccess({ userData });
           }),
           catchError(() => of(UserActions.loginFail()))
         )
@@ -54,8 +53,6 @@ export class UserEffects {
         tap(({ userData }) => {
           localStorage.setItem('JWT', userData.access_token);
           this.router.navigate(['feed']);
-
-          alert('Login successful! Welcome ' + userData.username);
         })
       ),
     { dispatch: false }
@@ -67,6 +64,17 @@ export class UserEffects {
         ofType(UserActions.loginFail),
         tap(() => {
           alert('Login failed, invalid data!');
+        })
+      ),
+    { dispatch: false }
+  );
+
+  loginWithTokenSuccess$ = createEffect(
+    () =>
+      this.action$.pipe(
+        ofType(UserActions.loginWithTokenSuccess),
+        tap(({ userData }) => {
+          localStorage.setItem('JWT', userData.access_token);
         })
       ),
     { dispatch: false }

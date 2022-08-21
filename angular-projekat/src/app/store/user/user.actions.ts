@@ -27,3 +27,8 @@ export const loginWithToken = createAction(
   'LoginWithToken',
   props<{ username: string }>()
 );
+
+export const loginWithTokenSuccess = createAction(
+  'LoginWithTokenSuccess',
+  props<{ userData: LogedUser }>()
+);

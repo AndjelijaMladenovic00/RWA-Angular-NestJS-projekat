@@ -14,7 +14,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
-    localStorage.removeItem('JWT');
     localStorage.removeItem('text');
     localStorage.removeItem('title');
   }
