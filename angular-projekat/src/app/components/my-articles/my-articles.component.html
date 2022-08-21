@@ -3,7 +3,7 @@
         <label class="title"> Your articles</label>
     </div>
     <div class="genreContainer">
-        <label class="genreLabel">Gendre: </label>
+        <label class="genreLabel">Genre: </label>
         <select class="genreSelect" #genreSelect
             (change)="setGenre((genreSelect.options[genreSelect.selectedIndex]).value)">
             <option value="all" selected>All</option>
@@ -14,7 +14,7 @@
             <option value="historical">Historical</option>
         </select>
     </div>
-    <label class="message" *ngIf="articles.length==0">You have no articles... Return when you write
+    <label class="message" *ngIf="articlesForDisplay.length==0">You have no articles... Return when you write
         some!</label>
     <app-article-thumb *ngFor="let article of articlesForDisplay" [article]="article"></app-article-thumb>
 </div>

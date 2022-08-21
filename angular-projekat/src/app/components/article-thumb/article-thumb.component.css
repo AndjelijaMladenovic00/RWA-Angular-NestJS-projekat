@@ -66,4 +66,11 @@
     color: gold;
     text-shadow: 3px black;
     margin: 2%;
+    justify-self: center;
+}
+
+.scoreDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

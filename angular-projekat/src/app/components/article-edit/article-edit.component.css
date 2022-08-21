@@ -1,7 +1,7 @@
 .articleInfo {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 98%;
     justify-content: space-between;
     align-content: center;
     align-items: center;

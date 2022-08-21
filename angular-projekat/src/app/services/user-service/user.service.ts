@@ -19,9 +19,8 @@ export class UserService {
   }
 
   loginWithToken(username: string) {
-    return this.http.post<LogedUser>(
-      `${environment.url}/users/loginWithToken`,
-      { username }
+    return this.http.get<LogedUser>(
+      `${environment.url}/users/loginWithToken/${username}`
     );
   }
 

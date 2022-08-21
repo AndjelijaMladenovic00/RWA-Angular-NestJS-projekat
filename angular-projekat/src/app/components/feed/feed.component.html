@@ -3,7 +3,7 @@
         <mat-card-title> In the last 10 days, the people have written...</mat-card-title>
     </div>
     <div class="genreContainer">
-        <label class="genreLabel">Gendre: </label>
+        <label class="genreLabel">Genre: </label>
         <select class="genreSelect" #genreSelect
             (change)="setGenre((genreSelect.options[genreSelect.selectedIndex]).value)">
             <option value="all" selected>All</option>
@@ -16,6 +16,6 @@
     </div>
     <app-feed-article-thumb *ngFor="let article of articlesForDisplay" [article]="article"></app-feed-article-thumb>
     <div class="textContainer">
-        <mat-card-title class="message">That was all for the last 10 days! Tune again for more!</mat-card-title>
+        <label class="message">That was all for the last 10 days! Tune again for more!</label>
     </div>
 </mat-card>

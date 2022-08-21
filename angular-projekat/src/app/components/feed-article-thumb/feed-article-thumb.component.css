@@ -67,9 +67,17 @@
     color: gold;
     text-shadow: 3px black;
     margin: 2%;
+    justify-self: center;
+    align-self: center;
 }
 
 .score {
     text-align: center;
     align-self: flex-start;
+}
+
+.scoreDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

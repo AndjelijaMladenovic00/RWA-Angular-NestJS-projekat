@@ -10,7 +10,6 @@ mat-card-title {
     text-size-adjust: true;
     display: inline-block;
     line-height: 1.1;
-    margin-right: 5%;
 }
 
 .genreContainer {
@@ -24,9 +23,14 @@ mat-card-title {
 .textContainer {
     text-align: center;
     display: flex;
-    width: 100%;
+    width: 80%;
     justify-content: center;
-    margin: 5%;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .message {
@@ -37,11 +41,8 @@ mat-card-title {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     color: rgb(56, 87, 24);
-    width: 80%;
     text-size-adjust: true;
-    display: inline-block;
     line-height: 1.1;
-    margin-right: 10%;
 }
 
 .genreLabel {

@@ -5,6 +5,10 @@
     width: 100%;
 }
 
+mat-toolbar {
+    width: 105%;
+}
+
 .headerTitle {
     color: azure;
     font-weight: bold;
