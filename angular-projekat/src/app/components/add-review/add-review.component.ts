@@ -3,6 +3,8 @@ import { createReview } from 'src/app/interfaces/createReview.interface';
 import { Review } from 'src/app/models/review.model';
 import { ReviewService } from 'src/app/services/review-service/review.service';
 
+declare var bootbox: any;
+
 @Component({
   selector: 'app-add-review',
   templateUrl: './add-review.component.html',
@@ -29,7 +31,7 @@ export class AddReviewComponent implements OnInit {
 
   postReview() {
     if (this.score == -1 || this.comment == '') {
-      alert('Please enter all information for the review!');
+      bootbox.alert('Please enter all information for the review!');
       return;
     }
 
@@ -43,7 +45,7 @@ export class AddReviewComponent implements OnInit {
 
       this.reviewService.postReview(reviewData).subscribe((review: Review) => {
         this.review.emit(review);
-        alert('Review successfully posted!');
+        bootbox.alert('Review successfully posted!');
       });
     }
   }

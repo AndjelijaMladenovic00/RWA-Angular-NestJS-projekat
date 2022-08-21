@@ -5,6 +5,8 @@ import { ArticleForDisplayState } from 'src/app/state/articleForDisplayState.sta
 import { MyArticlesState } from 'src/app/state/myArticlesState.state';
 import * as ArticleActions from './article.actions';
 
+declare var bootbox: any;
+
 const adapter: EntityAdapter<Article> = createEntityAdapter<Article>();
 
 export const myArticlesInitialState = adapter.getInitialState({
@@ -19,13 +21,13 @@ const _myArticleReducer = createReducer(
     (state: MyArticlesState, { article }) => {
       localStorage.removeItem('text');
       localStorage.removeItem('title');
-      alert(`Article "${article.title}" posted!`);
+      bootbox.alert(`Article "${article.title}" posted!`);
       return adapter.addOne(article, state);
     }
   ),
 
   on(ArticleActions.postArticleFail, (state: MyArticlesState) => {
-    alert(`An error occured while posting an article!`);
+    bootbox.alert(`An error occured while posting an article!`);
     return state;
   }),
 
@@ -53,14 +55,16 @@ const _myArticleReducer = createReducer(
   }),
 
   on(ArticleActions.deleteArticleFail, (state: MyArticlesState) => {
-    alert('An error occured while deleting an article, try again later!');
+    bootbox.alert(
+      'An error occured while deleting an article, try again later!'
+    );
     return state;
   }),
 
   on(
     ArticleActions.updateMyArticleSuccess,
     (state: MyArticlesState, { article }) => {
-      alert('Article successfully updated!');
+      bootbox.alert('Article successfully updated!');
       return adapter.updateOne(
         {
           id: article.id,
@@ -92,7 +96,9 @@ const _myArticleReducer = createReducer(
   ),
 
   on(ArticleActions.updateMyArticleFail, (state: MyArticlesState) => {
-    alert('Error occured while updating an article, please try again later!');
+    bootbox.alert(
+      'Error occured while updating an article, please try again later!'
+    );
     return state;
   }),
 

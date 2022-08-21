@@ -1,8 +1,9 @@
-import { faArrowsLeftRightToLine } from '@fortawesome/free-solid-svg-icons';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 import { Notification } from 'src/app/models/notification.model';
 import * as NotificationsActions from './notification.actions';
+
+declare var bootbox: any;
 
 export interface NotificationsState extends EntityState<Notification> {}
 
@@ -29,7 +30,7 @@ const _notificationsReducer = createReducer(
   ),
 
   on(NotificationsActions.openNotificationFail, (state: NotificationsState) => {
-    alert('Error while updating the state of notification.');
+    bootbox.alert('Error while updating the state of notification.');
     return state;
   }),
 
@@ -52,7 +53,9 @@ const _notificationsReducer = createReducer(
   on(
     NotificationsActions.notificationUpdateFail,
     (state: NotificationsState) => {
-      alert('Error while updating your notifications, try again later!');
+      bootbox.alert(
+        'Error while updating your notifications, try again later!'
+      );
       return state;
     }
   ),

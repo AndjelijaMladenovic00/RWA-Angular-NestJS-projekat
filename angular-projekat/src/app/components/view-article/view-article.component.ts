@@ -15,6 +15,8 @@ import {
 import { selectArticleForDisplay } from 'src/app/store/article/article.selectors';
 import { selectUserData } from 'src/app/store/user/user.selectors';
 
+declare var bootbox: any;
+
 @Component({
   selector: 'app-view-article',
   templateUrl: './view-article.component.html',
@@ -121,17 +123,16 @@ export class ViewArticleComponent implements OnInit {
   }
 
   reportArticle() {
-    if (
-      this.article &&
-      confirm(
-        'Are you sure that you want to report this article? You cannot undo this action, and it may lead to deletion of this article.'
-      )
-    ) {
-      console.log('usao');
-      this.reportService
-        .createReport(this.article.id, this.userID)
-        .subscribe((rep) => console.log(rep));
-      alert('Report was sent and it will be avaluated!');
+    if (this.article) {
+      bootbox.confirm(
+        'Are you sure that you want to report this article? You cannot undo this action, and it may lead to deletion of this article.',
+        (result: boolean) => {
+          if (result && this.article) {
+            this.reportService.createReport(this.article.id, this.userID);
+            bootbox.alert('Report was sent and it will be avaluated!');
+          }
+        }
+      );
     }
   }
 
@@ -156,9 +157,7 @@ export class ViewArticleComponent implements OnInit {
         message: `User ${this.username} reviewed your article "${this.article.title}" and gave it a score of ${review.score}! Go to your article page to see full comment!`,
       };
 
-      this.notificationService
-        .createNotification(notificationData)
-        .subscribe((not) => console.log(not));
+      this.notificationService.createNotification(notificationData);
 
       if (this.article.averageScore != score && score != 0) {
         this.stopRecursion = false;

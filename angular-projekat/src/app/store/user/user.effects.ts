@@ -5,8 +5,9 @@ import { catchError, exhaustMap, map, of, tap } from 'rxjs';
 import { LogedUser } from 'src/app/interfaces/logedUser.interface';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user-service/user.service';
-
 import * as UserActions from './user.actions';
+
+declare var bootbox: any;
 
 @Injectable()
 export class UserEffects {
@@ -64,7 +65,7 @@ export class UserEffects {
       this.action$.pipe(
         ofType(UserActions.loginFail),
         tap(() => {
-          alert('Login failed, invalid data!');
+          bootbox.alert('Login failed, invalid data!');
         })
       ),
     { dispatch: false }
@@ -98,7 +99,7 @@ export class UserEffects {
       this.action$.pipe(
         ofType(UserActions.signupSuccess),
         tap(() => {
-          alert(
+          bootbox.alert(
             'Profile successfully created, you can now login and use the app!'
           );
           this.router.navigate(['login']);
@@ -112,7 +113,7 @@ export class UserEffects {
       this.action$.pipe(
         ofType(UserActions.signupFail),
         tap(() => {
-          alert(
+          bootbox.alert(
             'Profile cannot be created with the data you have provided because username and/or email are already taken!'
           );
         })

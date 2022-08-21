@@ -4,6 +4,8 @@ import { SignupData } from 'src/app/interfaces/signupData.interface';
 import { AppState } from 'src/app/store/app.state';
 import { signup } from 'src/app/store/user/user.actions';
 
+declare var bootbox: any;
+
 @Component({
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
@@ -42,17 +44,17 @@ export class SignupFormComponent implements OnInit {
       !this.email ||
       !this.confirmedPassword
     ) {
-      alert('Please fill all the required fields!');
+      bootbox.alert('Please fill all the required fields!');
       return;
     }
 
     if (!this.email.split('').includes('@')) {
-      alert('Invalid email format!');
+      bootbox.alert('Invalid email format!');
       return;
     }
 
     if (this.password !== this.confirmedPassword) {
-      alert('Password and its confirmation should match!');
+      bootbox.alert('Password and its confirmation should match!');
       return;
     }
 

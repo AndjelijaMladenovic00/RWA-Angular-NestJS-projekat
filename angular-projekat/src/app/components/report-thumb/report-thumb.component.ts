@@ -3,6 +3,8 @@ import { ReportStatus } from 'src/app/enums/report-status.enum';
 import { Report } from 'src/app/models/report.model';
 import { ReportService } from 'src/app/services/report-service/report.service';
 
+declare var bootbox: any;
+
 @Component({
   selector: 'app-report-thumb',
   templateUrl: './report-thumb.component.html',
@@ -31,23 +33,29 @@ export class ReportThumbComponent implements OnInit {
   updateReport(status: string) {
     if (this.report) {
       if (status == 'resolved') {
-        if (
-          confirm(
-            'Are you sure that you want to resolve this report? It will delete mationed article and all its reviews!'
-          )
-        ) {
-          this.reportService
-            .updateReport(this.report.id, ReportStatus.resolved)
-            .subscribe((r) => console.log(r));
-          this.reportEmiter.emit(this.report);
-        }
+        bootbox.confirm(
+          'Are you sure that you want to resolve this report? It will delete mationed article and all its reviews!',
+          (result: boolean) => {
+            if (result && this.report) {
+              this.reportService
+                .updateReport(this.report.id, ReportStatus.resolved)
+                .subscribe((r) => console.log(r));
+              this.reportEmiter.emit(this.report);
+            }
+          }
+        );
       } else {
-        if (confirm('Are you sure that you want to reject this report?')) {
-          this.reportService
-            .updateReport(this.report.id, ReportStatus.rejected)
-            .subscribe((r) => console.log(r));
-          this.reportEmiter.emit(this.report);
-        }
+        bootbox.confirm(
+          'Are you sure that you want to reject this report?',
+          (result: boolean) => {
+            if (result && this.report) {
+              this.reportService
+                .updateReport(this.report.id, ReportStatus.rejected)
+                .subscribe((r) => console.log(r));
+              this.reportEmiter.emit(this.report);
+            }
+          }
+        );
       }
     }
   }

@@ -18,6 +18,8 @@ import {
 import { UpdateArticle } from '../../interfaces/updateArticle.interface';
 import { BookGenre } from '../../enums/book-genre.enum';
 
+declare var bootbox: any;
+
 @Component({
   selector: 'app-viev-my-article',
   templateUrl: './viev-my-article.component.html',
@@ -137,17 +139,17 @@ export class VievMyArticleComponent implements OnInit {
         return;
       } else {
         if (this.text == '') {
-          alert('You cannot submit empty article!');
+          bootbox.alert('You cannot submit empty article!');
           return;
         }
 
         if (this.title == '') {
-          alert('You need to insert a title!');
+          bootbox.alert('You need to insert a title!');
           return;
         }
 
         if (this.genre == '') {
-          alert('You need to select a genre!');
+          bootbox.alert('You need to select a genre!');
         }
 
         const data: UpdateArticle = {
@@ -163,14 +165,16 @@ export class VievMyArticleComponent implements OnInit {
   }
 
   deleteArticle() {
-    if (
-      this.article &&
-      confirm(
-        "Are you sure that you want to delete this article? You won't be able to retrieve it back!"
-      )
-    ) {
-      const id: number = this.article.id;
-      this.store.dispatch(deleteArticle({ id }));
+    if (this.article) {
+      bootbox.confirm(
+        "Are you sure that you want to delete this article? You won't be able to retrieve it back!",
+        (result: boolean) => {
+          if (result && this.article) {
+            const id: number = this.article.id;
+            this.store.dispatch(deleteArticle({ id }));
+          }
+        }
+      );
     }
   }
 }

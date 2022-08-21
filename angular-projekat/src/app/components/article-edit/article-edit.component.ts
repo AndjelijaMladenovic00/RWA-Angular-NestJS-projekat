@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import {
   faRotateLeft,
   faRotateRight,
@@ -7,9 +6,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { debounceTime, fromEvent, map } from 'rxjs';
 import { ArticleInfo } from 'src/app/interfaces/articleInfo.interface';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Store } from '@ngrx/store';
 import { postArticle } from 'src/app/store/article/article.actions';
+import { selectID } from 'src/app/store/user/user.selectors';
+
+declare var bootbox: any;
 
 @Component({
   selector: 'app-article-edit',
@@ -31,8 +32,13 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
   charNumber: number = 0;
   published: boolean = false;
 
+  userId: number = -1;
+
   constructor(private store: Store) {}
   ngOnInit(): void {
+    this.store.select(selectID).subscribe((id: number | null) => {
+      if (id) this.userId = id;
+    });
     const title: string | null = localStorage.getItem('title');
     const text: string | null = localStorage.getItem('text');
 
@@ -87,6 +93,9 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
     if ((!this.published && this.title != '') || this.text != '') {
       localStorage.setItem('title', this.title);
       localStorage.setItem('text', this.text);
+    } else {
+      localStorage.removeItem('title');
+      localStorage.removeItem('text');
     }
   }
 
@@ -112,6 +121,10 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
     this.undoableActions.push(value);
     const undo: HTMLElement | null = document.getElementById('undo');
     if (undo) undo.style.visibility = 'visible';
+
+    const redo: HTMLElement | null = document.getElementById('redo');
+    if (redo && this.redoableActions.length == 0)
+      redo.style.visibility = 'hidden';
 
     if (fromRedo == false) {
       this.redoableActions = [];
@@ -154,42 +167,42 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
   }
 
   publish() {
+    localStorage.removeItem('text');
+    localStorage.removeItem('title');
+
     if (this.title == '') {
-      alert('You need to insert a title!');
+      bootbox.alert('You need to insert a title!');
       return;
     }
 
     if (this.genre == '') {
-      alert('You need to insert a genre!');
+      bootbox.alert('You need to insert a genre!');
       return;
     }
 
     if (this.text == '') {
-      alert('You cannot publish an empty article!');
+      bootbox.alert('You cannot publish an empty article!');
       return;
     }
 
-    if (
-      confirm(
-        `Are you sure that you want to publish an article named "${this.title}"?`
-      )
-    ) {
-      localStorage.removeItem('text');
-      localStorage.removeItem('title');
-      const jwtHelper: JwtHelperService = new JwtHelperService();
-      const token: string | null = localStorage.getItem('JWT');
-      if (!token) return;
-      const userId = jwtHelper.decodeToken(token).id;
+    bootbox.confirm(
+      `Are you sure that you want to publish an article named "${this.title}"?`,
+      (result: boolean) => {
+        if (result) {
+          const article: ArticleInfo = {
+            title: this.title,
+            text: this.text,
+            userId: this.userId,
+            genre: this.genre,
+          };
 
-      const article: ArticleInfo = {
-        title: this.title,
-        text: this.text,
-        userId: userId,
-        genre: this.genre,
-      };
+          this.text = '';
+          this.title = '';
 
-      this.store.dispatch(postArticle({ article }));
-      this.published = true;
-    }
+          this.store.dispatch(postArticle({ article }));
+          this.published = true;
+        }
+      }
+    );
   }
 }

@@ -55,7 +55,6 @@ export class NotificationEffects {
           .getNotificationsUpdate(action.id, action.after)
           .pipe(
             map((notifications: Notification[]) => {
-              console.log('iz efekta ', notifications);
               return NotificationsActions.addNotificationsToState({
                 notifications,
               });
