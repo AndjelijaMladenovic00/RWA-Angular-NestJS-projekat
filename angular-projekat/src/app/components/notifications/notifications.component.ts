@@ -10,7 +10,7 @@ import { selectNotifications } from 'src/app/store/notification/notification.sel
   styleUrls: ['./notifications.component.css'],
 })
 export class NotificationsComponent implements OnInit {
-  notifications: (Notification|undefined)[] = [];
+  notifications: (Notification | undefined)[] = [];
   constructor(private store: Store) {}
 
   ngOnInit(): void {

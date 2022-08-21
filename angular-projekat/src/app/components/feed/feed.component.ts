@@ -25,6 +25,7 @@ export class FeedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.store.select(selectID).subscribe((id: number | null) => {
       if (id) {
         this.userID = id;

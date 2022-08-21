@@ -38,6 +38,7 @@ export class UserEffects {
       exhaustMap((action) =>
         this.userService.loginWithToken(action.username).pipe(
           map((userData: LogedUser) => {
+            this.router.navigate(['feed']);
             return UserActions.loginWithTokenSuccess({ userData });
           }),
           catchError(() => of(UserActions.loginFail()))

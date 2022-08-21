@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +11,10 @@ import { faBook } from '@fortawesome/free-solid-svg-icons';
 export class AppComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private store: Store) {}
 
-  ngOnInit(): void {}
-
-  ngOnDestroy(): void {
-    localStorage.removeItem('text');
-    localStorage.removeItem('title');
+  ngOnInit(): void {
+    localStorage.removeItem('location');
   }
+
+  ngOnDestroy(): void {}
   title = 'angular-projekat';
 }

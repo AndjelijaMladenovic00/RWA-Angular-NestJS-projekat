@@ -42,7 +42,6 @@ export class HeaderComponent implements OnInit {
     const token: string | null = localStorage.getItem('JWT');
     if (token) {
       const username: string = this.jwtService.decodeToken(token).username;
-      console.log(username);
       this.store.dispatch(loginWithToken({ username }));
     }
 
@@ -106,6 +105,7 @@ export class HeaderComponent implements OnInit {
     this.store.dispatch(NotificationsActions.clearNotifications());
     localStorage.removeItem('text');
     localStorage.removeItem('title');
+    localStorage.removeItem('reload');
   }
 
   setHeader() {

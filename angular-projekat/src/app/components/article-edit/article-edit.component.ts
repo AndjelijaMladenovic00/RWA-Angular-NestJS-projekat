@@ -33,6 +33,7 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router, private store: Store) {}
   ngOnInit(): void {
+
     const title: string | null = localStorage.getItem('title');
     const text: string | null = localStorage.getItem('text');
 

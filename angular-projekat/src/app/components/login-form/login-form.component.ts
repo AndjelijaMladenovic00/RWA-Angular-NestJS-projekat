@@ -14,7 +14,8 @@ export class LoginFormComponent implements OnInit {
   username: string = '';
   password: string = '';
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   gotoSignup(): void {
     this.router.navigate(['signup']);
