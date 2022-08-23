@@ -15,12 +15,12 @@ export const noitficationsInitialState = adapter.getInitialState();
 const _notificationsReducer = createReducer(
   noitficationsInitialState,
 
-  on(
+  /*on(
     NotificationsActions.addNotificationsToState,
     (state: NotificationsState, { notifications }) => {
       return adapter.addMany(notifications, state);
     }
-  ),
+  ),*/
 
   on(
     NotificationsActions.openNotificationSuccess,

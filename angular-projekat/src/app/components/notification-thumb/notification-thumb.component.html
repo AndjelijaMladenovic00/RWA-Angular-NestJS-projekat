@@ -10,8 +10,13 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <p>{{notification.message}}</p>
-        <button mat-raised-button class='button' *ngIf="notification.deleteArticleOnReception==false"
-            (click)="gotoArticle()">Go to
-            article</button>
+        <div class="buttonsDiv">
+            <button mat-raised-button class='button'
+                *ngIf="notification.deleteArticleOnReception!=null && notification.deleteArticleOnReception==false"
+                (click)="gotoArticle()">Go to article</button>
+            <button mat-raised-button class='button' *ngIf="notification.senderID!=null " (click)="gotoProfile()">Visit
+                profile
+            </button>
+        </div>
     </mat-expansion-panel>
 </mat-accordion>

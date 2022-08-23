@@ -32,3 +32,10 @@
     margin-bottom: 5%;
     color: azure;
 }
+
+.buttonsDiv {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-around;
+}

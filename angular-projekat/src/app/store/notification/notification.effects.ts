@@ -2,8 +2,6 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, of } from 'rxjs';
 import * as NotificationsActions from './notification.actions';
 import { Notification } from 'src/app/models/notification.model';
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { NotificationService } from 'src/app/services/notification-service/notification.service';
 import { Injectable } from '@angular/core';
 
@@ -12,8 +10,6 @@ export class NotificationEffects {
   constructor(
     private action$: Actions,
     private notificationService: NotificationService,
-    private router: Router,
-    private store: Store
   ) {}
 
   openArticleRequest$ = createEffect(() =>

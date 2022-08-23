@@ -28,7 +28,8 @@ export class NotificationThumbComponent implements OnInit {
     if (
       this.notification &&
       this.notification.deleteArticleOnReception &&
-      this.notification
+      this.notification &&
+      this.notification.articleID
     ) {
       const id: number = this.notification.articleID;
       this.store.dispatch(deleteArticleSuccess({ id }));
@@ -58,10 +59,15 @@ export class NotificationThumbComponent implements OnInit {
   }
 
   gotoArticle() {
-    if (this.notification) {
+    if (this.notification && this.notification.articleID) {
       const id: number = this.notification.articleID;
       this.store.dispatch(selectMyArticle({ id }));
       this.router.navigate(['viewMyArticle']);
     }
+  }
+
+  gotoProfile() {
+    if (this.notification && this.notification.senderID)
+      this.router.navigate(['profile', `${this.notification.senderID}`]);
   }
 }

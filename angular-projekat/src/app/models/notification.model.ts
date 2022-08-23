@@ -5,6 +5,7 @@ export interface Notification {
   message: string;
   sentOn: Date;
   opened: boolean;
-  deleteArticleOnReception: boolean;
-  articleID: number;
+  deleteArticleOnReception: boolean | null;
+  articleID: number | null;
+  senderID: number | null;
 }
