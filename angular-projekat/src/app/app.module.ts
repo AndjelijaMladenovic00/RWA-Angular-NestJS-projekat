@@ -41,6 +41,9 @@ import { ScoreComponent } from './components/score/score.component';
 import { NotificationThumbComponent } from './components/notification-thumb/notification-thumb.component';
 import { NotificationEffects } from './store/notification/notification.effects';
 import { ReportThumbComponent } from './components/report-thumb/report-thumb.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MySubscriptionsComponent } from './my-subscriptions/my-subscriptions.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +65,9 @@ import { ReportThumbComponent } from './components/report-thumb/report-thumb.com
     ScoreComponent,
     NotificationThumbComponent,
     ReportThumbComponent,
+    ProfileComponent,
+    MyProfileComponent,
+    MySubscriptionsComponent,
   ],
   imports: [
     BrowserModule,

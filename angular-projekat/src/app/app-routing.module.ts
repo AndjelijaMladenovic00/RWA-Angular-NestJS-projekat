@@ -11,6 +11,8 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ReportsComponent } from './components/reports/reports.component';
 import { VievMyArticleComponent } from './components/viev-my-article/viev-my-article.component';
 import { ViewArticleComponent } from './components/view-article/view-article.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { MySubscriptionsComponent } from './my-subscriptions/my-subscriptions.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -22,25 +24,42 @@ const routes: Routes = [
     component: VievMyArticleComponent,
     canActivate: [AuthGuard],
   },
+
   {
     path: 'articleEdit',
     component: ArticleEditComponent,
     canActivate: [AuthGuard],
   },
+
   {
     path: 'myArticles',
     component: MyArticlesComponent,
     canActivate: [AuthGuard],
   },
+
   { path: 'reports', component: ReportsComponent, canActivate: [AdminGuard] },
+
   {
     path: 'notifications',
     component: NotificationsComponent,
     canActivate: [AuthGuard],
   },
+
   {
     path: 'viewArticle',
     component: ViewArticleComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'myProfile',
+    component: MyProfileComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'mySubscriptions',
+    component: MySubscriptionsComponent,
     canActivate: [AuthGuard],
   },
 ];

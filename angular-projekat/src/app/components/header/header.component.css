@@ -45,6 +45,10 @@ mat-toolbar {
     font-size: 15px;
 }
 
+.username:hover {
+    cursor: pointer;
+}
+
 .logoutButton {
     background-color: rgb(75, 125, 25);
     justify-self: center;

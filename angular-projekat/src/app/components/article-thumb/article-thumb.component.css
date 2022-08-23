@@ -55,7 +55,6 @@
 
 .genre {
     text-shadow: 2px gray;
-    padding: 2%;
     width: fit-content;
     text-align: flex-start;
     font-weight: bold;
@@ -65,8 +64,8 @@
 .star {
     color: gold;
     text-shadow: 3px black;
-    margin: 2%;
     justify-self: center;
+    align-self: flex-start;
 }
 
 .scoreDiv {

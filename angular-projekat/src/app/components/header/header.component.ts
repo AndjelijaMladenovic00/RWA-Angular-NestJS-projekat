@@ -96,6 +96,13 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['notifications']);
   }
 
+  gotoMyProfile() {
+    if (this.username == null) return;
+    else {
+      this.router.navigate(['myProfile']);
+    }
+  }
+
   logout() {
     localStorage.removeItem('JWT');
     this.router.navigate(['login']);
