@@ -57,7 +57,7 @@
     text-shadow: 2px gray;
     padding: 2%;
     width: fit-content;
-    text-align: center;
+    text-align: flex-start;
     font-weight: bold;
     margin-bottom: 5%;
     align-self: flex-start;

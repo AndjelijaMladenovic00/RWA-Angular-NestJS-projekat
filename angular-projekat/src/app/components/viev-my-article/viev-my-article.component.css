@@ -90,6 +90,8 @@ fa-icon {
     color: rgb(56, 87, 24);
     font-size: 15px;
     text-align: center;
+    justify-self: center;
+    margin-left: 1%;
 }
 
 option {
@@ -105,6 +107,7 @@ option {
 .genre {
     font-size: 15px;
     font-weight: bold;
+    justify-self: center;
 }
 
 .textInput {
@@ -128,9 +131,10 @@ option {
 
 .averageScoreDiv {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     text-align: center;
+    justify-content: center;
 }
 
 .averageScore {
@@ -146,8 +150,10 @@ option {
 }
 
 .star {
+    font-size: 30px;
     color: gold;
     text-shadow: 3px black;
     margin: 2%;
+    margin-left: 0%;
     display: inline;
 }

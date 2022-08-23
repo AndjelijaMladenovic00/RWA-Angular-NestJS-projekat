@@ -120,9 +120,10 @@ option {
 
 .averageScoreDiv {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     text-align: center;
+    justify-content: center;
 }
 
 .averageScore {
@@ -138,8 +139,10 @@ option {
 }
 
 .star {
+    font-size: 30px;
     color: gold;
     text-shadow: 3px black;
     margin: 2%;
+    margin-left: 0%;
     display: inline;
 }

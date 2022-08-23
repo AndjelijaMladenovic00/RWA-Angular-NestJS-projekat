@@ -28,8 +28,9 @@
     </mat-card>
     <mat-card class="reviews">
         <div class="averageScoreDiv">
-            <label class="averageScore">{{message}}<fa-icon id="star" [icon]="faStar" class="star">
-                </fa-icon></label>
+            <label class="averageScore" *ngIf="article.averageScore">Score: {{article.averageScore}} </label>
+            <fa-icon [icon]="faStar" *ngIf="article.averageScore" class="star"></fa-icon>
+            <label class="averageScore" *ngIf="!article.averageScore">No score</label>
         </div>
         <app-review *ngFor="let review of reviews" [review]="review"></app-review>
     </mat-card>
