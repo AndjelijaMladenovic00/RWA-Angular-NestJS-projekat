@@ -1,0 +1,21 @@
+<mat-card>
+    <div class="textContainer">
+        <mat-card-title> Articles of {{username}}</mat-card-title>
+    </div>
+    <div class="genreContainer">
+        <label class="genreLabel">Genre: </label>
+        <select class="genreSelect" #genreSelect
+            (change)="setGenre((genreSelect.options[genreSelect.selectedIndex]).value)">
+            <option value="all" selected>All</option>
+            <option value="horror">Horror</option>
+            <option value="romance">Romance</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="thriller">Thriller</option>
+            <option value="historical">Historical</option>
+        </select>
+    </div>
+    <app-feed-article-thumb *ngFor="let article of articlesForDisplay" [article]="article"></app-feed-article-thumb>
+    <div class="textContainer">
+        <label *ngIf="articlesForDisplay.length==0" class="message">No such articles</label>
+    </div>
+</mat-card>

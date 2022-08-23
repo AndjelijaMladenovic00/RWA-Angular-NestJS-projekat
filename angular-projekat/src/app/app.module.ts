@@ -44,6 +44,7 @@ import { ReportThumbComponent } from './components/report-thumb/report-thumb.com
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MySubscriptionsComponent } from './my-subscriptions/my-subscriptions.component';
+import { UserArticlesComponent } from './components/user-articles/user-articles.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { MySubscriptionsComponent } from './my-subscriptions/my-subscriptions.co
     ProfileComponent,
     MyProfileComponent,
     MySubscriptionsComponent,
+    UserArticlesComponent,
   ],
   imports: [
     BrowserModule,

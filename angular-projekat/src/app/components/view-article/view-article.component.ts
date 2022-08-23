@@ -38,6 +38,7 @@ export class ViewArticleComponent implements OnInit {
 
   constructor(
     private store: Store,
+    private router: Router,
     private reviewService: ReviewService,
     private reportService: ReportService,
     private notificationService: NotificationService
@@ -165,6 +166,12 @@ export class ViewArticleComponent implements OnInit {
         this.store.dispatch(updateArticleScore({ id, score }));
         this.store.dispatch(updateArticleForDisplayScore({ score }));
       }
+    }
+  }
+
+  gotoProfile() {
+    if (this.article) {
+      this.router.navigate(['profile', `${this.article.userId}`]);
     }
   }
 }

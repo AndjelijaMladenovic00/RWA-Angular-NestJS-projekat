@@ -1,1 +1,23 @@
-<p>profile works!</p>
+<div class="profileDiv" *ngIf="profileData">
+    <fa-icon [icon]="faCircleUser" class="userIcon"></fa-icon>
+    <label class="username">{{profileData.username}}</label>
+    <div class="infoDiv">
+        <div class="numberOfArticlesDiv">
+            <label class="infoTitle">Number of articles: </label>
+            <label class="info">{{profileData.numberOfArticles}}</label>
+        </div>
+        <div class="articleScoreDiv">
+            <label class="infoTitle">Average article score:</label>
+            <div class="scoreDiv">
+                <label *ngIf="profileData.averageArticleScore!=0"
+                    class="info">{{profileData.averageArticleScore}}</label>
+                <fa-icon *ngIf="profileData.averageArticleScore!=0" class="star" [icon]="faStar"> </fa-icon>
+                <label *ngIf="profileData.averageArticleScore==0" class="info">No score</label>
+            </div>
+        </div>
+    </div>
+    <div class="buttonDiv">
+        <button mat-raised-button class="button" (click)="gotoUserArticles()">Articles</button>
+        <button mat-raised-button class="button" (click)="subscribeOrUnsubscribe()" id="subscribeButton"></button>
+    </div>
+</div>

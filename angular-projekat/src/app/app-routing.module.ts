@@ -13,6 +13,8 @@ import { VievMyArticleComponent } from './components/viev-my-article/viev-my-art
 import { ViewArticleComponent } from './components/view-article/view-article.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { MySubscriptionsComponent } from './my-subscriptions/my-subscriptions.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { UserArticlesComponent } from './components/user-articles/user-articles.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -60,6 +62,18 @@ const routes: Routes = [
   {
     path: 'mySubscriptions',
     component: MySubscriptionsComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'profile/:id',
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'userArticles/:id/:username',
+    component: UserArticlesComponent,
     canActivate: [AuthGuard],
   },
 ];

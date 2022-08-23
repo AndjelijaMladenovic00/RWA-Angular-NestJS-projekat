@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LogedUser } from 'src/app/interfaces/logedUser.interface';
 import { SignupData } from 'src/app/interfaces/signupData.interface';
+import { UserProfileData } from 'src/app/interfaces/userProfileData.interface';
 import { User } from 'src/app/models/user.model';
 import { environment } from 'src/environments/environment';
 
@@ -30,5 +31,11 @@ export class UserService {
       password: signupData.password,
       email: signupData.email,
     });
+  }
+
+  getProfileData(id: number) {
+    return this.http.get<UserProfileData>(
+      `${environment.url}/users/getProfileData/${id}`
+    );
   }
 }

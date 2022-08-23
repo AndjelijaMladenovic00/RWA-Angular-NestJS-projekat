@@ -2,7 +2,8 @@
     <mat-card class="articleInfo">
         <div class="titleDiv">
             <mat-card-title class="title" #title>{{article.title}}</mat-card-title>
-            <mat-card-subtitle class="subtitle">By: {{article.username}}</mat-card-subtitle>
+            <mat-card-subtitle class="usernameSubtitle" (click)="gotoProfile()">By: {{article.username}}
+            </mat-card-subtitle>
             <mat-card-subtitle class="subtitle">Published on: {{getDate(article.publishedOn)}}</mat-card-subtitle>
             <mat-card-subtitle class="subtitle">Last edited: {{getDate(article.lastEdited)}}</mat-card-subtitle>
         </div>

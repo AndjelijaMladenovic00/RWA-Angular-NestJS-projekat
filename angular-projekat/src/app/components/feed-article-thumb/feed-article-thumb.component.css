@@ -42,6 +42,21 @@
     width: 100%;
 }
 
+.subtitleUsername {
+    font-size: 14px;
+    color: rgb(11, 14, 11);
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 100%;
+}
+
+.subtitleUsername:hover {
+    cursor: pointer;
+    color: lightblue;
+}
+
 .divRight {
     display: flex;
     flex-direction: column;

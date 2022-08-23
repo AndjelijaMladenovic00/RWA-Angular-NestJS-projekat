@@ -42,6 +42,16 @@
     margin-bottom: 3%;
 }
 
+.usernameSubtitle {
+    margin-bottom: 3%;
+}
+
+.usernameSubtitle:hover {
+    margin-bottom: 3%;
+    cursor: pointer;
+    color: lightblue;
+}
+
 .articleMenu {
     display: flex;
     width: 100%;

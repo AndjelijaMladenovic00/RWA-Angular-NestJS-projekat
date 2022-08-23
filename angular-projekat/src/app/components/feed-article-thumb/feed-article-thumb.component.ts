@@ -39,4 +39,10 @@ export class FeedArticleThumbComponent implements OnInit {
       this.router.navigate(['viewArticle']);
     }
   }
+
+  gotoProfile() {
+    if (this.article) {
+      this.router.navigate(['profile', `${this.article.userId}`]);
+    }
+  }
 }

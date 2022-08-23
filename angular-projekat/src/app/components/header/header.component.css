@@ -47,6 +47,7 @@ mat-toolbar {
 
 .username:hover {
     cursor: pointer;
+    color: lightblue;
 }
 
 .logoutButton {
