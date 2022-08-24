@@ -85,4 +85,22 @@ export class ProfileComponent implements OnInit {
       this.store.dispatch(unsubscribe({ id, subscriptionID }));
     }
   }
+
+  gotoSubscribers() {
+    if (this.profileData)
+      this.router.navigate([
+        'subscribers',
+        `${this.profileData.userId}`,
+        `${this.profileData.username}`,
+      ]);
+  }
+
+  gotoSubscriptions(){
+    if (this.profileData)
+      this.router.navigate([
+        'subscriptions',
+        `${this.profileData.userId}`,
+        `${this.profileData.username}`,
+      ]);
+  }
 }

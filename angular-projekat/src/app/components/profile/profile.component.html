@@ -18,6 +18,10 @@
     </div>
     <div class="buttonDiv">
         <button mat-raised-button class="button" (click)="gotoUserArticles()">Articles</button>
+        <button mat-raised-button class="button" (click)="gotoSubscribers()">Subscribers</button>
+        <button mat-raised-button class="button" (click)="gotoSubscriptions()">Subscriptions</button>
+    </div>
+    <div class="buttonDiv">
         <button *ngIf="!subscribed" mat-raised-button class="button" (click)="subscribe()"
             id="subscribeButton">Subscribe</button>
         <button *ngIf="subscribed" mat-raised-button class="button" (click)="unsubscribe()"

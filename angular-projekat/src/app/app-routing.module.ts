@@ -12,9 +12,11 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { VievMyArticleComponent } from './components/viev-my-article/viev-my-article.component';
 import { ViewArticleComponent } from './components/view-article/view-article.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
-import { MySubscriptionsComponent } from './my-subscriptions/my-subscriptions.component';
+import { MySubscriptionsComponent } from './components/my-subscriptions/my-subscriptions.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserArticlesComponent } from './components/user-articles/user-articles.component';
+import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
+import { SubscribersComponent } from './components/subscribers/subscribers.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -68,6 +70,18 @@ const routes: Routes = [
   {
     path: 'profile/:id',
     component: ProfileComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'subscriptions/:id/:username',
+    component: SubscriptionsComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'subscribers/:id/:username',
+    component: SubscribersComponent,
     canActivate: [AuthGuard],
   },
 

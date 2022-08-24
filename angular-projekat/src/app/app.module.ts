@@ -43,8 +43,11 @@ import { NotificationEffects } from './store/notification/notification.effects';
 import { ReportThumbComponent } from './components/report-thumb/report-thumb.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { MySubscriptionsComponent } from './my-subscriptions/my-subscriptions.component';
+import { MySubscriptionsComponent } from './components/my-subscriptions/my-subscriptions.component';
 import { UserArticlesComponent } from './components/user-articles/user-articles.component';
+import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
+import { SubscribersComponent } from './components/subscribers/subscribers.component';
+import { UserThumbComponent } from './components/user-thumb/user-thumb.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +73,9 @@ import { UserArticlesComponent } from './components/user-articles/user-articles.
     MyProfileComponent,
     MySubscriptionsComponent,
     UserArticlesComponent,
+    SubscriptionsComponent,
+    SubscribersComponent,
+    UserThumbComponent,
   ],
   imports: [
     BrowserModule,
