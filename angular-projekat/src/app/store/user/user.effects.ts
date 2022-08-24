@@ -120,4 +120,46 @@ export class UserEffects {
       ),
     { dispatch: false }
   );
+
+  getSubscription$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(UserActions.getSubscriptions),
+      exhaustMap((action) =>
+        this.userService.getSubscriptions(action.id).pipe(
+          map((subscriptions: User[]) =>
+            UserActions.getSubscriptionsSuccess({ subscriptions })
+          ),
+          catchError(() => of(UserActions.getSubscriptionsFail()))
+        )
+      )
+    )
+  );
+
+  subscribe$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(UserActions.subscribe),
+      exhaustMap((action) =>
+        this.userService.subscribe(action.id, action.subscriptionID).pipe(
+          map((subscription: User) =>
+            UserActions.subscribeSuccess({ subscription })
+          ),
+          catchError(() => of(UserActions.subscriptionFail()))
+        )
+      )
+    )
+  );
+
+  unsubscribe$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(UserActions.unsubscribe),
+      exhaustMap((action) =>
+        this.userService.unsubscribe(action.id, action.subscriptionID).pipe(
+          map((subscription: User) =>
+            UserActions.unsubscribeSuccess({ subscription })
+          ),
+          catchError(() => of(UserActions.subscriptionFail()))
+        )
+      )
+    )
+  );
 }

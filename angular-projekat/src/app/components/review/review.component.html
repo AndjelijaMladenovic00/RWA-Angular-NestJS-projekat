@@ -1,7 +1,7 @@
 <span *ngIf='review'>
     <mat-card class="reviewCard">
         <div class="reviewInfo">
-            <mat-card-title class="title">
+            <mat-card-title class="title" (ckick)="gotoProfile()">
                 <fa-icon [icon]="faCircleUser" class="userIcon"></fa-icon>{{review.username}}
             </mat-card-title>
             <mat-card-subtitle class="reviewedOnLabel">Reviewed on: {{getDate(review.reviewedOn)}}</mat-card-subtitle>

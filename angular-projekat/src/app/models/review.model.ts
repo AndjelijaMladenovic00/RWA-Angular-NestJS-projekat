@@ -3,5 +3,6 @@ export interface Review {
   score: number;
   comment: string;
   username: string;
+  userID: number;
   reviewedOn: Date;
 }

@@ -58,6 +58,11 @@ export class SignupFormComponent implements OnInit {
       return;
     }
 
+    if (this.username.split('').includes(' ')) {
+      bootbox.alert('Username should not contain space!');
+      return;
+    }
+
     const signupData: SignupData = {
       username: this.username,
       password: this.password,

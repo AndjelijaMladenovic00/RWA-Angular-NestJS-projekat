@@ -1,12 +1,11 @@
+import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
+import { User } from 'src/app/models/user.model';
+import { SubscriptionsState } from 'src/app/state/subscriptionsState.state';
 import { UserState } from 'src/app/state/userState.state';
+import * as UserActions from 'src/app/store/user/user.actions';
 
-import {
-  loginFail,
-  loginSuccess,
-  loginWithTokenSuccess,
-  logout,
-} from './user.actions';
+declare var bootbox: any;
 
 export const initialUserState: UserState = {
   id: null,
@@ -18,7 +17,7 @@ export const initialUserState: UserState = {
 const _userReducer = createReducer(
   initialUserState,
 
-  on(loginSuccess, (state: UserState, { userData }) => {
+  on(UserActions.loginSuccess, (state: UserState, { userData }) => {
     return {
       id: userData.id,
       username: userData.username,
@@ -27,7 +26,7 @@ const _userReducer = createReducer(
     };
   }),
 
-  on(loginWithTokenSuccess, (state: UserState, { userData }) => {
+  on(UserActions.loginWithTokenSuccess, (state: UserState, { userData }) => {
     return {
       id: userData.id,
       username: userData.username,
@@ -36,7 +35,7 @@ const _userReducer = createReducer(
     };
   }),
 
-  on(loginFail, (state: UserState) => {
+  on(UserActions.loginFail, (state: UserState) => {
     return {
       id: null,
       username: null,
@@ -45,7 +44,7 @@ const _userReducer = createReducer(
     };
   }),
 
-  on(logout, (state: UserState) => {
+  on(UserActions.logout, (state: UserState) => {
     return {
       id: null,
       username: null,
@@ -57,4 +56,57 @@ const _userReducer = createReducer(
 
 export function UserReducer(state: UserState | undefined, action: Action) {
   return _userReducer(state, action);
+}
+
+const adapter: EntityAdapter<User> = createEntityAdapter<User>();
+
+const initialSubscriptionsState: SubscriptionsState = adapter.getInitialState();
+
+const _subscriptionsReducer = createReducer(
+  initialSubscriptionsState,
+
+  on(
+    UserActions.getSubscriptionsSuccess,
+    (state: SubscriptionsState, { subscriptions }) => {
+      return adapter.addMany(subscriptions, state);
+    }
+  ),
+
+  on(UserActions.getSubscriptionsFail, (state: SubscriptionsState) => {
+    bootbox.alert('Geting subscriptions failed!');
+    return state;
+  }),
+
+  on(
+    UserActions.subscribeSuccess,
+    (state: SubscriptionsState, { subscription }) => {
+      return adapter.addOne(subscription, state);
+    }
+  ),
+
+  on(
+    UserActions.unsubscribeSuccess,
+    (state: SubscriptionsState, { subscription }) => {
+      return adapter.removeOne(subscription.id, state);
+    }
+  ),
+
+  on(UserActions.subscriptionFail, (state: SubscriptionsState) => {
+    bootbox.alert('Error while dealing with subscriptions!');
+    return state;
+  }),
+
+  on(UserActions.clearSubscriptions, (state: SubscriptionsState) => {
+    return {
+      ids: [],
+      entities: {},
+    };
+  })
+);
+
+export function SubscriptionsReducer(
+  state: SubscriptionsState | undefined,
+  action: Action
+) {
+  return _subscriptionsReducer(state, action);
 }

@@ -2,6 +2,11 @@
     color: rgb(56, 87, 24);
 }
 
+.title:hover {
+    color: rgb(136, 178, 95);
+    cursor: pointer;
+}
+
 .userIcon {
     color: rgb(56, 87, 24);
     margin-right: 3%;

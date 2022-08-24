@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Review } from 'src/app/models/review.model';
 import { faCircleUser, faStar } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-review',
@@ -13,7 +14,7 @@ export class ReviewComponent implements OnInit {
 
   @Input() review: Review | null = null;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -28,5 +29,9 @@ export class ReviewComponent implements OnInit {
       date.getFullYear() +
       '.';
     return s;
+  }
+
+  gotoProfile() {
+    if (this.review) this.router.navigate(['profile', `${this.review.userID}`]);
   }
 }

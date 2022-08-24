@@ -8,7 +8,12 @@ import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { profileType } from 'src/app/enums/profile-type.enum';
 import { AppState } from 'src/app/store/app.state';
-import { loginWithToken, logout } from 'src/app/store/user/user.actions';
+import {
+  clearSubscriptions,
+  getSubscriptions,
+  loginWithToken,
+  logout,
+} from 'src/app/store/user/user.actions';
 import { selectUserData } from 'src/app/store/user/user.selectors';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {
@@ -57,6 +62,8 @@ export class HeaderComponent implements OnInit {
             id,
           })
         );
+
+        this.store.dispatch(getSubscriptions({ id }));
 
         const after: Date = new Date(new Date().valueOf() - 60000);
 
@@ -110,9 +117,10 @@ export class HeaderComponent implements OnInit {
     this.store.dispatch(clearMyArticlesState());
     this.store.dispatch(clearArticleForDisplayState());
     this.store.dispatch(NotificationsActions.clearNotifications());
+    this.store.dispatch(clearSubscriptions());
     localStorage.removeItem('text');
     localStorage.removeItem('title');
-    localStorage.removeItem('reload');
+    //localStorage.removeItem('reload');
   }
 
   setHeader() {

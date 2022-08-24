@@ -38,4 +38,24 @@ export class UserService {
       `${environment.url}/users/getProfileData/${id}`
     );
   }
+
+  getSubscriptions(id: number) {
+    return this.http.get<User[]>(
+      `${environment.url}/users/getSubscriptionsForUser/${id}`
+    );
+  }
+
+  subscribe(id: number, subscribingToID: number) {
+    return this.http.put<User>(
+      `${environment.url}/users/subscribe/${id}/${subscribingToID}`,
+      {}
+    );
+  }
+
+  unsubscribe(id: number, unsubscribingFromID: number) {
+    return this.http.put<User>(
+      `${environment.url}/users/unsubscribe/${id}/${unsubscribingFromID}`,
+      {}
+    );
+  }
 }

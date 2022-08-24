@@ -21,13 +21,13 @@
 }
 
 .button {
-    width: 30%;
+    width: 40%;
     background-color: rgb(75, 125, 25);
     justify-self: center;
     align-self: center;
     text-align: center;
-    margin-left: 35%;
-    margin-right: 35%;
+    margin-left: 15%;
+    margin-right: 15%;
     margin-top: 5%;
     margin-bottom: 5%;
     color: azure;
@@ -36,6 +36,6 @@
 .buttonsDiv {
     display: flex;
     flex-direction: row;
-    width: 80%;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    justify-self: center;
 }

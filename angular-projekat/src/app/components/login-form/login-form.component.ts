@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { LoginData } from 'src/app/interfaces/loginData.interface';
+import {
+  clearMyArticlesState,
+  clearArticleForDisplayState,
+} from 'src/app/store/article/article.actions';
+import { clearNotifications } from 'src/app/store/notification/notification.actions';
 import * as UserActions from '../../store/user/user.actions';
 
 @Component({
@@ -15,7 +20,15 @@ export class LoginFormComponent implements OnInit {
   username: string = '';
   password: string = '';
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.dispatch(UserActions.logout());
+    this.store.dispatch(clearMyArticlesState());
+    this.store.dispatch(clearArticleForDisplayState());
+    this.store.dispatch(clearNotifications());
+    this.store.dispatch(UserActions.clearSubscriptions());
+    localStorage.removeItem('text');
+    localStorage.removeItem('title');
+  }
 
   gotoSignup(): void {
     this.router.navigate(['signup']);
