@@ -1,1 +1,7 @@
-<p>subscriptions works!</p>
+<mat-card>
+    <div class="textContainer">
+        <mat-card-title> Subscriptions of user {{username}} : {{subscriptions.length}}</mat-card-title>
+    </div>
+    <app-user-thumb *ngFor="let subscription of subscriptions" [user]="subscription"></app-user-thumb>
+    <label class="message" *ngIf="subscriptions.length==0">User has no subscriptions</label>
+</mat-card>

@@ -45,6 +45,12 @@ export class UserService {
     );
   }
 
+  getSubscribers(id: number) {
+    return this.http.get<User[]>(
+      `${environment.url}/users/getSubscribersForUser/${id}`
+    );
+  }
+
   subscribe(id: number, subscribingToID: number) {
     return this.http.put<User>(
       `${environment.url}/users/subscribe/${id}/${subscribingToID}`,

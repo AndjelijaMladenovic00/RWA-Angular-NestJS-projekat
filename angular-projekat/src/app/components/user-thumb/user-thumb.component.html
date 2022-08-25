@@ -1,1 +1,11 @@
-<p>user-thumb works!</p>
+<mat-card class='card' *ngIf="user">
+    <div class="usernameDiv">
+        <label class="username" (click)="gotoProfile()">
+            <fa-icon [icon]="faCircleUser"></fa-icon>{{user.username}}
+        </label>
+    </div>
+    <div class="buttonDiv">
+        <button mat-raised-button class="button" *ngIf="!subscribed" (click)="subscribe()">Subscribe</button>
+        <button mat-raised-button class="button" *ngIf="subscribed" (click)="unsubscribe()">Unubscribe</button>
+    </div>
+</mat-card>
