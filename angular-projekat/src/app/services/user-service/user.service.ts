@@ -64,4 +64,10 @@ export class UserService {
       {}
     );
   }
+
+  searchUsers(name: string, userID: number) {
+    return this.http.get<User[]>(
+      `${environment.url}/users/searchUsers/${name}/${userID}`
+    );
+  }
 }

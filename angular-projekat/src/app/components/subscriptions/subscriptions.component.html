@@ -1,7 +1,7 @@
-<mat-card>
-    <div class="textContainer">
-        <mat-card-title> Subscriptions of user {{username}} : {{subscriptions.length}}</mat-card-title>
+<div>
+    <div class="titleDiv">
+        <label class="title"> Subscriptions of user {{username}} : {{subscriptions.length}}</label>
     </div>
-    <app-user-thumb *ngFor="let subscription of subscriptions" [user]="subscription"></app-user-thumb>
     <label class="message" *ngIf="subscriptions.length==0">User has no subscriptions</label>
-</mat-card>
+    <app-user-thumb *ngFor="let subscription of subscriptions" [user]="subscription"></app-user-thumb>
+</div>

@@ -13,6 +13,12 @@
             <button mat-menu-item class="menuButton" (click)="gotoFeed()">
                 <fa-icon [icon]="faBookOpenReader" style="color: rgb(104, 162, 47);"></fa-icon> Feed
             </button>
+            <button mat-menu-item class="menuButton" (click)="gotoSubscriptionFeed()">
+                <fa-icon [icon]="faBookBookmark" style="color: rgb(104, 162, 47);"></fa-icon> Subscription feed
+            </button>
+            <button mat-menu-item class="menuButton" (click)="gotoSearch()">
+                <fa-icon [icon]="faMagnifyingGlass" style="color: rgb(104, 162, 47);"></fa-icon> Search
+            </button>
             <button class="logoutButton" mat-raised-button (click)="logout()">Log out</button>
         </mat-menu>
     </span>

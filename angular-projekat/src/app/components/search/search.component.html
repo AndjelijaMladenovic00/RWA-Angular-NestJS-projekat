@@ -1,0 +1,30 @@
+<mat-card class="searchContainer">
+    <mat-card-title class="title">Search</mat-card-title>
+    <div class="searchbarDiv">
+        <div class="autocompleteDiv">
+            <fa-icon [icon]="faMagnifyingGlass" class="searchIcon"></fa-icon>
+            <input type="text" placeholder="Search" [value]="input" id="searchInput" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" id="autocomplete" class="autocomplete">
+                <mat-option *ngFor="let option of usernames" [value]="option">
+                    {{option}}
+                </mat-option>
+                <mat-option *ngFor="let option of articleNames" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class="selectDiv">
+            <label class="searchLabel">Search by:</label>
+            <select class="select" #parameterSelect
+                (change)="selectParameter(parameterSelect.options[parameterSelect.selectedIndex].value)">
+                <option value="all" selected>All</option>
+                <option value="user">User</option>
+                <option value="article">Article</option>
+            </select>
+        </div>
+
+    </div>
+    <app-user-thumb *ngFor="let user of users" [user]="user"></app-user-thumb>
+    <app-feed-article-thumb *ngFor="let article of articles" [article]="article"></app-feed-article-thumb>
+    <label *ngIf="articles.length==0 && users.length==0 && input.length>=3" class="message">No results</label>
+</mat-card>

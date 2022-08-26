@@ -17,12 +17,24 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UserArticlesComponent } from './components/user-articles/user-articles.component';
 import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
 import { SubscribersComponent } from './components/subscribers/subscribers.component';
+import { SubscriptionFeedComponent } from './components/subscription-feed/subscription-feed.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
+
   { path: '', component: LoginFormComponent },
+
   { path: 'signup', component: SignupFormComponent },
+
   { path: 'feed', component: FeedComponent, canActivate: [AuthGuard] },
+
+  {
+    path: 'subscriptionFeed',
+    component: SubscriptionFeedComponent,
+    canActivate: [AuthGuard],
+  },
+
   {
     path: 'viewMyArticle',
     component: VievMyArticleComponent,
@@ -88,6 +100,12 @@ const routes: Routes = [
   {
     path: 'userArticles/:id/:username',
     component: UserArticlesComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'search',
+    component: SearchComponent,
     canActivate: [AuthGuard],
   },
 ];

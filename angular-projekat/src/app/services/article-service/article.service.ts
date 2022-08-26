@@ -55,9 +55,21 @@ export class ArticleService {
     );
   }
 
+  getArticlesForSubscriptionFeed(id: number) {
+    return this.http.get<Article[]>(
+      `${environment.url}/articles/getArticlesForSubscriptionFeed/${id}`
+    );
+  }
+
   getArticlesForUser(id: number) {
     return this.http.get<Article[]>(
       `${environment.url}/articles/getArticlesForId/${id}`
+    );
+  }
+
+  searchArticles(name: string, userID: number) {
+    return this.http.get<Article[]>(
+      `${environment.url}/articles/searchArticles/${name}/${userID}`
     );
   }
 }

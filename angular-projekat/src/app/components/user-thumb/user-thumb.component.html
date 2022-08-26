@@ -1,6 +1,6 @@
-<mat-card class='card' *ngIf="user">
+<mat-card class='card' *ngIf="user" (click)="gotoProfile()">
     <div class="usernameDiv">
-        <label class="username" (click)="gotoProfile()">
+        <label class="username">
             <fa-icon [icon]="faCircleUser"></fa-icon>{{user.username}}
         </label>
     </div>

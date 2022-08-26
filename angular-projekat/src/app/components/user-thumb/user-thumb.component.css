@@ -2,32 +2,35 @@
     display: flex;
     flex-direction: row;
     background-color: rgb(148, 180, 99);
-    width: 100%;
+    width: 80%;
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 1%;
     margin-bottom: 1%;
     border: 1px solid gray;
     box-shadow: 1px gray;
-    border-radius: 10%;
+    border-radius: 1%;
     justify-self: center;
-    justify-content: center;
+    justify-content: space-between;
     align-content: center;
 }
 
 .usernameDiv {
     display: flex;
     flex-direction: row;
+    justify-self: center;
 }
 
 .username {
     font-size: 25px;
     color: rgb(56, 87, 24);
+    justify-self: center;
 }
 
 .buttonDiv {
     display: flex;
     flex-direction: row;
+    justify-self: center;
 }
 
 .button {

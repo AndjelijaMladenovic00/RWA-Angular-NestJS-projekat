@@ -10,6 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
@@ -48,6 +49,8 @@ import { UserArticlesComponent } from './components/user-articles/user-articles.
 import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
 import { SubscribersComponent } from './components/subscribers/subscribers.component';
 import { UserThumbComponent } from './components/user-thumb/user-thumb.component';
+import { SubscriptionFeedComponent } from './components/subscription-feed/subscription-feed.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +79,8 @@ import { UserThumbComponent } from './components/user-thumb/user-thumb.component
     SubscriptionsComponent,
     SubscribersComponent,
     UserThumbComponent,
+    SubscriptionFeedComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +105,7 @@ import { UserThumbComponent } from './components/user-thumb/user-thumb.component
     MatCardModule,
     MatDividerModule,
     MatExpansionModule,
+    MatAutocompleteModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },

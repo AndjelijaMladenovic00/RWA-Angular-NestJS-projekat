@@ -15,7 +15,7 @@ export class UserThumbComponent implements OnInit {
   faCircleUser = faCircleUser;
 
   @Input() user: User | undefined = undefined;
-  subscribed: boolean = false;
+  subscribed: boolean = true;
   logedUserID: number | null = null;
 
   constructor(private router: Router, private store: Store) {}

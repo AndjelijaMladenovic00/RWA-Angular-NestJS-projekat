@@ -5,9 +5,11 @@ import { faScroll } from '@fortawesome/free-solid-svg-icons';
 import { faBookOpenReader } from '@fortawesome/free-solid-svg-icons';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { faFlag } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { profileType } from 'src/app/enums/profile-type.enum';
 import { AppState } from 'src/app/store/app.state';
+import { faBookBookmark } from '@fortawesome/free-solid-svg-icons';
 import {
   clearSubscriptions,
   getSubscriptions,
@@ -35,6 +37,8 @@ export class HeaderComponent implements OnInit {
   faBookOpenReader = faBookOpenReader;
   faComment = faComment;
   faFlag = faFlag;
+  faBookBookmark = faBookBookmark;
+  faMagnifyingGlass = faMagnifyingGlass;
 
   private jwtService: JwtHelperService = new JwtHelperService();
 
@@ -88,12 +92,20 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['feed']);
   }
 
+  gotoSubscriptionFeed() {
+    this.router.navigate(['subscriptionFeed']);
+  }
+
   gotoMyArticles() {
     this.router.navigate(['myArticles']);
   }
 
   gotoReports() {
     this.router.navigate(['reports']);
+  }
+
+  gotoSearch() {
+    this.router.navigate(['search']);
   }
 
   gotoNotifications() {
