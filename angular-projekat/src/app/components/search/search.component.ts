@@ -41,13 +41,12 @@ export class SearchComponent implements OnInit {
     if (autocomplete) {
       fromEvent(autocomplete, 'input')
         .pipe(
-          debounceTime(1000),
+          debounceTime(800),
           map(() => autocomplete.value.toLowerCase()),
           filter((value: string) => value.length >= 3)
         )
         .subscribe((value: string) => {
           this.input = value;
-          console.log(this.input);
           this.search();
         });
     }
@@ -55,6 +54,7 @@ export class SearchComponent implements OnInit {
 
   selectParameter(param: string) {
     this.parameter = param;
+    this.search();
   }
 
   search() {
@@ -76,7 +76,6 @@ export class SearchComponent implements OnInit {
         this.searchUsers();
       }
     }
-    console.log(this.articleNames, this.usernames);
   }
 
   searchUsers() {

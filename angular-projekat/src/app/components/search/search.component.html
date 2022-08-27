@@ -1,10 +1,11 @@
-<mat-card class="searchContainer">
-    <mat-card-title class="title">Search</mat-card-title>
+<div class="searchContainer">
+    <label class="title">Looking for something...</label>
     <div class="searchbarDiv">
         <div class="autocompleteDiv">
             <fa-icon [icon]="faMagnifyingGlass" class="searchIcon"></fa-icon>
-            <input type="text" placeholder="Search" [value]="input" id="searchInput" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete" id="autocomplete" class="autocomplete">
+            <input type="text" placeholder="Search" [value]="input" id="searchInput" [matAutocomplete]="auto"
+                class="autocomplete">
+            <mat-autocomplete #auto="matAutocomplete" id="autocomplete">
                 <mat-option *ngFor="let option of usernames" [value]="option">
                     {{option}}
                 </mat-option>
@@ -27,4 +28,4 @@
     <app-user-thumb *ngFor="let user of users" [user]="user"></app-user-thumb>
     <app-feed-article-thumb *ngFor="let article of articles" [article]="article"></app-feed-article-thumb>
     <label *ngIf="articles.length==0 && users.length==0 && input.length>=3" class="message">No results</label>
-</mat-card>
+</div>

@@ -4,7 +4,10 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { User } from 'src/app/models/user.model';
 import { subscribe, unsubscribe } from 'src/app/store/user/user.actions';
-import { selectID } from 'src/app/store/user/user.selectors';
+import {
+  selectID,
+  selectSubscriptions,
+} from 'src/app/store/user/user.selectors';
 
 @Component({
   selector: 'app-user-thumb',
@@ -15,7 +18,7 @@ export class UserThumbComponent implements OnInit {
   faCircleUser = faCircleUser;
 
   @Input() user: User | undefined = undefined;
-  subscribed: boolean = true;
+  subscribed: boolean = false;
   logedUserID: number | null = null;
 
   constructor(private router: Router, private store: Store) {}
@@ -24,6 +27,16 @@ export class UserThumbComponent implements OnInit {
     this.store
       .select(selectID)
       .subscribe((id: number | null) => (this.logedUserID = id));
+
+    this.store
+      .select(selectSubscriptions)
+      .subscribe((subscriptions: (User | undefined)[]) => {
+        subscriptions.forEach((subscription: User | undefined) => {
+          if (subscription && this.user && subscription.id == this.user.id) {
+            this.subscribed = true;
+          }
+        });
+      });
   }
 
   subscribe() {

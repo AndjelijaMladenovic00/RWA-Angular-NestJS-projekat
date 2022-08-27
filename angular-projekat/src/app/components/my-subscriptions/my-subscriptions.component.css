@@ -1,4 +1,4 @@
-mat-card-title {
+.title {
     justify-self: center;
     align-self: center;
     text-align: center;
@@ -10,6 +10,11 @@ mat-card-title {
     text-size-adjust: true;
     display: inline-block;
     line-height: 1.1;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
 }
 
 .textContainer {
@@ -35,4 +40,5 @@ mat-card-title {
     color: rgb(56, 87, 24);
     text-size-adjust: true;
     line-height: 1.1;
+    margin-top: 20%;
 }

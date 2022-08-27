@@ -9,7 +9,7 @@
     margin-bottom: 1%;
     border: 1px solid gray;
     box-shadow: 1px gray;
-    border-radius: 1%;
+    border-radius: 5px;
     justify-self: center;
     justify-content: space-between;
     align-content: center;
@@ -40,4 +40,5 @@
     text-align: center;
     margin: 5%;
     color: azure;
+    justify-content: center;
 }

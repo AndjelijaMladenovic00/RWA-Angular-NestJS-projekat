@@ -10,6 +10,11 @@
     margin-bottom: 5%;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
 .titleDiv {
     display: flex;
     flex-direction: row;
@@ -30,8 +35,5 @@
     text-size-adjust: true;
     display: inline-block;
     line-height: 1.1;
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 15%;
-    margin-bottom: 15%;
+    margin-top: 20%;
 }
