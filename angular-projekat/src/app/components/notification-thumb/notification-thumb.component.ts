@@ -21,7 +21,6 @@ export class NotificationThumbComponent implements OnInit {
   constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
-    console.log(this.notification);
     if (this.notification) this.opened = this.notification.opened;
     if (this.opened) this.class = 'opened';
 

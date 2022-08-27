@@ -28,8 +28,8 @@
     text-align: center;
     margin-left: 15%;
     margin-right: 15%;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     color: azure;
 }
 
@@ -38,4 +38,17 @@
     flex-direction: row;
     justify-content: space-evenly;
     justify-self: center;
+}
+
+.containerLeft {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.containerRight {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: flex-end;
 }
