@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Article } from 'src/app/models/article.model';
 import { ArticleService } from 'src/app/services/article-service/article.service';
+import { AppState } from 'src/app/store/app.state';
 import { selectID } from 'src/app/store/user/user.selectors';
 
 @Component({
@@ -15,7 +16,10 @@ export class SubscriptionFeedComponent implements OnInit {
   userID: number = -1;
   genre: string = 'all';
 
-  constructor(private store: Store, private articleService: ArticleService) {}
+  constructor(
+    private store: Store<AppState>,
+    private articleService: ArticleService
+  ) {}
 
   ngOnInit(): void {
     this.store.select(selectID).subscribe((id: number | null) => {

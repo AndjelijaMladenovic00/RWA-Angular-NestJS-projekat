@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Article } from 'src/app/models/article.model';
+import { AppState } from 'src/app/store/app.state';
 import { selectMyArticles } from 'src/app/store/article/article.selectors';
 
 @Component({
@@ -13,7 +14,7 @@ export class MyArticlesComponent implements OnInit {
   articlesForDisplay: (Article | undefined)[] = [];
   genre: string = 'all';
 
-  constructor(private store: Store) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store

@@ -11,6 +11,7 @@ import {
 } from 'src/app/store/user/user.selectors';
 import { User } from 'src/app/models/user.model';
 import { subscribe, unsubscribe } from 'src/app/store/user/user.actions';
+import { AppState } from 'src/app/store/app.state';
 
 @Component({
   selector: 'app-profile',
@@ -30,7 +31,7 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
-    private store: Store
+    private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
@@ -95,7 +96,7 @@ export class ProfileComponent implements OnInit {
       ]);
   }
 
-  gotoSubscriptions(){
+  gotoSubscriptions() {
     if (this.profileData)
       this.router.navigate([
         'subscriptions',

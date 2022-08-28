@@ -1,10 +1,10 @@
 <mat-card class='card' *ngIf="user">
     <div class="usernameDiv" (click)="gotoProfile()">
-        <label class="username">
+        <mat-card-title class="username">
             <fa-icon [icon]="faCircleUser"></fa-icon>{{user.username}}
-        </label>
+        </mat-card-title>
     </div>
-    <div class="buttonDiv">
+    <div class="buttonDiv" *ngIf="logedUserID!=user.id">
         <button mat-raised-button class="button" *ngIf="!subscribed" (click)="subscribe()">Subscribe</button>
         <button mat-raised-button class="button" *ngIf="subscribed" (click)="unsubscribe()">Unubscribe</button>
     </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs';
 import { Notification } from 'src/app/models/notification.model';
+import { AppState } from 'src/app/store/app.state';
 import { selectNotifications } from 'src/app/store/notification/notification.selectors';
 
 @Component({
@@ -11,7 +12,7 @@ import { selectNotifications } from 'src/app/store/notification/notification.sel
 })
 export class NotificationsComponent implements OnInit {
   notifications: (Notification | undefined)[] = [];
-  constructor(private store: Store) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store

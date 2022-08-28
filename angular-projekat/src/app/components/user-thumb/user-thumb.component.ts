@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { User } from 'src/app/models/user.model';
+import { AppState } from 'src/app/store/app.state';
 import { subscribe, unsubscribe } from 'src/app/store/user/user.actions';
 import {
   selectID,
@@ -21,7 +22,7 @@ export class UserThumbComponent implements OnInit {
   subscribed: boolean = false;
   logedUserID: number | null = null;
 
-  constructor(private router: Router, private store: Store) {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store
@@ -58,6 +59,9 @@ export class UserThumbComponent implements OnInit {
   }
 
   gotoProfile() {
-    if (this.user) this.router.navigate(['profile', `${this.user.id}`]);
+    if (this.user) {
+      if (this.user.id == this.logedUserID) this.router.navigate(['myProfile']);
+      else this.router.navigate(['profile', `${this.user.id}`]);
+    }
   }
 }

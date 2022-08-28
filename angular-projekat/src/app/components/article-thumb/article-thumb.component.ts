@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { Article } from 'src/app/models/article.model';
+import { AppState } from 'src/app/store/app.state';
 import { selectMyArticle } from 'src/app/store/article/article.actions';
 
 @Component({
@@ -14,7 +15,7 @@ export class ArticleThumbComponent implements OnInit {
   @Input() article: Article | null | undefined = null;
   faStar = faStar;
 
-  constructor(private router: Router, private Store: Store) {}
+  constructor(private router: Router, private Store: Store<AppState>) {}
 
   ngOnInit(): void {}
 

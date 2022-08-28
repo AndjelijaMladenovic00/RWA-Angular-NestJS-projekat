@@ -8,6 +8,7 @@ import { Review } from 'src/app/models/review.model';
 import { NotificationService } from 'src/app/services/notification-service/notification.service';
 import { ReportService } from 'src/app/services/report-service/report.service';
 import { ReviewService } from 'src/app/services/review-service/review.service';
+import { AppState } from 'src/app/store/app.state';
 import {
   updateArticleForDisplayScore,
   updateArticleScore,
@@ -37,7 +38,7 @@ export class ViewArticleComponent implements OnInit {
   star: HTMLElement | null = null;
 
   constructor(
-    private store: Store,
+    private store: Store<AppState>,
     private router: Router,
     private reviewService: ReviewService,
     private reportService: ReportService,
@@ -129,7 +130,9 @@ export class ViewArticleComponent implements OnInit {
         'Are you sure that you want to report this article? You cannot undo this action, and it may lead to deletion of this article.',
         (result: boolean) => {
           if (result && this.article) {
-            this.reportService.createReport(this.article.id, this.userID);
+            this.reportService
+              .createReport(this.article.id, this.userID)
+              .subscribe((report) => console.log(report));
             bootbox.alert('Report was sent and it will be avaluated!');
           }
         }
@@ -156,6 +159,7 @@ export class ViewArticleComponent implements OnInit {
         deleteArticleOnReception: false,
         title: `New review of your article "${this.article.title}"`,
         message: `User ${this.username} reviewed your article "${this.article.title}" and gave it a score of ${review.score}! Go to your article page to see full comment!`,
+        corelatingUserID: this.userID,
       };
 
       this.notificationService.createNotification(notificationData);

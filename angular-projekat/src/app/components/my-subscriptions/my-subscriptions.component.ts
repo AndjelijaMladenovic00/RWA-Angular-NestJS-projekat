@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from 'src/app/models/user.model';
+import { AppState } from 'src/app/store/app.state';
 import { selectSubscriptions } from 'src/app/store/user/user.selectors';
 
 @Component({
@@ -11,7 +12,7 @@ import { selectSubscriptions } from 'src/app/store/user/user.selectors';
 export class MySubscriptionsComponent implements OnInit {
   subscriptions: (User | undefined)[] = [];
 
-  constructor(private store: Store) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store

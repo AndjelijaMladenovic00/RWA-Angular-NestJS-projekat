@@ -6,6 +6,7 @@ import { Article } from 'src/app/models/article.model';
 import { User } from 'src/app/models/user.model';
 import { ArticleService } from 'src/app/services/article-service/article.service';
 import { UserService } from 'src/app/services/user-service/user.service';
+import { AppState } from 'src/app/store/app.state';
 import { selectID } from 'src/app/store/user/user.selectors';
 
 @Component({
@@ -25,7 +26,7 @@ export class SearchComponent implements OnInit {
   parameter: string = 'all';
 
   constructor(
-    private store: Store,
+    private store: Store<AppState>,
     private userService: UserService,
     private articleService: ArticleService
   ) {}
@@ -76,6 +77,11 @@ export class SearchComponent implements OnInit {
         this.searchUsers();
       }
     }
+  }
+
+  searchSelect(param: string) {
+    this.input = param.toLowerCase();
+    this.search();
   }
 
   searchUsers() {

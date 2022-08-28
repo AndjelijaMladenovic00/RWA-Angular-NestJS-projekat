@@ -39,7 +39,7 @@ export class ReportThumbComponent implements OnInit {
             if (result && this.report) {
               this.reportService
                 .updateReport(this.report.id, ReportStatus.resolved)
-                .subscribe((r) => console.log(r));
+                .subscribe((res) => console.log(res));
               this.reportEmiter.emit(this.report);
             }
           }
@@ -51,7 +51,7 @@ export class ReportThumbComponent implements OnInit {
             if (result && this.report) {
               this.reportService
                 .updateReport(this.report.id, ReportStatus.rejected)
-                .subscribe((r) => console.log(r));
+                .subscribe((res) => console.log(res));
               this.reportEmiter.emit(this.report);
             }
           }

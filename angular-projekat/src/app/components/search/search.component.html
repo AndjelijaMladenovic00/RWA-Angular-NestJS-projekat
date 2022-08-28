@@ -6,10 +6,10 @@
             <input type="text" placeholder="Search" [value]="input" id="searchInput" [matAutocomplete]="auto"
                 class="autocomplete">
             <mat-autocomplete #auto="matAutocomplete" id="autocomplete">
-                <mat-option *ngFor="let option of usernames" [value]="option">
+                <mat-option *ngFor="let option of usernames" [value]="option" (click)="searchSelect(option)">
                     {{option}}
                 </mat-option>
-                <mat-option *ngFor="let option of articleNames" [value]="option">
+                <mat-option *ngFor="let option of articleNames" [value]="option" (click)="searchSelect(option)">
                     {{option}}
                 </mat-option>
             </mat-autocomplete>

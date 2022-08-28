@@ -48,6 +48,11 @@ export class SignupFormComponent implements OnInit {
       return;
     }
 
+    if (this.username.length < 5) {
+      bootbox.alert('Username should have at least 5 characters!');
+      return;
+    }
+
     if (!this.email.split('').includes('@')) {
       bootbox.alert('Invalid email format!');
       return;

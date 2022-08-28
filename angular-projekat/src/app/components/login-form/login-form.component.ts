@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { LoginData } from 'src/app/interfaces/loginData.interface';
+import { AppState } from 'src/app/store/app.state';
 import {
   clearMyArticlesState,
   clearArticleForDisplayState,
@@ -15,7 +16,7 @@ import * as UserActions from '../../store/user/user.actions';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent implements OnInit {
-  constructor(private router: Router, private store: Store) {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
   username: string = '';
   password: string = '';

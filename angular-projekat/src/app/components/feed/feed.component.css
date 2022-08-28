@@ -12,6 +12,10 @@ mat-card-title {
     line-height: 1.1;
 }
 
+mat-card {
+    margin-top: 2%;
+}
+
 .genreContainer {
     display: flex;
     flex-direction: row;

@@ -17,6 +17,7 @@ import {
 } from '../../store/article/article.actions';
 import { UpdateArticle } from '../../interfaces/updateArticle.interface';
 import { BookGenre } from '../../enums/book-genre.enum';
+import { AppState } from 'src/app/store/app.state';
 
 declare var bootbox: any;
 
@@ -41,7 +42,7 @@ export class VievMyArticleComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private store: Store,
+    private store: Store<AppState>,
     private reviewService: ReviewService
   ) {}
 

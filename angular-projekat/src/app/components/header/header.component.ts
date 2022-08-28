@@ -44,6 +44,7 @@ export class HeaderComponent implements OnInit {
 
   username: string | null = null;
   profileType: profileType | null = null;
+  userID: number | null = null;
 
   constructor(private router: Router, private store: Store<AppState>) {}
 
@@ -59,6 +60,7 @@ export class HeaderComponent implements OnInit {
         this.username = stateData.username;
         this.profileType = stateData.profileType;
         const id: number = stateData.id;
+        this.userID = id;
         this.store.dispatch(loadMyArticles({ id }));
 
         this.store.dispatch(
@@ -72,9 +74,11 @@ export class HeaderComponent implements OnInit {
         const after: Date = new Date(new Date().valueOf() - 60000);
 
         interval(60000).subscribe(() => {
-          this.store.dispatch(
-            NotificationsActions.updateNotifications({ id, after })
-          );
+          if (this.username) {
+            this.store.dispatch(
+              NotificationsActions.updateNotifications({ id, after })
+            );
+          }
         });
 
         this.setHeader();
@@ -132,7 +136,9 @@ export class HeaderComponent implements OnInit {
     this.store.dispatch(clearSubscriptions());
     localStorage.removeItem('text');
     localStorage.removeItem('title');
-    //localStorage.removeItem('reload');
+    this.username = null;
+    this.profileType = null;
+    this.userID = null;
   }
 
   setHeader() {

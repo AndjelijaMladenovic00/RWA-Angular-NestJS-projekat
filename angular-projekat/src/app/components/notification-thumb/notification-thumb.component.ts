@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Notification } from 'src/app/models/notification.model';
+import { AppState } from 'src/app/store/app.state';
 import {
   deleteArticleSuccess,
   selectMyArticle,
@@ -18,7 +19,7 @@ export class NotificationThumbComponent implements OnInit {
   opened: boolean = false;
   class: string = 'unopened';
 
-  constructor(private store: Store, private router: Router) {}
+  constructor(private store: Store<AppState>, private router: Router) {}
 
   ngOnInit(): void {
     if (this.notification) this.opened = this.notification.opened;

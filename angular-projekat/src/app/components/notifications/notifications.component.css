@@ -1,3 +1,8 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
 .title {
     justify-self: center;
     align-self: center;
@@ -10,8 +15,7 @@
     text-size-adjust: true;
     display: inline-block;
     line-height: 1.1;
-    margin-right: 10%;
-    margin-left: 10%;
+    margin-top: 2%;
     margin-bottom: 5%
 }
 

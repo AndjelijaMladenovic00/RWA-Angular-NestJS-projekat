@@ -26,9 +26,9 @@ export class SubscribersComponent implements OnInit {
 
       this.userService
         .getSubscribers(this.userId)
-        .subscribe(
-          (subscriptions: User[]) => (this.subscriptions = subscriptions)
-        );
+        .subscribe((subscriptions: User[]) => {
+          this.subscriptions = subscriptions;
+        });
     });
   }
 }

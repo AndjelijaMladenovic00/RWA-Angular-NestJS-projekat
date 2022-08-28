@@ -11,7 +11,6 @@ export class ReportService {
   constructor(private http: HttpClient) {}
 
   public createReport(articleID: number, userID: number) {
-    console.log('createReport');
     return this.http.post<Report>(
       `${environment.url}/reports/createReport/${articleID}/${userID}`,
       {}

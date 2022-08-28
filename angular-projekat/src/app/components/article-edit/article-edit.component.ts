@@ -9,6 +9,7 @@ import { ArticleInfo } from 'src/app/interfaces/articleInfo.interface';
 import { Store } from '@ngrx/store';
 import { postArticle } from 'src/app/store/article/article.actions';
 import { selectID } from 'src/app/store/user/user.selectors';
+import { AppState } from 'src/app/store/app.state';
 
 declare var bootbox: any;
 
@@ -34,7 +35,7 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
 
   userId: number = -1;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store<AppState>) {}
   ngOnInit(): void {
     this.store.select(selectID).subscribe((id: number | null) => {
       if (id) this.userId = id;

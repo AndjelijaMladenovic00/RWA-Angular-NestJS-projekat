@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.state';
 import { selectMyArticlesProfileInfo } from 'src/app/store/article/article.selectors';
 import { selectUserData } from 'src/app/store/user/user.selectors';
 
@@ -20,7 +21,7 @@ export class MyProfileComponent implements OnInit {
   numberOfArticles: number = 0;
   averageArticleScore: number = 0;
 
-  constructor(private router: Router, private store: Store) {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store.select(selectUserData).subscribe((data) => {
